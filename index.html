@@ -2334,6 +2334,13 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
         + '<button class="btn ghost tiny" type="button" data-act="import-db">Импорт JSON</button>'
         + '<button class="btn danger tiny" type="button" data-act="reset-demo">Сбросить демо-данные</button></span></h3>'
         + '<p style="color:var(--muted);font-size:13px">Аккаунтов: ' + d.accounts.length + ' · заказов: ' + d.orders.length + ' · заявок: ' + d.leads.length + '. Экспорт делайте регулярно — это ваша резервная копия.</p></div>');
+         H.push('<div class="blk"><h3>Ваш доступ (логин и пароль)</h3><div class="two-col">'
+        + '<div class="auth-form"><div class="field"><label>Логин (e-mail или Telegram)</label><input type="text" id="admLogin" value="' + esc(u.contact) + '"></div>'
+        + '<button class="btn small" type="button" data-act="save-admin-login">Сохранить логин</button></div>'
+        + '<div class="auth-form"><div class="field"><label>Новый пароль</label><input type="password" id="admPass" placeholder="Минимум 6 символов"></div>'
+        + '<div class="field"><label>Повторите пароль</label><input type="password" id="admPass2"></div>'
+        + '<button class="btn small ghost" type="button" data-act="save-admin-pass">Изменить пароль</button></div></div>'
+        + '<p style="color:var(--muted);font-size:12.5px;margin-top:12px">Логин и пароль хранятся в этом браузере. После смены входа используйте новые данные. Для работы кабинета с нескольких устройств подключите бэкенд (BACKEND).</p></div>');
       H.push('<div class="blk"><h3>Демо-доступы</h3><p style="color:var(--muted);font-size:13.5px">Админ: <b style="color:var(--acc2)">admin@alsolo.ru</b> / <b style="color:var(--acc2)">admin1234</b><br>Клиент: <b style="color:var(--acc2)">demo@mail.ru</b> / <b style="color:var(--acc2)">demo1234</b><br>Перед запуском трафика смените пароли и удалите демо-заказы.</p></div>');
     }
     return H;
@@ -2522,6 +2529,19 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
       return;
     }
 
+        if(act === 'save-admin-login'){
+      var nl = (q('#admLogin')||{}).value||''; nl = nl.trim();
+      if(!nl){ toast('Логин не может быть пустым'); return; }
+      var busy = findAccount(nl);
+      if(busy && busy.id !== u.id){ toast('Такой логин уже занят другим аккаунтом'); return; }
+      u.contact = nl; saveDB(); renderCab(); toast('Логин изменён: ' + nl); return;
+    }
+    if(act === 'save-admin-pass'){
+      var a1 = (q('#admPass')||{}).value||'', a2 = (q('#admPass2')||{}).value||'';
+      if(a1.length < 6){ toast('Пароль минимум 6 символов'); return; }
+      if(a1 !== a2){ toast('Пароли не совпадают'); return; }
+      u.pass = hashPass(a1); saveDB(); renderCab(); toast('Пароль изменён ✔'); return;
+    }
     if(act === 'export-db'){ exportJSON('alsolo_cabinet_backup.json', d); toast('Резервная копия скачана'); return; }
     if(act === 'export-leads'){ exportCSV(); return; }
     if(act === 'import-db'){
