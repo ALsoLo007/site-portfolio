@@ -79,7 +79,7 @@ section{padding:96px 0 132px;scroll-margin-top:88px;position:relative}
 #order{background:var(--bg)}
 #contacts{background:var(--bg2)}
 
-[data-anim]{opacity:0;will-change:transform,opacity;transition:opacity .8s var(--e) var(--d,0s),transform .95s var(--e) var(--d,0s),filter .85s var(--e) var(--d,0s),clip-path 1s var(--e) var(--d,0s)}
+[data-anim]{opacity:0;transition:opacity .8s var(--e) var(--d,0s),transform .95s var(--e) var(--d,0s),filter .85s var(--e) var(--d,0s),clip-path 1s var(--e) var(--d,0s)}
 [data-anim="up"]{transform:translateY(56px)}
 [data-anim="left"]{transform:translateX(-84px)}
 [data-anim="right"]{transform:translateX(84px)}
@@ -1619,7 +1619,43 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
       io.unobserve(t);
     });
   }, {threshold:[0,0.1,0.3], rootMargin:'0px 0px -6% 0px'});
-  qa('[data-anim]').forEach(function(el){ io.observe(el); });
+  function revealEl(t){
+    if(!t || t.classList.contains('in')) return;
+    t.classList.add('in');
+    qa('[data-count]', t).forEach(animateCount);
+    qa('.rfg', t).forEach(function(c){
+      var C = 289, pct = parseInt(c.dataset.pct,10);
+      c.style.strokeDashoffset = String(Math.round(C*(1-pct/100)));
+    });
+  }
+  var io = null;
+  try{
+    io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        try{
+          if(!en.isIntersecting) return;
+          var big = en.boundingClientRect.height > window.innerHeight * 0.7;
+          if(!big && en.intersectionRatio < 0.1) return;
+          revealEl(en.target);
+          io.unobserve(en.target);
+        }catch(err){}
+      });
+    }, {threshold:[0,0.1,0.3], rootMargin:'0px 0px -6% 0px'});
+    qa('[data-anim]').forEach(function(el){ io.observe(el); });
+  }catch(e){ io = null; }
+  /* Страховка: если наблюдатель не сработал (глюк Chrome, расширение) —
+     блоки проявляются сами при скролле, загрузке и изменении окна */
+  function revealFallback(){
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    qa('[data-anim]:not(.in)').forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if(r.top < vh * 0.92 && r.bottom > 0){ revealEl(el); if(io){ try{ io.unobserve(el); }catch(e){} } }
+    });
+  }
+  window.addEventListener('scroll', revealFallback, {passive:true});
+  window.addEventListener('resize', revealFallback);
+  window.addEventListener('load', function(){ setTimeout(revealFallback, 300); setTimeout(revealFallback, 1500); });
+  setTimeout(revealFallback, 800);
 
   function alignAboutPhoto(){
     var slot = q('.about-photo .photo-slot'), list = q('.about-list'), skills = q('.about-photo .skills');
