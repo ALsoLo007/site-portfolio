@@ -12,57 +12,21 @@
 <meta property="og:locale" content="ru_RU">
 <!--
 ================================================================================
-  ИНСТРУКЦИЯ ПО ЗАПУСКУ САЙТА (GitHub Pages + картинки + домен .RU)
-  Сохраните этот файл как index.html и следуйте шагам ниже.
+  ИНСТРУКЦИЯ ПО ЗАПУСКУ (GitHub Pages + картинки + домен .RU)
 ================================================================================
-
-  ШАГ 1. ФАЙЛЫ КАРТИНОК ДЛЯ ПАПКИ works/
-  Переименуйте ваши готовые работы ТОЧНО в эти имена и положите в папку works:
-    1) utyug-polaris.jpg      — Утюг Polaris (карточка WB)
-    2) steamer-redmond.jpg    — Отпариватель REDMOND (карточка Ozon)
-    3) headphones-jbl.jpg     — Беспроводные наушники JBL (карточка WB)
-    4) drill-dewalt.jpg       — Аккумуляторная электродрель DeWALT (карточка WB)
-    5) watch-smart8.jpg       — Смарт-часы Smart Watch 8 Series (карточка Ozon)
-    6) phone-burgundy.jpg     — Смартфон в новом цвете (карточка Ozon)
-    7) poster-kinovecher.jpg  — Постер «Киновечер» (афиша)
-    8) deck-exclusive.jpg     — Питч-дек ExclusiveDesigne (презентация)
-    9) deck-figma-ps.jpg      — Дек Figma vs Photoshop 2026 (презентация)
-   10) deck-bizantia.jpg      — Дек «Мода Византии» (презентация)
-  Формат jpg или png — не важен, главное имя файла совпадает.
-
-  ШАГ 2. СТРУКТУРА РЕПОЗИТОРИЯ НА GITHUB
-    alsolo-site/
-    ├── index.html          ← этот файл (имя обязательно index.html)
-    ├── Photo1.png          ← фото для главного экрана
-    ├── photo 3.png         ← фото для блока «Обо мне»
-    └── works/              ← папка с 10 файлами из шага 1
-  Загрузка: github.com → ваш репозиторий → Add file → Upload files →
-  перетащить файлы и папку works → Commit changes.
-
-  ШАГ 3. ВКЛЮЧИТЬ GITHUB PAGES
-    Settings → Pages → Source: Deploy from a branch →
-    Branch: main, Folder: / (root) → Save.
-    Через 1–3 минуты сайт откроется по адресу:
-    https://ВАШ_ЛОГИН.github.io/alsolo-site/
-    Если картинки не появились — нажмите Ctrl+F5 (кэш) или подождите 2–5 минут.
-
-  ШАГ 4. ДОМЕН .RU (reg.ru / nic.ru / Timeweb / 2domains, ~200–350 ₽/год)
-    После покупки у регистратора в разделе «DNS-записи / управление зоной»:
-      A       @     185.199.108.153
-      A       @     185.199.109.153
-      A       @     185.199.110.153
-      A       @     185.199.111.153
-      CNAME   www   ВАШ_ЛОГИН.github.io
-    Лишние A-записи и парковочные записи для @ удалите.
-    Затем в GitHub: Settings → Pages → Custom domain → впишите домен → Save
-    и поставьте галочку Enforce HTTPS (SSL-сертификат выпустится сам).
-    DNS обновляется от 15 минут до 24 часов (обычно 1–4 часа).
-    Проверка: https://dnschecker.org → ваш домен → тип A → видны IP 185.199.x.153.
-
-  ШАГ 5. ЯНДЕКС.ДИРЕКТ
-    В начале <script> внизу файла впишите METRIKA_ID = номер счётчика Метрики.
-    Цели для кампании: lead_card, lead_pres (основные), tg_click, cab_register.
-    UTM-метки и yclid сами сохраняются в каждой заявке в личном кабинете.
+  ШАГ 1. ФАЙЛЫ КАРТИНОК ДЛЯ ПАПКИ works/ (имена должны совпадать точно):
+    utyug-polaris.jpg, steamer-redmond.jpg, headphones-jbl.jpg, drill-dewalt.jpg,
+    watch-smart8.jpg, phone-burgundy.jpg, poster-kinovecher.jpg,
+    deck-exclusive.jpg, deck-figma-ps.jpg, deck-bizantia.jpg
+  ШАГ 2. СТРУКТУРА РЕПОЗИТОРИЯ:
+    index.html  (именно это имя),  Photo1.png,  photo 3.png,  works/...
+  ШАГ 3. GITHUB PAGES: Settings → Pages → Branch: main, Folder: / (root) → Save.
+  ШАГ 4. ДОМЕН .RU: у регистратора 4 A-записи @ на 185.199.108.153/109/110/111
+    и CNAME www → ВАШ_ЛОГИН.github.io; затем GitHub: Settings → Pages →
+    Custom domain → Save → галочка Enforce HTTPS. DNS живёт до 24 часов.
+  ШАГ 5. ДИРЕКТ: впишите METRIKA_ID в блоке «1. НАСТРОЙКИ» внизу файла,
+    создайте цели lead_card, lead_pres, lead_feedback.
+  СЛУЖЕБНАЯ ПОДСКАЗКА С ДОСТУПАМИ: откройте сайт с параметром ?demo=1
 ================================================================================
 -->
 <script type="application/ld+json">
@@ -389,7 +353,6 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
 .toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);opacity:0;background:var(--card);border:1px solid var(--acc);color:var(--text);padding:14px 24px;border-radius:14px;z-index:200;transition:.35s;font-size:14px;font-weight:600;box-shadow:0 14px 40px rgba(0,0,0,.5);max-width:90vw;text-align:center}
 .toast.show{transform:translate(-50%,0);opacity:1}
 
-/* ================= ЛИЧНЫЙ КАБИНЕТ ================= */
 .cab{position:fixed;inset:0;z-index:120;background:var(--bg);display:none;flex-direction:column}
 .cab.show{display:flex;animation:fade .35s var(--e)}
 .cab-top{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px;padding:0 22px;border-bottom:1px solid var(--line);background:rgba(22,19,17,.94);backdrop-filter:blur(10px);flex:0 0 auto}
@@ -1203,7 +1166,6 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
 
 <a class="fab" href="https://t.me/ALsoLo007" data-tg data-goal="tg_click" target="_blank" rel="noopener" aria-label="Telegram"><svg width="26" height="26"><use href="#tgIcon"/></svg></a>
 
-<!-- ============ ЛИЧНЫЙ КАБИНЕТ ============ -->
 <div class="cab" id="cab" role="dialog" aria-label="Личный кабинет">
   <div class="cab-top">
     <a class="logo" href="#hero" data-act="exit-cab">AL<i>soLo</i> <span style="font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.1em">КАБИНЕТ</span></a>
@@ -1271,7 +1233,12 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
       </div>
       <button class="btn f-submit" type="submit" id="authSubmit">Войти</button>
     </form>
-   
+    <div class="demo-note" id="demoNote" style="display:none">
+      <b>Служебная подсказка</b> (видна только по ссылке с <code>?demo=1</code>):<br>
+      Стартовый админ: <code>admin@alsolo.ru</code> / <code>admin1234</code><br>
+      Стартовый клиент: <code>demo@mail.ru</code> / <code>demo1234</code><br>
+      Это доступы для ПЕРВОГО входа в новом браузере; после смены они не действуют.
+    </div>
   </div>
 </div>
 
@@ -1311,22 +1278,9 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   var TG_CHAT_USER = 'ALsoLoDisigne';
   var EMAIL = 'al.poponin2013@yandex.ru';
   var PAY_PHONE = '+7 ·· ··· ·· ·· — получатель Алексей П. (самозанятый)';
-
-  /* Яндекс.Директ / Метрика. METRIKA_ID = 0 означает «отключено».
-     Цели, которые шлёт сайт (создайте их в Метрике):
-       lead_card, lead_pres, lead_feedback — заявки (основные для Директа)
-       tg_click, mail_click — микроконверсии
-       cta_card, cta_pres, tariff_* — намерение заказать
-       cab_open, cab_register, cab_login — личный кабинет
-       pay_intent, portfolio_view, order_accepted */
   var METRIKA_ID = 0;
-
-  /* Telegram-бот (необязательно): заявки дублируются в чат */
   var TG_BOT_TOKEN = '';
   var TG_CHAT_ID = '';
-
-  /* Серверный бэкенд (необязательно). Пока enabled:false, кабинет и заявки
-     хранятся в localStorage браузера + дублируются в админке сайта. */
   var BACKEND = { enabled:false, leadsUrl:'', ordersUrl:'', authUrl:'', filesUrl:'' };
 
   var WORKS_REMOTE = 'https://raw.githubusercontent.com/ALsoLo007/site-portfolio/main/works/';
@@ -1340,6 +1294,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
 
   q('#year').textContent = new Date().getFullYear();
   if(PAY_PHONE) q('#payPhone').textContent = PAY_PHONE;
+  try{ if(new URLSearchParams(location.search).get('demo')==='1'){ var dn=q('#demoNote'); if(dn) dn.style.display=''; } }catch(e){}
 
   /* =====================================================
      2. УТИЛИТЫ
@@ -1364,10 +1319,6 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     try{
       var p = new URLSearchParams(location.search);
       UTM_KEYS.forEach(function(k){ var v = p.get(k); if(v) out[k] = v.slice(0,120); });
-      if(location.hash && location.hash.indexOf('utm_') > -1){
-        var p2 = new URLSearchParams(location.hash.replace(/^#\/?/,''));
-        UTM_KEYS.forEach(function(k){ var v = p2.get(k); if(v && !out[k]) out[k] = v.slice(0,120); });
-      }
     }catch(e){}
     return out;
   }
@@ -1421,7 +1372,6 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   }
   function setMetrikaUser(id, name){
     try{ if(window.ym && METRIKA_ID && id) window.ym(METRIKA_ID, 'setUserID', String(id)); }catch(e){}
-    try{ if(window.ym && METRIKA_ID && name) window.ym(METRIKA_ID, 'userParams', {cab_name:name}); }catch(e){}
   }
   document.addEventListener('click', function(e){
     var el = e.target;
@@ -2329,14 +2279,13 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
         + '<button class="btn ghost tiny" type="button" data-act="import-db">Импорт JSON</button>'
         + '<button class="btn danger tiny" type="button" data-act="reset-demo">Сбросить демо-данные</button></span></h3>'
         + '<p style="color:var(--muted);font-size:13px">Аккаунтов: ' + d.accounts.length + ' · заказов: ' + d.orders.length + ' · заявок: ' + d.leads.length + '. Экспорт делайте регулярно — это ваша резервная копия.</p></div>');
-         H.push('<div class="blk"><h3>Ваш доступ (логин и пароль)</h3><div class="two-col">'
+      H.push('<div class="blk"><h3>Ваш доступ (логин и пароль)</h3><div class="two-col">'
         + '<div class="auth-form"><div class="field"><label>Логин (e-mail или Telegram)</label><input type="text" id="admLogin" value="' + esc(u.contact) + '"></div>'
         + '<button class="btn small" type="button" data-act="save-admin-login">Сохранить логин</button></div>'
         + '<div class="auth-form"><div class="field"><label>Новый пароль</label><input type="password" id="admPass" placeholder="Минимум 6 символов"></div>'
         + '<div class="field"><label>Повторите пароль</label><input type="password" id="admPass2"></div>'
         + '<button class="btn small ghost" type="button" data-act="save-admin-pass">Изменить пароль</button></div></div>'
-        + '<p style="color:var(--muted);font-size:12.5px;margin-top:12px">Логин и пароль хранятся в этом браузере. После смены входа используйте новые данные. Для работы кабинета с нескольких устройств подключите бэкенд (BACKEND).</p></div>');
-      H.push('<div class="blk"><h3>Демо-доступы</h3><p style="color:var(--muted);font-size:13.5px">Админ: <b style="color:var(--acc2)">admin@alsolo.ru</b> / <b style="color:var(--acc2)">admin1234</b><br>Клиент: <b style="color:var(--acc2)">demo@mail.ru</b> / <b style="color:var(--acc2)">demo1234</b><br>Перед запуском трафика смените пароли и удалите демо-заказы.</p></div>');
+        + '<p style="color:var(--muted);font-size:12.5px;margin-top:12px">Каждая кнопка сохраняет своё поле и показывает всплывашку-подтверждение. Логин и пароль хранятся в этом браузере; для работы с нескольких устройств подключите бэкенд (BACKEND).</p></div>');
     }
     return H;
   }
@@ -2500,7 +2449,21 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
       var p1 = (q('#pfPass')||{}).value||'', p2 = (q('#pfPass2')||{}).value||'';
       if(p1.length < 6){ toast('Пароль минимум 6 символов'); return; }
       if(p1 !== p2){ toast('Пароли не совпадают'); return; }
-      u.pass = hashPass(p1); saveDB(); renderCab(); toast('Пароль изменён'); return;
+      u.pass = hashPass(p1); saveDB(); renderCab(); toast('Пароль изменён ✔'); return;
+    }
+
+    if(act === 'save-admin-login'){
+      var nl = (q('#admLogin')||{}).value||''; nl = nl.trim();
+      if(!nl){ toast('Логин не может быть пустым'); return; }
+      var busy = findAccount(nl);
+      if(busy && busy.id !== u.id){ toast('Такой логин уже занят другим аккаунтом'); return; }
+      u.contact = nl; saveDB(); renderCab(); toast('Логин изменён: ' + nl); return;
+    }
+    if(act === 'save-admin-pass'){
+      var a1 = (q('#admPass')||{}).value||'', a2 = (q('#admPass2')||{}).value||'';
+      if(a1.length < 6){ toast('Пароль минимум 6 символов'); return; }
+      if(a1 !== a2){ toast('Пароли не совпадают'); return; }
+      u.pass = hashPass(a1); saveDB(); renderCab(); toast('Пароль изменён ✔'); return;
     }
 
     if(act === 'lead-copy'){ var l1 = d.leads.filter(function(x){ return x.id === b.dataset.l; })[0]; if(l1) copyText(l1.brief || JSON.stringify(l1.fields,null,2)); return; }
@@ -2524,19 +2487,6 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
       return;
     }
 
-        if(act === 'save-admin-login'){
-      var nl = (q('#admLogin')||{}).value||''; nl = nl.trim();
-      if(!nl){ toast('Логин не может быть пустым'); return; }
-      var busy = findAccount(nl);
-      if(busy && busy.id !== u.id){ toast('Такой логин уже занят другим аккаунтом'); return; }
-      u.contact = nl; saveDB(); renderCab(); toast('Логин изменён: ' + nl); return;
-    }
-    if(act === 'save-admin-pass'){
-      var a1 = (q('#admPass')||{}).value||'', a2 = (q('#admPass2')||{}).value||'';
-      if(a1.length < 6){ toast('Пароль минимум 6 символов'); return; }
-      if(a1 !== a2){ toast('Пароли не совпадают'); return; }
-      u.pass = hashPass(a1); saveDB(); renderCab(); toast('Пароль изменён ✔'); return;
-    }
     if(act === 'export-db'){ exportJSON('alsolo_cabinet_backup.json', d); toast('Резервная копия скачана'); return; }
     if(act === 'export-leads'){ exportCSV(); return; }
     if(act === 'import-db'){
@@ -2556,10 +2506,10 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
       inp2.click(); return;
     }
     if(act === 'reset-demo'){
-      if(!confirm('Удалить все данные кабинета и вернуть демо-набор?')) return;
+      if(!confirm('Удалить все данные кабинета и вернуть стартовый набор?')) return;
       db = seedDB(); db.session = u.role === 'admin' ? 'u_admin' : null; saveDB();
       if(db.session) { renderCab(); } else { closeCab(); }
-      toast('Демо-данные восстановлены'); return;
+      toast('Данные сброшены к стартовым'); return;
     }
   });
 
