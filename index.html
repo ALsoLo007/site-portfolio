@@ -11,23 +11,12 @@
 <meta property="og:description" content="Анализ топ-10 конкурентов, срок от 2 дней, договор и чек. Личный кабинет со статусами заказов.">
 <meta property="og:locale" content="ru_RU">
 <!--
-================================================================================
-  ИНСТРУКЦИЯ ПО ЗАПУСКУ (GitHub Pages + картинки + домен .RU)
-================================================================================
-  ШАГ 1. ФАЙЛЫ КАРТИНОК ДЛЯ ПАПКИ works/ (имена должны совпадать точно):
-    utyug-polaris.jpg, steamer-redmond.jpg, headphones-jbl.jpg, drill-dewalt.jpg,
-    watch-smart8.jpg, phone-burgundy.jpg, poster-kinovecher.jpg,
-    deck-exclusive.jpg, deck-figma-ps.jpg, deck-bizantia.jpg
-  ШАГ 2. СТРУКТУРА РЕПОЗИТОРИЯ:
-    index.html  (именно это имя),  Photo1.png,  photo 3.png,  works/...
-  ШАГ 3. GITHUB PAGES: Settings → Pages → Branch: main, Folder: / (root) → Save.
-  ШАГ 4. ДОМЕН .RU: у регистратора 4 A-записи @ на 185.199.108.153/109/110/111
-    и CNAME www → ВАШ_ЛОГИН.github.io; затем GitHub: Settings → Pages →
-    Custom domain → Save → галочка Enforce HTTPS. DNS живёт до 24 часов.
-  ШАГ 5. ДИРЕКТ: впишите METRIKA_ID в блоке «1. НАСТРОЙКИ» внизу файла,
-    создайте цели lead_card, lead_pres, lead_feedback.
-  СЛУЖЕБНАЯ ПОДСКАЗКА С ДОСТУПАМИ: откройте сайт с параметром ?demo=1
-================================================================================
+  ИНСТРУКЦИЯ: works/ папка с 10 файлами (utyug-polaris.jpg, steamer-redmond.jpg,
+  headphones-jbl.jpg, drill-dewalt.jpg, watch-smart8.jpg, phone-burgundy.jpg,
+  poster-kinovecher.jpg, deck-exclusive.jpg, deck-figma-ps.jpg, deck-bizantia.jpg);
+  Pages: Settings → Pages → main / (root); домен .ru: 4 A-записи @ на
+  185.199.108.153/109/110/111 + CNAME www → alsolo007.github.io, затем
+  Settings → Pages → Custom domain + Enforce HTTPS. Служебные доступы: ?demo=1
 -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"ProfessionalService","name":"ALsoLo — дизайн карточек товаров и презентаций","description":"Продающие карточки товаров для Wildberries, Ozon и Яндекс.Маркета, инфографика, rich-контент, презентации, питч-деки, постеры и афиши.","priceRange":"от 500 RUB","areaServed":"RU","availableLanguage":"ru","founder":{"@type":"Person","name":"Алексей","jobTitle":"Дизайнер инфографики и презентаций","email":"al.poponin2013@yandex.ru"},"makesOffer":[{"@type":"Offer","name":"Карточка · Старт","price":"500","priceCurrency":"RUB"},{"@type":"Offer","name":"Карточка · Продающая","price":"1000","priceCurrency":"RUB"},{"@type":"Offer","name":"Дек · Старт","price":"1000","priceCurrency":"RUB"},{"@type":"Offer","name":"Дек · Премиум","price":"2000","priceCurrency":"RUB"}],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"20"}}
@@ -844,7 +833,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     </div>
     <div class="steps" data-stagger="110">
       <span class="steps-line" data-anim="drawLine" style="--d:.25s"></span>
-      <div class="step" data-anim="conveyor"><div class="num">01</div><h3>Заявка</h3><p>Заполняете короткую форму на сайте — 5 минут, всё по делу. Заявка падает в личный кабинет.</p></div>
+      <div class="step" data-anim="conveyor"><div class="num">01</div><h3>Заявка</h3><p>Заполняете короткую форму на сайте — 5 минут, всё по делу. Заявка падает в личный кабинет и дублируется в Telegram и Google-таблицу.</p></div>
       <div class="step" data-anim="conveyor"><div class="num">02</div><h3>Созвон в Telegram</h3><p>15 минут обсуждаем задачу, цели и референсы. Без воды.</p></div>
       <div class="step" data-anim="conveyor"><div class="num">03</div><h3>ТЗ и договор</h3><p>Фиксируем объём, цену и срок письменно. Цена не меняется.</p></div>
       <div class="step" data-anim="conveyor"><div class="num">04</div><h3>Эскиз за 1–2 дня</h3><p>Показываю первый экран до полной оплаты. Не понравилось — возвращаю аванс.</p></div>
@@ -985,7 +974,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     <div class="s-head" data-anim="dissolve">
       <p class="s-tag">Заявка</p>
       <h2 class="s-title">Выберите задачу — и через 5 минут обсудим её в Telegram</h2>
-      <p class="s-sub">Форма соберёт ваше мини-ТЗ автоматически: в Telegram попадёт готовое сообщение со всеми деталями, а заявка сохранится в личном кабинете.</p>
+      <p class="s-sub">Форма соберёт ваше мини-ТЗ автоматически: в Telegram попадёт готовое сообщение со всеми деталями, а заявка сохранится в кабинете, в Google-таблице и у меня в Telegram.</p>
     </div>
     <div class="order-card" data-anim="tilt3d">
       <div>
@@ -1094,7 +1083,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
           <h4>Что будет после отправки</h4>
           <div class="ms"><b>1.</b>Бриф скопируется в буфер обмена автоматически</div>
           <div class="ms"><b>2.</b>Откроется Telegram — вставьте сообщение (Ctrl+V)</div>
-          <div class="ms"><b>3.</b>Заявка сохранится в личном кабинете — там же статус и файлы</div>
+          <div class="ms"><b>3.</b>Заявка упадёт в Google-таблицу Leads и придёт ботом</div>
           <div class="ms"><b>4.</b>Отвечу в течение ~5 минут в рабочее время</div>
         </div>
         <div class="aside-cab" data-anim="drop">
@@ -1281,7 +1270,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   var METRIKA_ID = 0;
   var TG_BOT_TOKEN = '';
   var TG_CHAT_ID = '';
-  var BACKEND = { enabled:true, leadsUrl:'https://script.google.com/macros/s/AKfycbzgiem8aPPaeqHfp21WpzNzuoqyJKY236P3hugC5DsS7HenDkcAa3spnspktYrBxq0U/exec', ordersUrl:'', authUrl:'', filesUrl:'' }; leadsUrl:'', ordersUrl:'', authUrl:'', filesUrl:'' };
+  var BACKEND = { enabled:true, leadsUrl:'https://script.google.com/macros/s/AKfycbzgiem8aPPaeqHfp21WpzNzuoqyJKY236P3hugC5DsS7HenDkcAa3spnspktYrBxq0U/exec', ordersUrl:'', authUrl:'', filesUrl:'' };
 
   var WORKS_REMOTE = 'https://raw.githubusercontent.com/ALsoLo007/site-portfolio/main/works/';
   var PHOTO_URL  = 'https://raw.githubusercontent.com/ALsoLo007/site-portfolio/main/Photo1.png';
@@ -1393,12 +1382,11 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     }catch(e){}
   })();
 
- function postBackend(url, data){
-    if(!BACKEND.enabled || !url || !window.fetch) return;
+  function postBackend(url, data){
+    if(!BACKEND.enabled || !url || url.indexOf('PASTE_EXEC_URL_HERE') > -1 || !window.fetch) return;
     try{
       fetch(url, {method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(data), keepalive:true}).catch(function(){});
     }catch(e){}
-  }ingify(data)}).catch(function(){}); }catch(e){}
   }
 
   /* =====================================================
@@ -1608,20 +1596,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     var step = parseInt(group.dataset.stagger,10) || 90;
     qa('[data-anim]', group).forEach(function(el, i){ if(!el.style.getPropertyValue('--d')) el.style.setProperty('--d', (i*step)+'ms'); });
   });
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(en){
-      if(!en.isIntersecting) return;
-      var big = en.boundingClientRect.height > window.innerHeight * 0.7;
-      if(!big && en.intersectionRatio < 0.1) return;
-      var t = en.target; t.classList.add('in');
-      qa('[data-count]', t).forEach(animateCount);
-      qa('.rfg', t).forEach(function(c){
-        var C = 289, pct = parseInt(c.dataset.pct,10);
-        c.style.strokeDashoffset = String(Math.round(C*(1-pct/100)));
-      });
-      io.unobserve(t);
-    });
-  }, {threshold:[0,0.1,0.3], rootMargin:'0px 0px -6% 0px'});
+
   function revealEl(t){
     if(!t || t.classList.contains('in')) return;
     t.classList.add('in');
@@ -1646,8 +1621,6 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     }, {threshold:[0,0.1,0.3], rootMargin:'0px 0px -6% 0px'});
     qa('[data-anim]').forEach(function(el){ io.observe(el); });
   }catch(e){ io = null; }
-  /* Страховка: если наблюдатель не сработал (глюк Chrome, расширение) —
-     блоки проявляются сами при скролле, загрузке и изменении окна */
   function revealFallback(){
     var vh = window.innerHeight || document.documentElement.clientHeight;
     qa('[data-anim]:not(.in)').forEach(function(el){
@@ -1740,7 +1713,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     db.leads = db.leads || []; db.messages = db.messages || {}; db.session = db.session || null;
     return db;
   }
-  function saveDB(){ try{ localStorage.setItem(DB_KEY, JSON.stringify(db)); }catch(e){} postBackend(BACKEND.ordersUrl, {type:'state', at:nowTs()}); }
+  function saveDB(){ try{ localStorage.setItem(DB_KEY, JSON.stringify(db)); }catch(e){} }
   function getAccount(id){ var d=loadDB(); for(var i=0;i<d.accounts.length;i++){ if(d.accounts[i].id===id) return d.accounts[i]; } return null; }
   function currentUser(){ var d=loadDB(); return d.session ? getAccount(d.session) : null; }
   function findAccount(login){ var d=loadDB(), n=norm(login); for(var i=0;i<d.accounts.length;i++){ if(norm(d.accounts[i].contact)===n) return d.accounts[i]; } return null; }
@@ -1766,7 +1739,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   }
 
   /* =====================================================
-     8. ЗАЯВКИ С САЙТА → ЛИДЫ В КАБИНЕТЕ
+     8. ЗАЯВКИ С САЙТА → ЛИДЫ + BACKEND
      ===================================================== */
   function saveLead(type, fields, briefText){
     var d = loadDB();
@@ -2253,7 +2226,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     }
 
     if(cabView === 'leads'){
-      H.push('<div class="cab-h"><h2>Заявки с сайта</h2><p>Каждая заявка сохраняет utm-метки и yclid — видно, какое объявление Директа привело клиента.</p></div>');
+      H.push('<div class="cab-h"><h2>Заявки с сайта</h2><p>Каждая заявка сохраняет utm-метки и yclid — видно, какое объявление Директа привело клиента. Дублируются в Google-таблицу Leads и в Telegram.</p></div>');
       H.push('<div class="blk"><h3>Всего: ' + leads.length + ' · новых: ' + newLeads.length + '<span class="h-act"><button class="btn ghost tiny" type="button" data-act="export-leads">Экспорт CSV</button></span></h3>');
       if(!leads.length) H.push('<div class="empty"><b>Заявок пока нет</b>Подключите счётчик Метрики (METRIKA_ID) и запустите кампанию — заявки начнут падать сюда.</div>');
       leads.forEach(function(l){ H.push(leadRow(l, false)); });
@@ -2305,13 +2278,12 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
         + '<label><input type="checkbox" checked disabled>Цели созданы: lead_card, lead_pres, lead_feedback</label>'
         + '<label><input type="checkbox" checked disabled>Микроцели: tg_click, mail_click, cab_register, pay_intent</label>'
         + '<label><input type="checkbox" checked disabled>UTM-метки и yclid сохраняются в каждой заявке</label>'
-        + '<label><input type="checkbox" ' + (botEnabled()?'checked':'') + ' disabled>Telegram-бот для мгновенных уведомлений о заявках</label>'
-        + '<label><input type="checkbox" ' + (BACKEND.enabled?'checked':'') + ' disabled>Серверный бэкенд (заявки и кабинет)</label>'
+        + '<label><input type="checkbox" ' + (BACKEND.enabled?'checked':'') + ' disabled>Приём заявок: Google Apps Script (Telegram + таблица Leads)</label>'
         + '<label><input type="checkbox" checked disabled>Политика конфиденциальности и согласие в формах (требование Директа)</label>'
         + '<label><input type="checkbox" checked disabled>Мобильная версия и быстрая загрузка (проверьте Вебвизором)</label>'
         + '</div><p style="color:var(--muted);font-size:13px;margin-top:12px">В кампании Директа в поле «Цель» указывайте <b style="color:var(--acc2)">lead_card</b> или <b style="color:var(--acc2)">lead_pres</b> — тогда автостратегии оптимизируются под реальные заявки, а не под клики.</p></div>');
-      H.push('<div class="blk"><h3>Куда вписать параметры</h3><p style="color:var(--muted);font-size:13px">Все настройки — в начале &lt;script&gt; в блоке «1. НАСТРОЙКИ»:</p><pre style="white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px;font-size:12px;color:#d8d2c9;font-family:ui-monospace,monospace">METRIKA_ID = 00000000;   // номер счётчика\nTG_BOT_TOKEN = "...";    // токен бота\nTG_CHAT_ID = "...";      // ваш chat_id\nBACKEND = {\n  enabled: true,\n  leadsUrl: "/api/leads",\n  ordersUrl: "/api/orders"\n};</pre>'
-        + '<p style="color:var(--muted);font-size:13px;margin-top:10px">Пока бэкенд выключен, кабинет работает на localStorage браузера: удобно для демо и теста конверсий Директа. Для боевого режима подключите любой серверный эндпоинт (Node/PHP/Google Apps Script) — формат JSON уже готов.</p></div>');
+      H.push('<div class="blk"><h3>Куда вписать параметры</h3><p style="color:var(--muted);font-size:13px">Все настройки — в начале &lt;script&gt; в блоке «1. НАСТРОЙКИ»:</p><pre style="white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px;font-size:12px;color:#d8d2c9;font-family:ui-monospace,monospace">METRIKA_ID = 00000000;   // номер счётчика\nBACKEND.leadsUrl = "https://script.google.com/.../exec";</pre>'
+        + '<p style="color:var(--muted);font-size:13px;margin-top:10px">Заявки уходят в Google-таблицу Leads и ботом в Telegram с любого устройства и браузера. Кабинет пока хранится локально в браузере — для общей базы подключим сервер следующим шагом.</p></div>');
       H.push('</div>');
       H.push('<div class="blk"><h3>Данные кабинета<span class="h-act">'
         + '<button class="btn ghost tiny" type="button" data-act="export-db">Экспорт JSON</button>'
@@ -2324,7 +2296,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
         + '<div class="auth-form"><div class="field"><label>Новый пароль</label><input type="password" id="admPass" placeholder="Минимум 6 символов"></div>'
         + '<div class="field"><label>Повторите пароль</label><input type="password" id="admPass2"></div>'
         + '<button class="btn small ghost" type="button" data-act="save-admin-pass">Изменить пароль</button></div></div>'
-        + '<p style="color:var(--muted);font-size:12.5px;margin-top:12px">Каждая кнопка сохраняет своё поле и показывает всплывашку-подтверждение. Логин и пароль хранятся в этом браузере; для работы с нескольких устройств подключите бэкенд (BACKEND).</p></div>');
+        + '<p style="color:var(--muted);font-size:12.5px;margin-top:12px">Каждая кнопка сохраняет своё поле и показывает всплывашку-подтверждение. Логин и пароль хранятся в этом браузере; для работы с нескольких устройств подключим серверную базу следующим шагом.</p></div>');
     }
     return H;
   }
