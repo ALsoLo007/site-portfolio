@@ -20,6 +20,9 @@ Settings → Pages → Custom domain + Enforce HTTPS.
 КАБИНЕТ: общая серверная база в Google-таблице "ALsoLo Cabinet DB".
 ОПЛАТЫ: в заказе админа поля "Цена" (полная) и "Внесено" (накопительно):
 0 → "Ожидает оплаты", часть → "Предоплата внесена", = цена → "Оплачено полностью".
+ПАРОЛИ: временный пароль клиента показывается в модальном окне и в админке
+("Клиенты" → 🔑 Пароль); восстановление — ссылка "Забыли пароль?" в окне входа
+(новый пароль приходит исполнителю в Telegram).
 Первый вход админа (если база пуста): admin@alsolo.ru / admin1234. Служебная подсказка: ?demo=1
 -->
 <script type="application/ld+json">
@@ -424,6 +427,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
 .auth-tabs button{flex:1;border:none;background:transparent;color:var(--muted);font-family:inherit;font-weight:800;font-size:14px;padding:11px;border-radius:10px;cursor:pointer;transition:.25s}
 .auth-tabs button.active{background:var(--acc);color:#fff}
 .auth-form{display:grid;gap:14px}
+.forgot-link{background:none;border:none;color:var(--acc2);cursor:pointer;font-family:inherit;font-size:12.5px;text-decoration:underline;padding:0;justify-self:start}
 .demo-note{margin-top:18px;background:var(--bg);border:1px dashed var(--line);border-radius:14px;padding:14px 16px;font-size:12.5px;color:var(--muted)}
 .demo-note b{color:var(--acc2)}
 .demo-note code{background:var(--card2);padding:1px 6px;border-radius:6px;color:var(--text);font-size:12px}
@@ -959,6 +963,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
       <div class="faq-item" data-anim="unfold"><button class="q" type="button">Сколько правок входит в стоимость?<i>+</i></button><div class="a">Смотря по тарифу: в «Карточка · Старт» и «Дек · Старт» — 2 круга правок, в «Карточка · Продающая» — 4 круга, в «Дек · Премиум» — правки без лимита до сдачи. Круг правок = один список замечаний. Правки в рамках ТЗ всегда бесплатны.</div></div>
       <div class="faq-item" data-anim="unfold"><button class="q" type="button">Что такое личный кабинет и зачем он мне?<i>+</i></button><div class="a">Это закрытый раздел сайта с общей базой данных: статус вашего заказа (заявка → бриф → эскиз → правки → сдача), файлы и исходники, история оплат 50/50 и живой чат со мной. Вход с любого устройства по e-mail или Telegram — данные одинаковые везде.</div></div>
       <div class="faq-item" data-anim="unfold"><button class="q" type="button">Я не пользуюсь Telegram. Как связаться?<i>+</i></button><div class="a">Через чат в личном кабинете: сообщения приходят мне на сайт и дублируются уведомлением, а ответы появляются у вас в чате в течение рабочего дня. Также работает почта для документов.</div></div>
+      <div class="faq-item" data-anim="unfold"><button class="q" type="button">Забыл пароль от кабинета. Что делать?<i>+</i></button><div class="a">Нажмите «Забыли пароль?» в окне входа и укажите свой контакт. Исполнитель получит новый временный пароль в Telegram и передаст его вам по вашему каналу связи. Пароль не показывается на сайте в целях безопасности.</div></div>
       <div class="faq-item" data-anim="unfold"><button class="q" type="button">Делаете постеры и афиши?<i>+</i></button><div class="a">Да: афиши мероприятий, постеры для соцсетей и рекламных кабинетов, обложки и баннеры. Форматы любые — от 1080×1080 для ленты до печати А2. Пример — афиша «Киновечер» в портфолио.</div></div>
       <div class="faq-item" data-anim="unfold"><button class="q" type="button">Поможете с текстами и SEO-описанием слайдов?<i>+</i></button><div class="a">Да: в тарифе «Карточка · Продающая» УТП и SEO-тексты на слайдах входят в стоимость. Для презентаций помогаю со структурой и формулировками в тарифе «Дек · Премиум».</div></div>
       <div class="faq-item" data-anim="unfold"><button class="q" type="button">В каком формате отдаёте презентацию?<i>+</i></button><div class="a">PPTX, Figma или PDF — как вам удобно. Исходники передаю вместе с файлами, шрифты и стили остаются редактируемыми.</div></div>
@@ -1216,7 +1221,8 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     <form class="auth-form" id="authForm" novalidate>
       <div class="field" id="authNameWrap" style="display:none"><label>Ваше имя <em>*</em></label><input type="text" name="name" placeholder="Как к вам обращаться"></div>
       <div class="field"><label>E-mail или Telegram <em>*</em></label><input type="text" name="login" required placeholder="mail@… или @nickname" autocomplete="username"></div>
-      <div class="field"><label>Пароль <em>*</em></label><input type="password" name="pass" required placeholder="Минимум 6 символов" autocomplete="current-password"></div>
+      <div class="field" id="authPassWrap"><label>Пароль <em>*</em></label><input type="password" name="pass" required placeholder="Минимум 6 символов" autocomplete="current-password"></div>
+      <button type="button" class="forgot-link" id="forgotBtn">Забыли пароль?</button>
       <div class="chk-line" id="authConsentWrap" style="display:none">
         <label><input type="checkbox" id="authConsent">Согласен на обработку персональных данных. <button type="button" data-open-policy style="background:none;border:none;color:var(--acc2);cursor:pointer;text-decoration:underline;font-family:inherit;font-size:12.5px;padding:0">Политика</button></label>
       </div>
@@ -1246,6 +1252,20 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     <div class="mbtns">
       <button class="btn" id="payConfirm" type="button">Я оплатил(а) — проверить</button>
       <a class="btn ghost" id="payTg" href="https://t.me/ALsoLo007" data-tg target="_blank" rel="noopener"><svg class="bi" width="18" height="18"><use href="#tgIcon"/></svg>Запросить счёт в Telegram</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="passModal">
+  <div class="mbox">
+    <button class="mclose" type="button" data-close>✕</button>
+    <h3>Доступ клиента к кабинету</h3>
+    <p id="passHint"></p>
+    <div class="pay-sum"><span>Логин</span><b id="passLogin" style="font-size:16px">—</b></div>
+    <div class="pay-sum"><span>Временный пароль</span><b id="passVal" style="font-size:22px">—</b></div>
+    <div class="mbtns">
+      <button class="btn" type="button" data-act="pass-copy">Скопировать пароль</button>
+      <button class="btn ghost" type="button" data-act="pass-gen-dyn">Сгенерировать новый</button>
     </div>
   </div>
 </div>
@@ -1529,7 +1549,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   });
 
   var toastEl = q('#toast'), toastTimer = null;
-  function toast(msg){ toastEl.textContent = msg; toastEl.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(function(){ toastEl.classList.remove('show'); }, 3400); }
+  function toast(msg){ toastEl.textContent = msg; toastEl.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(function(){ toastEl.classList.remove('show'); }, 6000); }
 
   function setTab(name){
     qa('.ftab').forEach(function(b){ b.classList.toggle('active', b.dataset.tab === name); });
@@ -1654,7 +1674,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     var ta = document.createElement('textarea');
     ta.value = txt; ta.style.position='fixed'; ta.style.opacity='0';
     document.body.appendChild(ta); ta.select();
-    try{ document.execCommand('copy'); toast('Бриф скопирован ✔'); }catch(e){ toast('Скопируйте бриф из окна вручную'); }
+    try{ document.execCommand('copy'); toast('Скопировано ✔'); }catch(e){ toast('Скопируйте вручную'); }
     document.body.removeChild(ta);
   }
   function copyText(txt){
@@ -1751,7 +1771,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     };
     db().leads.unshift(lead);
     srv('lead', lead, function(j, err){
-      if(!j) toast('Заявка сохранена в кабинете, но не дошла до сервера (проверьте связь)');
+      if(!j) toast('Заявка сохранена локально, но не дошла до сервера (проверьте связь)');
     });
     return lead;
   }
@@ -1760,6 +1780,8 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     try{ raw = JSON.parse(localStorage.getItem('alsolo_pending_brief') || 'null'); }catch(e){}
     if(!raw) return null;
     try{ localStorage.removeItem('alsolo_pending_brief'); }catch(e){}
+    var dup = db().orders.some(function(o){ return o.userId === user.id && o.brief === raw.text; });
+    if(dup) return null;
     return createOrder({
       userId:user.id,
       title:(raw.type === 'pres' ? 'Презентация: ' : 'Карточка товара: ') + (raw.fields.category || raw.fields.goal || 'заявка с сайта'),
@@ -1852,22 +1874,27 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   });
 
   /* =====================================================
-     11. АВТОРИЗАЦИЯ (серверная)
+     11. АВТОРИЗАЦИЯ (серверная) + ВОССТАНОВЛЕНИЕ ПАРОЛЯ
      ===================================================== */
   var authMode = 'login';
   var authModal = q('#authModal');
   function renderAuth(){
     var isReg = authMode === 'reg';
+    var isRec = authMode === 'recover';
     qa('[data-auth-tab]').forEach(function(b){ b.classList.toggle('active', b.dataset.authTab === authMode); });
     q('#authNameWrap').style.display = isReg ? '' : 'none';
     q('#authConsentWrap').style.display = isReg ? '' : 'none';
-    q('#authTitle').textContent = isReg ? 'Регистрация в кабинете' : 'Вход в личный кабинет';
-    q('#authSub').textContent = isReg ? 'Создайте доступ — заявка с сайта автоматически станет заказом в кабинете.' : 'Статусы заказов, файлы, оплаты и чат — с любого устройства.';
-    q('#authSubmit').textContent = isReg ? 'Создать кабинет' : 'Войти';
+    q('#authPassWrap').style.display = isRec ? 'none' : '';
+    q('#forgotBtn').style.display = isRec ? 'none' : '';
+    q('#authTitle').textContent = isReg ? 'Регистрация в кабинете' : (isRec ? 'Восстановление доступа' : 'Вход в личный кабинет');
+    q('#authSub').textContent = isReg ? 'Создайте доступ — заявка с сайта автоматически станет заказом в кабинете.' : (isRec ? 'Укажите контакт (e-mail или Telegram), который вы оставляли в заявке. Исполнитель получит новый временный пароль в Telegram и передаст его вам.' : 'Статусы заказов, файлы, оплаты и чат — с любого устройства.');
+    q('#authSubmit').textContent = isReg ? 'Создать кабинет' : (isRec ? 'Запросить сброс пароля' : 'Войти');
     var nm = q('#authForm').elements.name; if(nm) nm.required = isReg;
+    var ps = q('#authForm').elements.pass; if(ps) ps.required = !isRec;
     var cs = q('#authConsent'); if(cs) cs.required = isReg;
   }
   qa('[data-auth-tab]').forEach(function(b){ b.addEventListener('click', function(){ authMode = b.dataset.authTab; renderAuth(); }); });
+  q('#forgotBtn').addEventListener('click', function(){ authMode = 'recover'; renderAuth(); });
   function openAuth(mode){
     if(mode) authMode = mode;
     renderAuth(); authModal.classList.add('show');
@@ -1877,15 +1904,30 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     e.preventDefault();
     var f = e.target;
     var login = (f.elements.login.value||'').trim(), pass = f.elements.pass.value||'', name = (f.elements.name.value||'').trim();
-    if(!login || !pass){ toast('Заполните e-mail/Telegram и пароль'); return; }
-    if(pass.length < 6){ toast('Пароль минимум 6 символов'); return; }
+    if(!login){ toast('Заполните e-mail/Telegram'); return; }
     var btn = q('#authSubmit'); btn.disabled = true;
+    if(authMode === 'recover'){
+      srv('recover', {contact: login}, function(j, err){
+        btn.disabled = false;
+        if(!j){ toast(err === 'NOT_FOUND' ? 'Аккаунт с таким контактом не найден' : 'Ошибка сброса: ' + (err||'')); return; }
+        toast('Запрос отправлен исполнителю. Новый пароль придёт вам по вашему каналу связи.');
+        authModal.classList.remove('show'); f.reset();
+        authMode = 'login'; renderAuth();
+      });
+      return;
+    }
+    if(!pass){ toast('Заполните пароль'); btn.disabled = false; return; }
+    if(pass.length < 6){ toast('Пароль минимум 6 символов'); btn.disabled = false; return; }
     if(authMode === 'reg'){
       if(!name){ toast('Укажите имя'); btn.disabled=false; return; }
       if(!q('#authConsent').checked){ toast('Нужно согласие на обработку данных'); btn.disabled=false; return; }
       srv('register', {name:name, contact:login, passHash:hashPass(pass)}, function(j, err){
         btn.disabled = false;
-        if(!j){ toast(err === 'EXISTS' ? 'Такой контакт уже зарегистрирован — войдите' : 'Ошибка регистрации: ' + (err||'')); return; }
+        if(!j){
+          toast(err === 'EXISTS' ? 'Такой контакт уже зарегистрирован. Войдите с паролем или нажмите «Забыли пароль?» — возможно, аккаунт создал за вас исполнитель.' : 'Ошибка регистрации: ' + (err||''));
+          if(err === 'EXISTS'){ authMode = 'login'; renderAuth(); }
+          return;
+        }
         setSession(j.account);
         reachGoal('cab_register', {source:utmLabel()});
         setMetrikaUser(j.account.id, j.account.name);
@@ -1897,7 +1939,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     } else {
       srv('login', {contact:login, passHash:hashPass(pass)}, function(j, err){
         btn.disabled = false;
-        if(!j){ toast('Неверный контакт или пароль'); return; }
+        if(!j){ toast('Неверный контакт или пароль. Если пароль не получали — нажмите «Забыли пароль?»'); return; }
         setSession(j.account);
         reachGoal('cab_login', {role:j.account.role, source:utmLabel()});
         setMetrikaUser(j.account.id, j.account.name);
@@ -2080,9 +2122,10 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
       H.push(o.payStatus === 'paid'
         ? '<button class="btn ghost tiny" type="button" data-act="unpay" data-o="' + o.id + '">Снять оплату</button>'
         : '<button class="btn tiny" type="button" data-act="mark-paid" data-o="' + o.id + '">Оплачено полностью</button>');
+      if(acc) H.push('<button class="btn ghost tiny" type="button" data-act="client-pass" data-u="' + acc.id + '">🔑 Пароль клиента</button>');
       if(acc) H.push('<a class="btn ghost tiny" href="https://t.me/' + esc(String(acc.contact).replace(/^@/,'')) + '" target="_blank" rel="noopener">Telegram клиента</a>');
       H.push('<button class="btn danger tiny" type="button" data-act="del-order" data-o="' + o.id + '">Удалить</button>');
-      H.push('<div class="pay-hint">Цена — полная стоимость заказа. Внесено — сколько получено суммарно: 0 → «ожидает оплаты», половина → «предоплата внесена», равно цене → «оплачено полностью». Кнопка «Оплачено полностью» сама ставит Внесено = Цена.</div>');
+      H.push('<div class="pay-hint">Цена — полная стоимость заказа. Внесено — сколько получено суммарно: 0 → «ожидает оплаты», часть → «предоплата внесена», равно цене → «оплачено полностью». Кнопка «Оплачено полностью» сама ставит Внесено = Цена.</div>');
     } else {
       if(o.payStatus !== 'paid') H.push('<button class="btn tiny" type="button" data-act="pay" data-o="' + o.id + '">Оплатить ' + (o.price ? money(payDue(o)) : '') + '</button>');
       H.push('<button class="btn ghost tiny" type="button" data-act="view" data-view="support">Написать в чат</button>');
@@ -2251,13 +2294,14 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     }
 
     if(cabView === 'clients'){
-      H.push('<div class="cab-h"><h2>Клиенты</h2><p>Зарегистрированные аккаунты кабинета: заказы, оплаты, чаты.</p></div>');
+      H.push('<div class="cab-h"><h2>Клиенты</h2><p>Зарегистрированные аккаунты кабинета: заказы, оплаты, чаты и доступы.</p></div>');
       H.push('<div class="blk"><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Клиент</th><th>Контакт</th><th>Заказов</th><th>Оплачено</th><th>Непрочитано</th><th></th></tr></thead><tbody>');
       if(!clients.length) H.push('<tr><td colspan="6" style="color:var(--muted)">Клиентов пока нет — регистрации появятся здесь</td></tr>');
       clients.forEach(function(c){
         var co = userOrders(c.id), cp = co.reduce(function(s,o){ return s+(Number(o.paid)||0); },0);
         H.push('<tr><td><b>' + esc(c.name) + '</b><br><span style="color:var(--muted);font-size:12px">с ' + fmtDay(c.created) + '</span></td><td>' + esc(c.contact) + '</td><td>' + co.length + '</td><td>' + money(cp) + '</td><td>' + (newMsgCount(c.id,'client')||'—') + '</td>'
-          + '<td><div class="td-a"><button class="btn ghost tiny" type="button" data-act="open-chat" data-u="' + c.id + '">Чат</button>'
+          + '<td><div class="td-a"><button class="btn ghost tiny" type="button" data-act="client-pass" data-u="' + c.id + '">🔑 Пароль</button>'
+          + '<button class="btn ghost tiny" type="button" data-act="open-chat" data-u="' + c.id + '">Чат</button>'
           + '<a class="btn ghost tiny" href="https://t.me/' + esc(String(c.contact).replace(/^@/,'')) + '" target="_blank" rel="noopener">TG</a></div></td></tr>');
       });
       H.push('</tbody></table></div></div>');
@@ -2347,7 +2391,40 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   }
 
   /* =====================================================
-     13. КАБИНЕТ: ДЕЙСТВИЯ
+     13. МОДАЛКА ВРЕМЕННОГО ПАРОЛЯ
+     ===================================================== */
+  function openPassModal(acc){
+    var m = q('#passModal');
+    m.dataset.u = acc.id;
+    q('#passLogin').textContent = acc.contact;
+    q('#passVal').textContent = acc.tempPass || '—';
+    q('#passHint').textContent = acc.tempPass
+      ? 'Это временный пароль клиента. Передайте его клиенту или скопируйте. После первого входа клиенту стоит сменить пароль в профиле.'
+      : 'Временный пароль не создавался. Нажмите «Сгенерировать новый» — пароль сохранится на сервере, и вы сможете передать его клиенту.';
+    m.classList.add('show');
+  }
+  q('#passModal').addEventListener('click', function(e){
+    var b = e.target.closest('[data-act]'); if(!b) return;
+    var act = b.dataset.act;
+    var id = q('#passModal').dataset.u;
+    var acc = getAccount(id); if(!acc) return;
+    if(act === 'pass-copy'){
+      if(acc.tempPass) copyText(acc.tempPass);
+      else toast('Сначала сгенерируйте пароль');
+      return;
+    }
+    if(act === 'pass-gen-dyn'){
+      var np = Math.random().toString(36).slice(2,8);
+      acc.pass = hashPass(np); acc.tempPass = np;
+      push('accountSave', {account:acc});
+      openPassModal(acc);
+      toast('Новый временный пароль создан');
+      return;
+    }
+  });
+
+  /* =====================================================
+     14. КАБИНЕТ: ДЕЙСТВИЯ
      ===================================================== */
   function downloadFile(order, f){
     if(f.url && /^(https?:|data:)/i.test(f.url)){ window.open(f.url, '_blank', 'noopener'); return; }
@@ -2392,6 +2469,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     if(act === 'view'){ cabView = b.dataset.view; cabCtx = null; renderCab(); return; }
     if(act === 'new-order'){ closeCab(); setTab('card'); scrollToId('order'); toast('Заполните форму — заявка придёт ко мне и станет заказом после регистрации'); return; }
     if(act === 'open-chat'){ cabCtx = b.dataset.u; cabView = 'support'; renderCab(); return; }
+    if(act === 'client-pass'){ var accP = getAccount(b.dataset.u); if(accP) openPassModal(accP); return; }
     if(act === 'dl-file'){ var o1 = getOrder(b.dataset.o); if(!o1) return; var f1 = orderFiles(o1.id).filter(function(x){ return x.id === b.dataset.f; })[0]; if(f1) downloadFile(o1, f1); return; }
     if(act === 'del-file'){
       var o2 = getOrder(b.dataset.o); if(!o2) return;
@@ -2481,7 +2559,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
       var p1 = (q('#pfPass')||{}).value||'', p2 = (q('#pfPass2')||{}).value||'';
       if(p1.length < 6){ toast('Пароль минимум 6 символов'); return; }
       if(p1 !== p2){ toast('Пароли не совпадают'); return; }
-      u.pass = hashPass(p1);
+      u.pass = hashPass(p1); u.tempPass = '';
       push('accountSave', {account:u});
       renderCab(); toast('Пароль изменён на сервере ✔'); return;
     }
@@ -2498,7 +2576,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
       var a1 = (q('#admPass')||{}).value||'', a2 = (q('#admPass2')||{}).value||'';
       if(a1.length < 6){ toast('Пароль минимум 6 символов'); return; }
       if(a1 !== a2){ toast('Пароли не совпадают'); return; }
-      u.pass = hashPass(a1);
+      u.pass = hashPass(a1); u.tempPass = '';
       push('accountSave', {account:u});
       renderCab(); toast('Пароль изменён ✔'); return;
     }
@@ -2517,19 +2595,21 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     if(act === 'lead-order'){
       var l3 = db().leads.filter(function(x){ return x.id === b.dataset.l; })[0]; if(!l3) return;
       var target = db().accounts.filter(function(a){ return a.role === 'client' && (norm(a.contact) === norm(l3.contact) || norm(a.name) === norm(l3.name)); })[0];
-      var tempPass = null;
+      var createdNew = false;
       if(!target){
-        tempPass = Math.random().toString(36).slice(2,8);
-        target = {id:uid('u'), name:l3.name||'Клиент', contact:l3.contact||('client'+Date.now()+'@mail.ru'), pass:hashPass(tempPass), role:'client', created:nowTs()};
+        var tempPass = Math.random().toString(36).slice(2,8);
+        target = {id:uid('u'), name:l3.name||'Клиент', contact:l3.contact||('client'+Date.now()+'@mail.ru'), pass:hashPass(tempPass), tempPass:tempPass, role:'client', created:nowTs()};
         db().accounts.push(target);
         push('accountSave', {account:target});
+        createdNew = true;
       }
       var title = (l3.type === 'pres' ? 'Презентация: ' : (l3.type === 'feedback' ? 'Обращение: ' : 'Карточка товара: ')) + (l3.fields.category || l3.fields.goal || l3.fields.topic || 'заявка с сайта');
       createOrder({userId:target.id, title:title, type:l3.type === 'pres' ? 'pres' : 'card', tariff:l3.fields.tariff||'', brief:l3.brief||'', deadline:/Срочно/.test(l3.fields.deadline||'') ? nowTs()+2*86400000 : 0});
       l3.status = 'converted'; l3.userId = target.id;
       push('leadUpdate', {lead:l3});
       renderCab();
-      toast(tempPass ? 'Заказ создан. Временный пароль клиента: ' + tempPass : 'Заказ создан и привязан к клиенту');
+      toast('Заказ создан и привязан к клиенту');
+      if(createdNew) openPassModal(target);
       return;
     }
     if(act === 'export-db'){ exportJSON('alsolo_cabinet_backup.json', db()); toast('Резервная копия скачана'); return; }
@@ -2592,7 +2672,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
         if(ok){
           refreshCabBtn();
           var pend = null; try{ pend = JSON.parse(localStorage.getItem('alsolo_pending_brief')||'null'); }catch(e){}
-          if(pend){ takePendingBrief(currentUser()); try{ localStorage.removeItem('alsolo_pending_brief'); }catch(e){} }
+          if(pend){ takePendingBrief(currentUser()); }
         }
       }, true);
     }
