@@ -11,12 +11,14 @@
 <meta property="og:description" content="Анализ топ-10 конкурентов, срок от 2 дней, договор и чек. Личный кабинет со статусами заказов.">
 <meta property="og:locale" content="ru_RU">
 <!--
-  ИНСТРУКЦИЯ: works/ папка с 10 файлами (utyug-polaris.jpg, steamer-redmond.jpg,
-  headphones-jbl.jpg, drill-dewalt.jpg, watch-smart8.jpg, phone-burgundy.jpg,
-  poster-kinovecher.jpg, deck-exclusive.jpg, deck-figma-ps.jpg, deck-bizantia.jpg);
-  Pages: Settings → Pages → main / (root); домен .ru: 4 A-записи @ на
-  185.199.108.153/109/110/111 + CNAME www → alsolo007.github.io, затем
-  Settings → Pages → Custom domain + Enforce HTTPS. Служебные доступы: ?demo=1
+ИНСТРУКЦИЯ: works/ папка с 10 файлами (utyug-polaris.jpg, steamer-redmond.jpg,
+headphones-jbl.jpg, drill-dewalt.jpg, watch-smart8.jpg, phone-burgundy.jpg,
+poster-kinovecher.jpg, deck-exclusive.jpg, deck-figma-ps.jpg, deck-bizantia.jpg);
+Pages: Settings → Pages → main / (root); домен .ru: 4 A-записи @ на
+185.199.108.153/109/110/111 + CNAME www → alsolo007.github.io, затем
+Settings → Pages → Custom domain + Enforce HTTPS.
+КАБИНЕТ: общая серверная база в Google-таблице "ALsoLo Cabinet DB".
+Первый вход админа (если база пуста): admin@alsolo.ru / admin1234. Служебная подсказка: ?demo=1
 -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"ProfessionalService","name":"ALsoLo — дизайн карточек товаров и презентаций","description":"Продающие карточки товаров для Wildberries, Ozon и Яндекс.Маркета, инфографика, rich-контент, презентации, питч-деки, постеры и афиши.","priceRange":"от 500 RUB","areaServed":"RU","availableLanguage":"ru","founder":{"@type":"Person","name":"Алексей","jobTitle":"Дизайнер инфографики и презентаций","email":"al.poponin2013@yandex.ru"},"makesOffer":[{"@type":"Offer","name":"Карточка · Старт","price":"500","priceCurrency":"RUB"},{"@type":"Offer","name":"Карточка · Продающая","price":"1000","priceCurrency":"RUB"},{"@type":"Offer","name":"Дек · Старт","price":"1000","priceCurrency":"RUB"},{"@type":"Offer","name":"Дек · Премиум","price":"2000","priceCurrency":"RUB"}],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"20"}}
@@ -53,7 +55,7 @@ section{padding:96px 0 132px;scroll-margin-top:88px;position:relative}
 .btn.danger{background:transparent;border:1.5px solid #5a3230;color:#ff8f86}
 .btn.danger:hover{background:#3a1f1d;border-color:#ff8f86;color:#fff;box-shadow:none}
 .btn svg.bi,.ftab svg.bi{flex:0 0 auto}
-
+.btn[disabled]{opacity:.5;pointer-events:none}
 .overlap{margin-top:-58px;border-radius:46px 46px 0 0;border-top:1px solid var(--line);box-shadow:0 -28px 60px rgba(0,0,0,.5);z-index:2}
 .overlap::before{content:'';position:absolute;top:16px;left:50%;transform:translateX(-50%);width:70px;height:4px;border-radius:4px;background:var(--line);transition:.45s var(--e)}
 .overlap:hover::before{background:var(--acc);width:120px}
@@ -67,7 +69,6 @@ section{padding:96px 0 132px;scroll-margin-top:88px;position:relative}
 #faq{background:var(--bg2)}
 #order{background:var(--bg)}
 #contacts{background:var(--bg2)}
-
 [data-anim]{opacity:0;transition:opacity .8s var(--e) var(--d,0s),transform .95s var(--e) var(--d,0s),filter .85s var(--e) var(--d,0s),clip-path 1s var(--e) var(--d,0s)}
 [data-anim="up"]{transform:translateY(56px)}
 [data-anim="left"]{transform:translateX(-84px)}
@@ -90,9 +91,7 @@ section{padding:96px 0 132px;scroll-margin-top:88px;position:relative}
 [data-anim="drawLine"]{transform:scaleX(0);opacity:1}
 [data-anim].in{opacity:1;transform:none;filter:none}
 [data-anim="maskL"].in,[data-anim="maskR"].in,[data-anim="maskUp"].in,[data-anim="curtain"].in{clip-path:inset(-90px -90px -90px -90px)}
-
 .progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--acc),var(--acc2));z-index:80;box-shadow:0 0 14px rgba(238,106,12,.7)}
-
 header{position:fixed;top:3px;left:0;right:0;z-index:50;background:rgba(22,19,17,.82);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:.3s}
 header.scrolled{border-color:var(--line)}
 .hd{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
@@ -110,7 +109,6 @@ header.scrolled{border-color:var(--line)}
 .burger.open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
 .burger.open span:nth-child(2){opacity:0}
 .burger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
-
 #hero{padding:118px 0 90px;overflow:hidden}
 .hero-blob{position:absolute;top:4%;right:-12%;width:660px;height:660px;background:radial-gradient(circle,rgba(238,106,12,.16),transparent 65%);pointer-events:none;z-index:0}
 .hero-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start;position:relative;z-index:1}
@@ -139,21 +137,18 @@ h1 .w{color:var(--text);font-style:normal}
 .photo-slot img{position:relative;z-index:2;width:100%;height:auto;object-fit:contain;object-position:50% 0}
 .photo-slot svg.art{position:relative;z-index:2;width:100%;height:100%;border-radius:28px}
 .photo-slot svg.art[hidden]{display:none}
-
 .hero-card{position:relative;z-index:3;display:grid;grid-template-columns:1fr 1fr;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px 8px;margin:-64px auto 0;width:min(80%,540px);box-shadow:0 18px 50px rgba(0,0,0,.45)}
 .hc-col{padding:4px 28px;text-align:left;min-width:0}
 .hc-col + .hc-col{border-left:1px solid var(--line)}
 .hc-col b{display:block;font-size:27px;font-weight:800;color:var(--text);line-height:1.2;letter-spacing:.01em}
 .hc-col b.acc{color:var(--acc)}
 .hc-col span{display:block;color:var(--muted);font-size:13.5px;margin-top:6px}
-
 .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;overflow:hidden;background:var(--bg2);position:relative;z-index:3}
 .mq-track{display:flex;width:max-content;animation:mq 30s linear infinite}
 .marquee:hover .mq-track{animation-play-state:paused}
 .mq-track span{display:flex;align-items:center;gap:28px;padding:0 14px;color:var(--muted);font-weight:800;letter-spacing:.16em;font-size:13.5px;white-space:nowrap}
 .mq-track span::after{content:'';width:7px;height:7px;border-radius:50%;background:var(--acc)}
 @keyframes mq{to{transform:translateX(-50%)}}
-
 .pains-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .pain{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px;transition:border-color .3s,box-shadow .3s}
 .pain.in:hover{border-color:#4a443c;box-shadow:0 18px 44px rgba(0,0,0,.4)}
@@ -341,7 +336,6 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
 .lb-art img{width:100%;height:auto;max-height:65vh;object-fit:contain}
 .toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);opacity:0;background:var(--card);border:1px solid var(--acc);color:var(--text);padding:14px 24px;border-radius:14px;z-index:200;transition:.35s;font-size:14px;font-weight:600;box-shadow:0 14px 40px rgba(0,0,0,.5);max-width:90vw;text-align:center}
 .toast.show{transform:translate(-50%,0);opacity:1}
-
 .cab{position:fixed;inset:0;z-index:120;background:var(--bg);display:none;flex-direction:column}
 .cab.show{display:flex;animation:fade .35s var(--e)}
 .cab-top{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px;padding:0 22px;border-bottom:1px solid var(--line);background:rgba(22,19,17,.94);backdrop-filter:blur(10px);flex:0 0 auto}
@@ -445,6 +439,8 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
 .utm-debug.show{display:block}
 .utm-debug b{color:var(--acc2)}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.sync-line{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--muted)}
+.sync-line .dot{width:8px;height:8px;flex:0 0 8px}
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
   [data-anim]{opacity:1 !important;transform:none !important;clip-path:none !important;filter:none !important}
@@ -610,7 +606,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     <div class="pains-grid" data-stagger="100">
       <div class="pain" data-anim="fan"><div class="ico">01</div><h3>«Карточка тонет в выдаче и её не кликают»</h3><p>Одинаковые фото, одинаковые плашки — покупатель листает мимо.</p><div class="fix"><b>Решение:</b> разбираю топ-10 конкурентов ниши и делаю визуал, который считывается даже в превью 150×200 px.</div></div>
       <div class="pain" data-anim="fanR"><div class="ico">02</div><h3>«Красиво, но не продаёт»</h3><p>Дизайн ради дизайна: покупатель не понимает, зачем покупать.</p><div class="fix"><b>Решение:</b> структура слайдов строится от болей и характеристик товара, а не от «вкуса».</div></div>
-      <div class="pain" data-anim="fan"><div class="ico">03</div><h3>«Исполнитель пропадёт посередине»</h3><p>Менеджеры, подрядчики, передача задач — и тишина в чате.</p><div class="fix"><b>Решение:</b> работаю один, без посредников. Всегда на связи в Telegram, отчёт на каждом этапе. Статус заказа виден в личном кабинете.</div></div>
+      <div class="pain" data-anim="fan"><div class="ico">03</div><h3>«Исполнитель пропадёт посередине»</h3><p>Менеджеры, подрядчики, передача задач — и тишина в чате.</p><div class="fix"><b>Решение:</b> работаю один, без посредников. Всегда на связи в Telegram и в чате кабинета, отчёт на каждом этапе.</div></div>
       <div class="pain" data-anim="fanR"><div class="ico">04</div><h3>«Правки будут бесконечными и платными»</h3><p>Каждая мелочь — «это уже вне ТЗ, доплатите».</p><div class="fix"><b>Решение:</b> бриф и референсы фиксируем до старта. Правки в рамках согласованного объёма — бесплатно.</div></div>
       <div class="pain" data-anim="fan"><div class="ico">05</div><h3>«Солью бюджет и не получу результат»</h3><p>Страшно платить вперед человеку из интернета.</p><div class="fix"><b>Решение:</b> оплата 50/50, договор и чек самозанятого. Не понравился эскиз — возвращаю аванс.</div></div>
       <div class="pain" data-anim="fanR"><div class="ico">06</div><h3>«У меня вообще нет фото товара»</h3><p>Кажется, что без студийной съёмки заказ невозможен.</p><div class="fix"><b>Решение:</b> подскажу бюджетные варианты съёмки или соберу карточку из рендеров и материалов производителя.</div></div>
@@ -833,7 +829,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     </div>
     <div class="steps" data-stagger="110">
       <span class="steps-line" data-anim="drawLine" style="--d:.25s"></span>
-      <div class="step" data-anim="conveyor"><div class="num">01</div><h3>Заявка</h3><p>Заполняете короткую форму на сайте — 5 минут, всё по делу. Заявка падает в личный кабинет и дублируется в Telegram и Google-таблицу.</p></div>
+      <div class="step" data-anim="conveyor"><div class="num">01</div><h3>Заявка</h3><p>Заполняете короткую форму на сайте — 5 минут, всё по делу. Заявка падает в кабинет, Google-таблицу и Telegram.</p></div>
       <div class="step" data-anim="conveyor"><div class="num">02</div><h3>Созвон в Telegram</h3><p>15 минут обсуждаем задачу, цели и референсы. Без воды.</p></div>
       <div class="step" data-anim="conveyor"><div class="num">03</div><h3>ТЗ и договор</h3><p>Фиксируем объём, цену и срок письменно. Цена не меняется.</p></div>
       <div class="step" data-anim="conveyor"><div class="num">04</div><h3>Эскиз за 1–2 дня</h3><p>Показываю первый экран до полной оплаты. Не понравилось — возвращаю аванс.</p></div>
@@ -863,13 +859,13 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     <div class="s-head" data-anim="maskL">
       <p class="s-tag">Личный кабинет</p>
       <h2 class="s-title">Весь проект — в одном окне, а не в переписке</h2>
-      <p class="s-sub">После заявки вы получаете доступ в кабинет: там статус работы, файлы, оплаты и переписка. Ничего не теряется.</p>
+      <p class="s-sub">Кабинет работает через общий сервер: статусы, файлы и чат видны с любого устройства — и вам, и мне.</p>
     </div>
     <div class="gar-grid" data-stagger="110">
       <div class="gar" data-anim="drop"><span class="gi"><svg width="22" height="22"><use href="#deckIcon"/></svg></span><h3>Статус в реальном времени</h3><p>6 этапов: заявка → бриф → эскиз → правки → сдача → закрыт.</p></div>
       <div class="gar" data-anim="drop"><span class="gi"><svg width="22" height="22"><use href="#fileIcon"/></svg></span><h3>Все файлы в одном месте</h3><p>Исходники, превью, PDF и чеки — с датами и версией.</p></div>
       <div class="gar" data-anim="drop"><span class="gi"><svg width="22" height="22"><use href="#cartIcon"/></svg></span><h3>Оплаты 50/50</h3><p>Видно, что оплачено и что осталось. Реквизиты — в один клик.</p></div>
-      <div class="gar" data-anim="drop"><span class="gi"><svg width="22" height="22"><use href="#tgIcon"/></svg></span><h3>Переписка по проекту</h3><p>Комментарии и чат поддержки дублируются в Telegram.</p></div>
+      <div class="gar" data-anim="drop"><span class="gi"><svg width="22" height="22"><use href="#tgIcon"/></svg></span><h3>Чат с исполнителем</h3><p>Переписка по проекту прямо на сайте — без Telegram и почты.</p></div>
     </div>
     <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:30px" data-anim="up">
       <button class="btn" data-open-cab data-goal="cab_open" type="button"><svg class="bi" width="18" height="18"><use href="#userIcon"/></svg>Войти в личный кабинет</button>
@@ -958,13 +954,13 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     <div class="faq-list" data-stagger="80">
       <div class="faq-item" data-anim="unfold"><button class="q" type="button">А если у меня совсем нет фото товара?<i>+</i></button><div class="a">Не проблема. Подскажу бюджетные варианты предметной съёмки, порекомендую студию-партнёра, соберу карточку из рендеров и материалов производителя или сделаю нейрофотосессию с вашим товаром — такие кейсы у меня уже есть.</div></div>
       <div class="faq-item" data-anim="unfold"><button class="q" type="button">Сколько правок входит в стоимость?<i>+</i></button><div class="a">Смотря по тарифу: в «Карточка · Старт» и «Дек · Старт» — 2 круга правок, в «Карточка · Продающая» — 4 круга, в «Дек · Премиум» — правки без лимита до сдачи. Круг правок = один список замечаний. Правки в рамках ТЗ всегда бесплатны.</div></div>
-      <div class="faq-item" data-anim="unfold"><button class="q" type="button">Что такое личный кабинет и зачем он мне?<i>+</i></button><div class="a">Это закрытый раздел сайта, где виден статус вашего заказа (заявка → бриф → эскиз → правки → сдача), все файлы и исходники, история оплат 50/50 и переписка по проекту. Доступ выдаётся после регистрации — по e-mail или Telegram. Ничего не теряется в чатах, всё в одном окне.</div></div>
+      <div class="faq-item" data-anim="unfold"><button class="q" type="button">Что такое личный кабинет и зачем он мне?<i>+</i></button><div class="a">Это закрытый раздел сайта с общей базой данных: статус вашего заказа (заявка → бриф → эскиз → правки → сдача), файлы и исходники, история оплат 50/50 и живой чат со мной. Вход с любого устройства по e-mail или Telegram — данные одинаковые везде.</div></div>
+      <div class="faq-item" data-anim="unfold"><button class="q" type="button">Я не пользуюсь Telegram. Как связаться?<i>+</i></button><div class="a">Через чат в личном кабинете: сообщения приходят мне на сайт и дублируются уведомлением, а ответы появляются у вас в чате в течение рабочего дня. Также работает почта для документов.</div></div>
       <div class="faq-item" data-anim="unfold"><button class="q" type="button">Делаете постеры и афиши?<i>+</i></button><div class="a">Да: афиши мероприятий, постеры для соцсетей и рекламных кабинетов, обложки и баннеры. Форматы любые — от 1080×1080 для ленты до печати А2. Пример — афиша «Киновечер» в портфолио.</div></div>
       <div class="faq-item" data-anim="unfold"><button class="q" type="button">Поможете с текстами и SEO-описанием слайдов?<i>+</i></button><div class="a">Да: в тарифе «Карточка · Продающая» УТП и SEO-тексты на слайдах входят в стоимость. Для презентаций помогаю со структурой и формулировками в тарифе «Дек · Премиум».</div></div>
       <div class="faq-item" data-anim="unfold"><button class="q" type="button">В каком формате отдаёте презентацию?<i>+</i></button><div class="a">PPTX, Figma или PDF — как вам удобно. Исходники передаю вместе с файлами, шрифты и стили остаются редактируемыми.</div></div>
-      <div class="faq-item" data-anim="unfold"><button class="q" type="button">Насколько срочно можете взять заказ?<i>+</i></button><div class="a">Первый эскиз — за 1–2 дня. Срочная сдача карточки за 1–2 дня возможна при свободном слоте: напишите в Telegram, проверю загрузку сразу.</div></div>
+      <div class="faq-item" data-anim="unfold"><button class="q" type="button">Насколько срочно можете взять заказ?<i>+</i></button><div class="a">Первый эскиз — за 1–2 дня. Срочная сдача карточки за 1–2 дня возможна при свободном слоте: напишите в чат кабинета или Telegram, проверю загрузку сразу.</div></div>
       <div class="faq-item" data-anim="unfold"><button class="q" type="button">Как устроена оплата?<i>+</i></button><div class="a">50% аванс после согласования ТЗ, 50% — после приёмки работы. Реквизиты и сумма есть в личном кабинете во вкладке «Платежи». Если первый эскиз не понравился и мы не нашли общий язык — возвращаю аванс полностью.</div></div>
-      <div class="faq-item" data-anim="unfold"><button class="q" type="button">Почему связь через Telegram, а не почта?<i>+</i></button><div class="a">Так быстрее и прозрачнее: все файлы, правки и статусы — в одном чате, среднее время ответа — около 5 минут в рабочее время. Почта тоже работает — для документов и официальных писем.</div></div>
     </div>
   </div>
 </section>
@@ -973,8 +969,8 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   <div class="container">
     <div class="s-head" data-anim="dissolve">
       <p class="s-tag">Заявка</p>
-      <h2 class="s-title">Выберите задачу — и через 5 минут обсудим её в Telegram</h2>
-      <p class="s-sub">Форма соберёт ваше мини-ТЗ автоматически: в Telegram попадёт готовое сообщение со всеми деталями, а заявка сохранится в кабинете, в Google-таблице и у меня в Telegram.</p>
+      <h2 class="s-title">Выберите задачу — и через 5 минут обсудим её</h2>
+      <p class="s-sub">Форма соберёт мини-ТЗ автоматически: заявка попадёт в мой кабинет, в Google-таблицу и в Telegram, а вы сможете следить за ней в личном кабинете.</p>
     </div>
     <div class="order-card" data-anim="tilt3d">
       <div>
@@ -1029,7 +1025,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
             </div>
             <div class="field full"><label>Комментарий</label><textarea name="comment" placeholder="Пара слов о товаре и задаче"></textarea></div>
             <div class="full consent"><input type="checkbox" id="cons1" required checked><label for="cons1">Согласен на обработку персональных данных. <button type="button" data-open-policy>Политика</button></label></div>
-            <div class="full"><button class="btn f-submit" type="submit" data-goal="lead_card"><svg class="bi" width="18" height="18"><use href="#tgIcon"/></svg>Обсудить задачу в Telegram →</button></div>
+            <div class="full"><button class="btn f-submit" type="submit" data-goal="lead_card"><svg class="bi" width="18" height="18"><use href="#tgIcon"/></svg>Отправить заявку →</button></div>
           </div>
         </form>
 
@@ -1072,7 +1068,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
             </div>
             <div class="field full"><label>Комментарий</label><textarea name="comment" placeholder="Пара слов о проекте и задаче"></textarea></div>
             <div class="full consent"><input type="checkbox" id="cons2" required checked><label for="cons2">Согласен на обработку персональных данных. <button type="button" data-open-policy>Политика</button></label></div>
-            <div class="full"><button class="btn f-submit" type="submit" data-goal="lead_pres"><svg class="bi" width="18" height="18"><use href="#tgIcon"/></svg>Обсудить проект в Telegram →</button></div>
+            <div class="full"><button class="btn f-submit" type="submit" data-goal="lead_pres"><svg class="bi" width="18" height="18"><use href="#tgIcon"/></svg>Отправить заявку →</button></div>
           </div>
         </form>
       </div>
@@ -1081,14 +1077,14 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
         <div class="slots" data-anim="drop"><span class="dot"></span>Свободно 2 слота на этой неделе</div>
         <div class="mini-steps" data-anim="drop">
           <h4>Что будет после отправки</h4>
-          <div class="ms"><b>1.</b>Бриф скопируется в буфер обмена автоматически</div>
-          <div class="ms"><b>2.</b>Откроется Telegram — вставьте сообщение (Ctrl+V)</div>
-          <div class="ms"><b>3.</b>Заявка упадёт в Google-таблицу Leads и придёт ботом</div>
+          <div class="ms"><b>1.</b>Заявка упадёт в мой кабинет, Google-таблицу и Telegram</div>
+          <div class="ms"><b>2.</b>Бриф скопируется в буфер — можно вставить в Telegram</div>
+          <div class="ms"><b>3.</b>Зарегистрируйтесь в кабинете — заявка станет заказом со статусом</div>
           <div class="ms"><b>4.</b>Отвечу в течение ~5 минут в рабочее время</div>
         </div>
         <div class="aside-cab" data-anim="drop">
           <h4>Уже работали со мной?</h4>
-          <p>Статус заказа, файлы и оплаты — в кабинете.</p>
+          <p>Статус заказа, файлы, оплаты и чат — в кабинете с любого устройства.</p>
           <button class="btn small ghost" data-open-cab type="button"><svg class="bi" width="16" height="16"><use href="#userIcon"/></svg>Войти</button>
         </div>
         <div class="aside-tg" data-anim="drop">
@@ -1161,6 +1157,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     <div class="cab-user">
       <span class="cu-ava" id="cuAva">—</span>
       <span class="cu-meta"><b id="cuName">—</b><span id="cuRole">—</span></span>
+      <span class="sync-line"><span class="dot"></span><span id="syncLbl">онлайн-база</span></span>
       <button class="btn ghost small" data-act="exit-cab" type="button">На сайт</button>
       <button class="btn small" data-act="logout" type="button">Выйти</button>
     </div>
@@ -1175,12 +1172,12 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   <div class="mbox">
     <button class="mclose" type="button" data-close>✕</button>
     <h3>Заявка собрана! 🎉</h3>
-    <p>Ваш бриф скопирован в буфер обмена. Нажмите кнопку ниже — откроется Telegram: вставьте сообщение в чат (Ctrl+V или долгое нажатие), и я сразу увижу все детали. Заявка также сохранена в личном кабинете.</p>
+    <p>Заявка уже у меня: в кабинете, в Google-таблице и в Telegram. Бриф скопирован в буфер — при желании вставьте его в Telegram. Зарегистрируйтесь в кабинете, чтобы заявка стала заказом со статусом и чатом.</p>
     <pre id="briefPre"></pre>
     <div class="mbtns">
       <a class="btn" id="briefTgBtn" href="https://t.me/ALsoLo007" data-tg data-goal="tg_click" target="_blank" rel="noopener"><svg class="bi" width="18" height="18"><use href="#tgIcon"/></svg>Открыть Telegram</a>
       <button class="btn ghost" id="briefCopyBtn" type="button">Скопировать бриф</button>
-      <button class="btn ghost" id="briefCabBtn" type="button"><svg class="bi" width="18" height="18"><use href="#userIcon"/></svg>Создать заказ в кабинете</button>
+      <button class="btn ghost" id="briefCabBtn" type="button"><svg class="bi" width="18" height="18"><use href="#userIcon"/></svg>Регистрация в кабинете</button>
     </div>
   </div>
 </div>
@@ -1199,8 +1196,8 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   <div class="mbox">
     <button class="mclose" type="button" data-close>✕</button>
     <h3>Политика конфиденциальности</h3>
-    <p>Отправляя формы на сайте, вы соглашаетесь на обработку персональных данных (имя и контакт) исключительно для связи по вашему запросу. Данные не передаются третьим лицам и хранятся до окончания диалога по заявке. Сайт не использует данные в рекламных рассылках без отдельного согласия.</p>
-    <p>Данные личного кабинета (аккаунт, заказы, файлы, переписка) хранятся для исполнения договора и отображения статуса работ. Рекламные метки (utm, yclid) используются только для оценки эффективности рекламы в Яндекс.Директе и не передаются третьим лицам.</p>
+    <p>Отправляя формы на сайте, вы соглашаетесь на обработку персональных данных (имя и контакт) исключительно для связи по вашему запросу и ведения проекта в личном кабинете. Данные хранятся в защищённой Google-таблице исполнителя и не передаются третьим лицам. Сайт не использует данные в рекламных рассылках без отдельного согласия.</p>
+    <p>Рекламные метки (utm, yclid) используются только для оценки эффективности рекламы в Яндекс.Директе.</p>
   </div>
 </div>
 
@@ -1208,7 +1205,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   <div class="mbox">
     <button class="mclose" type="button" data-close>✕</button>
     <h3 id="authTitle">Вход в личный кабинет</h3>
-    <p id="authSub">Статусы заказов, файлы, оплаты и переписка — в одном окне.</p>
+    <p id="authSub">Статусы заказов, файлы, оплаты и чат — в одном окне, с любого устройства.</p>
     <div class="auth-tabs">
       <button type="button" class="active" data-auth-tab="login">Вход</button>
       <button type="button" data-auth-tab="reg">Регистрация</button>
@@ -1224,9 +1221,8 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     </form>
     <div class="demo-note" id="demoNote" style="display:none">
       <b>Служебная подсказка</b> (видна только по ссылке с <code>?demo=1</code>):<br>
-      Стартовый админ: <code>admin@alsolo.ru</code> / <code>admin1234</code><br>
-      Стартовый клиент: <code>demo@mail.ru</code> / <code>demo1234</code><br>
-      Это доступы для ПЕРВОГО входа в новом браузере; после смены они не действуют.
+      Если база кабинета пуста (первый запуск): админ <code>admin@alsolo.ru</code> / <code>admin1234</code>.<br>
+      После первого входа смените пароль в «Настройки и Директ» → «Ваш доступ».
     </div>
   </div>
 </div>
@@ -1268,9 +1264,9 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   var EMAIL = 'al.poponin2013@yandex.ru';
   var PAY_PHONE = '+7 ·· ··· ·· ·· — получатель Алексей П. (самозанятый)';
   var METRIKA_ID = 0;
-  var TG_BOT_TOKEN = '';
-  var TG_CHAT_ID = '';
-  var BACKEND = { enabled:true, leadsUrl:'https://script.google.com/macros/s/AKfycbxf6imL3q0DanfvMKRs05TjfDFEGWl5-EiO6ry8gBNltoS02_MSTf2ORXgq9wDgCO8Z/exec', ordersUrl:'', authUrl:'', filesUrl:'' };
+  /* Секретный ключ кабинета. ДОЛЖЕН совпадать с CAB_KEY в Apps Script */
+  var CAB_KEY = 'ALSOLO-2026-CAB-7f3a9c';
+  var BACKEND = { enabled:true, leadsUrl:'https://script.google.com/macros/s/AKfycbxf6imL3q0DanfvMKRs05TjfDFEGWl5-EiO6ry8gBNltoS02_MSTf2ORXgq9wDgCO8Z/exec' };
 
   var WORKS_REMOTE = 'https://raw.githubusercontent.com/ALsoLo007/site-portfolio/main/works/';
   var PHOTO_URL  = 'https://raw.githubusercontent.com/ALsoLo007/site-portfolio/main/Photo1.png';
@@ -1298,6 +1294,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   function initials(name){ var p=String(name||'?').trim().split(/\s+/); return ((p[0]||'')[0]||'?').toUpperCase() + ((p[1]||'')[0]||'').toUpperCase(); }
   function hashPass(s){ var h=5381,i; s=String(s); for(i=0;i<s.length;i++){ h=(((h<<5)+h)+s.charCodeAt(i))>>>0; } return 'h'+h.toString(36); }
   function norm(s){ return String(s||'').trim().toLowerCase().replace(/^@/,''); }
+  function nowTs(){ return Date.now(); }
 
   /* =====================================================
      3. ЯНДЕКС.ДИРЕКТ: UTM + ЦЕЛИ МЕТРИКИ
@@ -1376,21 +1373,29 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
         var box = q('#utmDebug');
         box.innerHTML = '<b>UTM-отладка</b><br>' + esc(utmLabel()) + '<br>сессий: ' + (utmStore.sessions||1) +
           '<br>Метрика: ' + (METRIKA_ID ? '#' + METRIKA_ID : 'не подключена') +
-          '<br>Бэкенд: ' + (BACKEND.enabled ? 'вкл' : 'localStorage');
+          '<br>Бэкенд: ' + (BACKEND.enabled ? 'вкл' : 'выкл');
         box.classList.add('show');
       }
     }catch(e){}
   })();
 
-  function postBackend(url, data){
-    if(!BACKEND.enabled || !url || !window.fetch) return;
+  /* =====================================================
+     4. СЕРВЕРНЫЙ СЛОЙ КАБИНЕТА (Google Apps Script)
+     ===================================================== */
+  function srv(action, payload, cb){
+    var url = BACKEND.leadsUrl;
+    if(!BACKEND.enabled || !url || !window.fetch){ if(cb) cb(null, 'BACKEND_OFF'); return; }
+    var p = payload || {}; p.action = action; p.key = CAB_KEY;
     try{
-      fetch(url, {method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(data), keepalive:true}).catch(function(){});
-    }catch(e){}
+      fetch(url, {method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(p)})
+        .then(function(r){ return r.json(); })
+        .then(function(j){ if(cb) cb(j && j.ok ? j : null, (j && j.err) || 'SERVER_ERR'); })
+        .catch(function(err){ if(cb) cb(null, String(err)); });
+    }catch(e){ if(cb) cb(null, String(e)); }
   }
 
   /* =====================================================
-     4. КОНТАКТЫ В DOM
+     5. КОНТАКТЫ В DOM
      ===================================================== */
   qa('[data-tg]').forEach(function(a){ a.href = TG_URL; a.target='_blank'; a.rel='noopener'; });
   qa('[data-tg-chat]').forEach(function(a){ a.href = 'https://t.me/' + TG_CHAT_USER; a.target='_blank'; a.rel='noopener'; });
@@ -1399,17 +1404,8 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   qa('[data-tgchat-text]').forEach(function(el){ el.textContent = '@' + TG_CHAT_USER; });
   qa('[data-mail-text]').forEach(function(el){ el.textContent = EMAIL; });
 
-  function botEnabled(){ return !!(TG_BOT_TOKEN && TG_CHAT_ID); }
-  function sendToTelegram(text){
-    if(!botEnabled()) return Promise.resolve(false);
-    return fetch('https://api.telegram.org/bot' + TG_BOT_TOKEN + '/sendMessage', {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({chat_id:TG_CHAT_ID, text:text, disable_web_page_preview:true})
-    }).then(function(r){ return r.ok; }).catch(function(){ return false; });
-  }
-
   /* =====================================================
-     5. ИЗОБРАЖЕНИЯ И ЗАГЛУШКИ
+     6. ИЗОБРАЖЕНИЯ И ЗАГЛУШКИ
      ===================================================== */
   function phWork(im){
     var lines = (im.dataset.label||'Работа').split('|');
@@ -1476,7 +1472,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   });
 
   /* =====================================================
-     6. САЙТ: шапка, скролл, анимации
+     7. САЙТ: шапка, скролл, анимации
      ===================================================== */
   var topbar = q('#topbar'), progressEl = q('#progress'), parEls = qa('[data-par]'), ticking = false;
   function onScrollFrame(){
@@ -1596,7 +1592,6 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     var step = parseInt(group.dataset.stagger,10) || 90;
     qa('[data-anim]', group).forEach(function(el, i){ if(!el.style.getPropertyValue('--d')) el.style.setProperty('--d', (i*step)+'ms'); });
   });
-
   function revealEl(t){
     if(!t || t.classList.contains('in')) return;
     t.classList.add('in');
@@ -1666,113 +1661,95 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   }
 
   /* =====================================================
-     7. ЛИЧНЫЙ КАБИНЕТ: ХРАНИЛИЩЕ
+     8. КАБИНЕТ: СЕРВЕРНАЯ БАЗА (кэш + синхронизация)
      ===================================================== */
-  var DB_KEY = 'alsolo_cabinet_v1';
-  var STAGES = ['Заявка','Бриф и ТЗ','Эскиз','Правки','Сдача','Закрыт'];
-  var db = null;
+  var SESSION_KEY = 'alsolo_session_v2';
+  var DB_CACHE = null;
+  var cabSnap = '';
+  var cabPoll = null;
 
-  function nowTs(){ return Date.now(); }
-  function seedDB(){
-    var t = nowTs(), day = 86400000;
-    var adminId = 'u_admin', demoId = 'u_demo';
-    return {
-      v:1,
-      accounts:[
-        {id:adminId, name:'Алексей (ALsoLo)', contact:'admin@alsolo.ru', pass:hashPass('admin1234'), role:'admin', created:t},
-        {id:demoId, name:'Марина Ковалёва', contact:'demo@mail.ru', pass:hashPass('demo1234'), role:'client', created:t-9*day}
-      ],
-      orders:[
-        {id:'o_demo1', userId:demoId, title:'Карточки: 3 отпаривателя', type:'card', tariff:'Карточка · Продающая', stage:4,
-         price:9000, paid:4500, payStatus:'checking', deadline:t+2*day, created:t-9*day, updated:t-day,
-         brief:'Маркетплейс: Wildberries\nКатегория: Бытовая техника\nТоваров: 2–5\nНужно: Инфографика, SEO-тексты, Сравнение с конкурентами\nСрок: В течение недели',
-         files:[{id:'f1',name:'otparivateli_eskiz_v2.fig',url:'',size:'14,2 МБ',date:t-2*day},{id:'f2',name:'glavnoe_foto_WB_900x1200.png',url:'',size:'3,1 МБ',date:t-day}],
-         comments:[
-           {id:'c1',author:'admin',name:'Алексей',text:'Загрузил второй эскиз — посмотрите, пожалуйста, акцент на мощности пара.',date:t-2*day},
-           {id:'c2',author:'client',name:'Марина Ковалёва',text:'Отлично! Только плашку «гарантия 2 года» сделаем крупнее.',date:t-day}
-         ]},
-        {id:'o_demo2', userId:demoId, title:'Инфографика: утюг Polaris', type:'card', tariff:'Карточка · Старт', stage:5,
-         price:2500, paid:2500, payStatus:'paid', deadline:t-12*day, created:t-22*day, updated:t-12*day,
-         brief:'Маркетплейс: Wildberries\nКатегория: Бытовая техника\nТоваров: 1',
-         files:[{id:'f3',name:'utyug_polaris_final.zip',url:'',size:'48,7 МБ',date:t-12*day},{id:'f4',name:'chek_samozanyatogo.pdf',url:'',size:'112 КБ',date:t-12*day}],
-         comments:[{id:'c3',author:'admin',name:'Алексей',text:'Работа сдана, исходники и чек в файлах. Спасибо за доверие!',date:t-12*day}]},
-        {id:'o_demo3', userId:demoId, title:'Питч-дек для инвесторов', type:'pres', tariff:'Дек · Премиум', stage:1,
-         price:24000, paid:12000, payStatus:'paid', deadline:t+9*day, created:t-3*day, updated:t-3*day,
-         brief:'Цель: Инвестиционный питч\nСлайдов: 20–40\nСтиль: Премиум / тёмный\nФормат: PowerPoint, PDF',
-         files:[], comments:[{id:'c4',author:'admin',name:'Алексей',text:'Принял в работу. До пятницы пришлю структуру и первую стилевую концепцию.',date:t-2*day}]}
-      ],
-      leads:[],
-      messages:{},
-      session:null
-    };
+  function emptyCache(){ return {accounts:[],orders:[],files:[],comments:[],messages:[],leads:[]}; }
+  function db(){ return DB_CACHE || (DB_CACHE = emptyCache()); }
+  function sessionObj(){ try{ return JSON.parse(localStorage.getItem(SESSION_KEY) || 'null'); }catch(e){ return null; } }
+  function sessionId(){ var s = sessionObj(); return s ? s.id : null; }
+  function setSession(acc){ try{ localStorage.setItem(SESSION_KEY, JSON.stringify({id:acc.id, role:acc.role, name:acc.name, contact:acc.contact})); }catch(e){} }
+  function clearSession(){ try{ localStorage.removeItem(SESSION_KEY); }catch(e){} }
+
+  function hydrate(cb, silent){
+    var uidS = sessionId();
+    if(!uidS){ DB_CACHE = emptyCache(); if(cb) cb(false, 'NOSESSION', false); return; }
+    srv('state', {userId: uidS}, function(j, err){
+      if(!j){ if(cb) cb(false, err, false); return; }
+      DB_CACHE = {
+        accounts: j.accounts || [], orders: j.orders || [], files: j.files || [],
+        comments: j.comments || [], messages: j.messages || [], leads: j.leads || []
+      };
+      if(j.account) setSession(j.account);
+      var snap = JSON.stringify(DB_CACHE);
+      var changed = snap !== cabSnap;
+      cabSnap = snap;
+      if(cb) cb(true, null, changed && !silent ? true : changed);
+    });
   }
-  function loadDB(){
-    if(db) return db;
-    try{ db = JSON.parse(localStorage.getItem(DB_KEY) || 'null'); }catch(e){ db = null; }
-    if(!db || !db.accounts || !db.orders){ db = seedDB(); saveDB(); }
-    db.leads = db.leads || []; db.messages = db.messages || {}; db.session = db.session || null;
-    return db;
+  function push(kind, payload, okMsg){
+    srv(kind, payload, function(j, err){
+      if(!j) toast('⚠️ Нет связи с сервером: изменение не сохранилось');
+      else if(okMsg) toast(okMsg);
+    });
   }
-  function saveDB(){ try{ localStorage.setItem(DB_KEY, JSON.stringify(db)); }catch(e){} }
-  function getAccount(id){ var d=loadDB(); for(var i=0;i<d.accounts.length;i++){ if(d.accounts[i].id===id) return d.accounts[i]; } return null; }
-  function currentUser(){ var d=loadDB(); return d.session ? getAccount(d.session) : null; }
-  function findAccount(login){ var d=loadDB(), n=norm(login); for(var i=0;i<d.accounts.length;i++){ if(norm(d.accounts[i].contact)===n) return d.accounts[i]; } return null; }
-  function userOrders(userId){ return loadDB().orders.filter(function(o){ return o.userId===userId; }).sort(function(a,b){ return b.updated-a.updated; }); }
-  function getOrder(id){ var d=loadDB(); for(var i=0;i<d.orders.length;i++){ if(d.orders[i].id===id) return d.orders[i]; } return null; }
+  function currentUser(){
+    var s = sessionObj(); if(!s) return null;
+    var a = db().accounts.filter(function(x){ return x.id === s.id; })[0];
+    return a || s;
+  }
+  function getAccount(id){ return db().accounts.filter(function(x){ return x.id === id; })[0] || null; }
+  function userOrders(userId){ return db().orders.filter(function(o){ return o.userId === userId; }).sort(function(a,b){ return (b.updated||0)-(a.updated||0); }); }
+  function getOrder(id){ return db().orders.filter(function(o){ return o.id === id; })[0] || null; }
+  function orderFiles(id){ return db().files.filter(function(f){ return f.orderId === id; }); }
+  function orderComments(id){ return db().comments.filter(function(c){ return c.orderId === id; }); }
+  function userMessages(id){ return db().messages.filter(function(m){ return m.userId === id; }); }
 
   function createOrder(o){
-    var d = loadDB();
     var order = {
       id: uid('o'), userId:o.userId||null, title:o.title||'Новый заказ', type:o.type||'card',
       tariff:o.tariff||'', stage:0, price:Number(o.price)||0, paid:0, payStatus:'await',
-      deadline:o.deadline||0, created:nowTs(), updated:nowTs(), brief:o.brief||'', files:[], comments:[]
+      deadline:o.deadline||0, created:nowTs(), updated:nowTs(), brief:o.brief||''
     };
-    d.orders.unshift(order); saveDB(); return order;
+    db().orders.unshift(order);
+    push('orderSave', {order:order});
+    return order;
   }
   function addComment(order, author, name, text){
-    order.comments.push({id:uid('c'), author:author, name:name, text:text, date:nowTs()});
-    order.updated = nowTs(); saveDB();
+    var c = {id:uid('c'), orderId:order.id, author:author, name:name, text:text, date:nowTs()};
+    db().comments.push(c);
+    order.updated = nowTs();
+    push('commentAdd', {comment:c});
+    push('orderSave', {order:order});
   }
   function addFile(order, name, url, size){
-    order.files.unshift({id:uid('f'), name:name, url:url||'', size:size||'', date:nowTs()});
-    order.updated = nowTs(); saveDB();
+    var f = {id:uid('f'), orderId:order.id, name:name, url:url||'', size:size||'', date:nowTs()};
+    db().files.unshift(f);
+    order.updated = nowTs();
+    push('fileAdd', {file:f});
+    push('orderSave', {order:order});
   }
 
   /* =====================================================
-     8. ЗАЯВКИ С САЙТА → ЛИДЫ + BACKEND
+     9. ЗАЯВКИ С САЙТА → СЕРВЕР
      ===================================================== */
   function saveLead(type, fields, briefText){
-    var d = loadDB();
     var lead = {
       id: uid('l'), type:type, created:nowTs(), status:'new',
       name: fields.name||'', contact: fields.contact||'',
       fields: fields, brief: briefText||'',
-      utm: JSON.parse(JSON.stringify(utmStore.last||{})), utmFirst: JSON.parse(JSON.stringify(utmStore.first||{})),
+      utm: JSON.parse(JSON.stringify(utmStore.last||{})),
       url: location.href.slice(0,200)
     };
-    d.leads.unshift(lead); saveDB();
-    postBackend(BACKEND.leadsUrl, lead);
-    return lead;
-  }
-  function attachLeadsByContact(user){
-    var d = loadDB(), n = norm(user.contact), made = 0;
-    d.leads.forEach(function(l){
-      if(l.status === 'new' && norm(l.contact) === n){
-        l.status = 'converted'; l.userId = user.id;
-        createOrder({
-          userId:user.id,
-          title:(l.type === 'pres' ? 'Презентация: ' : 'Карточка товара: ') + (l.fields.category || l.fields.goal || 'заявка с сайта'),
-          type: l.type === 'pres' ? 'pres' : 'card',
-          tariff: l.fields.tariff || '',
-          price: 0,
-          deadline: /Срочно/.test(l.fields.deadline||'') ? nowTs()+2*86400000 : 0,
-          brief: l.brief
-        });
-        made++;
-      }
+    db().leads.unshift(lead);
+    srv('lead', lead, function(j, err){
+      if(!j) toast('Заявка сохранена в кабинете, но не дошла до сервера (проверьте связь)');
     });
-    if(made) saveDB();
-    return made;
+    return lead;
   }
   function takePendingBrief(user){
     var raw = null;
@@ -1788,7 +1765,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   }
 
   /* =====================================================
-     9. ФОРМЫ САЙТА
+     10. ФОРМЫ САЙТА
      ===================================================== */
   function fv(form, name){ var el = form.elements[name]; return el ? (el.value||'').trim() : ''; }
   function fchecks(form, name){ return qa('input[name="'+name+'"]:checked', form).map(function(i){ return i.value; }).join(', '); }
@@ -1827,12 +1804,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     q('#briefModal').classList.add('show');
     copyText(msg);
     try{ localStorage.setItem('alsolo_pending_brief', JSON.stringify({text:msg, type:type, fields:fields, ts:nowTs()})); }catch(e){}
-    if(botEnabled()){
-      sendToTelegram(msg).then(function(ok){
-        if(ok) toast('Заявка отправлена в Telegram ✔');
-        else { toast('Бот не отправил — бриф скопирован, вставьте его в чат'); window.open(TG_URL,'_blank','noopener'); }
-      });
-    } else window.open(TG_URL,'_blank','noopener');
+    window.open(TG_URL,'_blank','noopener');
   }
   q('#formCard').addEventListener('submit', function(e){
     e.preventDefault();
@@ -1870,16 +1842,13 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     var msg = '✉️ Сообщение с сайта\n👤 Имя: '+fv(f,'name')+'\n📞 Контакт: '+fv(f,'contact')+'\n📌 Тема: '+fv(f,'topic')+'\n💬 Сообщение: '+fv(f,'message') + (utmBlock().length ? '\n'+utmBlock().join('\n') : '');
     saveLead('feedback', {name:fv(f,'name'), contact:fv(f,'contact'), topic:fv(f,'topic'), message:fv(f,'message')}, msg);
     reachGoal('lead_feedback', {utm:utmLabel()});
-    if(botEnabled()){
-      sendToTelegram(msg).then(function(ok){
-        if(ok){ toast('Сообщение отправлено ✔'); f.reset(); }
-        else { location.href = mailtoLink(f); f.reset(); }
-      });
-    } else { location.href = mailtoLink(f); f.reset(); toast('Открываю почтовый клиент…'); }
+    location.href = mailtoLink(f);
+    f.reset();
+    toast('Открываю почтовый клиент…');
   });
 
   /* =====================================================
-     10. АВТОРИЗАЦИЯ
+     11. АВТОРИЗАЦИЯ (серверная)
      ===================================================== */
   var authMode = 'login';
   var authModal = q('#authModal');
@@ -1889,7 +1858,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     q('#authNameWrap').style.display = isReg ? '' : 'none';
     q('#authConsentWrap').style.display = isReg ? '' : 'none';
     q('#authTitle').textContent = isReg ? 'Регистрация в кабинете' : 'Вход в личный кабинет';
-    q('#authSub').textContent = isReg ? 'Создайте доступ — заявка с сайта автоматически станет заказом в кабинете.' : 'Статусы заказов, файлы, оплаты и переписка — в одном окне.';
+    q('#authSub').textContent = isReg ? 'Создайте доступ — заявка с сайта автоматически станет заказом в кабинете.' : 'Статусы заказов, файлы, оплаты и чат — с любого устройства.';
     q('#authSubmit').textContent = isReg ? 'Создать кабинет' : 'Войти';
     var nm = q('#authForm').elements.name; if(nm) nm.required = isReg;
     var cs = q('#authConsent'); if(cs) cs.required = isReg;
@@ -1902,37 +1871,42 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   }
   q('#authForm').addEventListener('submit', function(e){
     e.preventDefault();
-    var f = e.target, d = loadDB();
+    var f = e.target;
     var login = (f.elements.login.value||'').trim(), pass = f.elements.pass.value||'', name = (f.elements.name.value||'').trim();
     if(!login || !pass){ toast('Заполните e-mail/Telegram и пароль'); return; }
     if(pass.length < 6){ toast('Пароль минимум 6 символов'); return; }
+    var btn = q('#authSubmit'); btn.disabled = true;
     if(authMode === 'reg'){
-      if(!name){ toast('Укажите имя'); return; }
-      if(!q('#authConsent').checked){ toast('Нужно согласие на обработку данных'); return; }
-      if(findAccount(login)){ toast('Такой контакт уже зарегистрирован — войдите'); authMode='login'; renderAuth(); return; }
-      var acc = {id:uid('u'), name:name, contact:login, pass:hashPass(pass), role:'client', created:nowTs()};
-      d.accounts.push(acc); d.session = acc.id; saveDB();
-      var made = attachLeadsByContact(acc); takePendingBrief(acc);
-      reachGoal('cab_register', {source:utmLabel()});
-      setMetrikaUser(acc.id, acc.name);
-      authModal.classList.remove('show'); f.reset();
-      openCab(acc.id);
-      toast(made ? 'Кабинет создан, заявка преобразована в заказ ✔' : 'Кабинет создан ✔');
+      if(!name){ toast('Укажите имя'); btn.disabled=false; return; }
+      if(!q('#authConsent').checked){ toast('Нужно согласие на обработку данных'); btn.disabled=false; return; }
+      srv('register', {name:name, contact:login, passHash:hashPass(pass)}, function(j, err){
+        btn.disabled = false;
+        if(!j){ toast(err === 'EXISTS' ? 'Такой контакт уже зарегистрирован — войдите' : 'Ошибка регистрации: ' + (err||'')); return; }
+        setSession(j.account);
+        reachGoal('cab_register', {source:utmLabel()});
+        setMetrikaUser(j.account.id, j.account.name);
+        authModal.classList.remove('show'); f.reset();
+        openCab();
+        var made = takePendingBrief(j.account);
+        toast(made ? 'Кабинет создан, заявка преобразована в заказ ✔' : 'Кабинет создан ✔');
+      });
     } else {
-      var a = findAccount(login);
-      if(!a || a.pass !== hashPass(pass)){ toast('Неверный контакт или пароль'); return; }
-      d.session = a.id; saveDB();
-      var m2 = attachLeadsByContact(a); takePendingBrief(a);
-      reachGoal('cab_login', {role:a.role, source:utmLabel()});
-      setMetrikaUser(a.id, a.name);
-      authModal.classList.remove('show'); f.reset();
-      openCab(a.id);
-      toast('С возвращением, ' + a.name.split(' ')[0] + '!' + (m2 ? ' Найдено заявок: ' + m2 : ''));
+      srv('login', {contact:login, passHash:hashPass(pass)}, function(j, err){
+        btn.disabled = false;
+        if(!j){ toast('Неверный контакт или пароль'); return; }
+        setSession(j.account);
+        reachGoal('cab_login', {role:j.account.role, source:utmLabel()});
+        setMetrikaUser(j.account.id, j.account.name);
+        authModal.classList.remove('show'); f.reset();
+        openCab();
+        var made = takePendingBrief(j.account);
+        toast('С возвращением, ' + j.account.name.split(' ')[0] + '!' + (made ? ' Заявка стала заказом ✔' : ''));
+      });
     }
   });
 
   /* =====================================================
-     11. КАБИНЕТ: РЕНДЕР
+     12. КАБИНЕТ: РЕНДЕР
      ===================================================== */
   var cabEl = q('#cab'), cabMain = q('#cabMain'), cabSide = q('#cabSide');
   var cabView = 'overview', cabCtx = null;
@@ -1942,7 +1916,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     {id:'orders',   label:'Мои заказы', icon:'▤'},
     {id:'files',    label:'Файлы', icon:'🗎'},
     {id:'payments', label:'Платежи', icon:'₽'},
-    {id:'support',  label:'Поддержка', icon:'✆'},
+    {id:'support',  label:'Чат с исполнителем', icon:'✆'},
     {id:'profile',  label:'Профиль', icon:'☺'}
   ];
   var ADMIN_MENU = [
@@ -1955,48 +1929,70 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   ];
   function menu(){ var u = currentUser(); return (u && u.role === 'admin') ? ADMIN_MENU : CLIENT_MENU; }
 
-  function openCab(userId){
-    var d = loadDB();
-    if(userId){ d.session = userId; saveDB(); }
-    var u = currentUser();
-    if(!u){ openAuth('login'); return; }
+  function openCab(){
+    if(!BACKEND.enabled){ toast('Кабинет отключён: нет сервера'); return; }
+    var s = sessionObj();
+    if(!s){ openAuth('login'); return; }
     cabView = 'overview'; cabCtx = null;
-    q('#cuAva').textContent = u.role === 'admin' ? 'AD' : initials(u.name);
-    q('#cuName').textContent = u.name;
-    q('#cuRole').textContent = u.role === 'admin' ? 'администратор' : 'клиент';
     cabEl.classList.add('show');
     document.body.classList.add('locked');
-    renderCab();
+    renderCabShell();
+    cabMain.innerHTML = '<div class="empty"><b>Загружаю кабинет…</b>Общая база данных, секунду</div>';
+    hydrate(function(ok, err){
+      if(!ok){
+        cabMain.innerHTML = '<div class="empty"><b>Нет связи с сервером кабинета</b>Проверьте интернет и нажмите ещё раз. Ошибка: ' + esc(err||'') + '<button class="btn" type="button" data-act="retry">Повторить</button></div>';
+        return;
+      }
+      renderCab();
+      startPoll();
+    });
   }
   function closeCab(){
     cabEl.classList.remove('show');
     document.body.classList.remove('locked');
+    stopPoll();
     refreshCabBtn();
   }
-  qa('[data-open-cab]').forEach(function(b){ b.addEventListener('click', function(e){ e.preventDefault(); reachGoal('cab_open'); if(currentUser()) openCab(); else openAuth('login'); }); });
+  function startPoll(){
+    stopPoll();
+    cabPoll = setInterval(function(){
+      if(!cabEl.classList.contains('show')) return;
+      hydrate(function(ok, err, changed){ if(ok && changed) renderCab(); }, true);
+    }, 25000);
+  }
+  function stopPoll(){ if(cabPoll){ clearInterval(cabPoll); cabPoll = null; } }
+
+  qa('[data-open-cab]').forEach(function(b){ b.addEventListener('click', function(e){ e.preventDefault(); reachGoal('cab_open'); openCab(); }); });
   qa('[data-act="exit-cab"]').forEach(function(b){ b.addEventListener('click', function(e){ e.preventDefault(); closeCab(); }); });
 
   function refreshCabBtn(){
     var u = currentUser(), lbl = q('#cabTopLbl');
     if(lbl) lbl.textContent = u ? u.name.split(' ')[0] : 'Кабинет';
   }
+  function renderCabShell(){
+    var u = currentUser(); if(!u) return;
+    q('#cuAva').textContent = u.role === 'admin' ? 'AD' : initials(u.name);
+    q('#cuName').textContent = u.name;
+    q('#cuRole').textContent = u.role === 'admin' ? 'администратор' : 'клиент';
+  }
 
-  function newLeadsCount(){ return loadDB().leads.filter(function(l){ return l.status === 'new'; }).length; }
-  function newMsgCount(userId){ var m = loadDB().messages[userId]; return m ? m.filter(function(x){ return x.from === 'client' && !x.read; }).length : 0; }
-  function totalNewMsgs(){ var d = loadDB(), n = 0; Object.keys(d.messages).forEach(function(k){ n += (d.messages[k]||[]).filter(function(x){ return x.from === 'client' && !x.read; }).length; }); return n; }
+  function newLeadsCount(){ return db().leads.filter(function(l){ return l.status === 'new'; }).length; }
+  function newMsgCount(userId, from){ return userMessages(userId).filter(function(x){ return x.from === from && !x.read; }).length; }
+  function totalNewMsgs(){ var n = 0; db().accounts.forEach(function(a){ if(a.role==='client') n += newMsgCount(a.id,'client'); }); return n; }
 
   function renderCab(){
     var u = currentUser(); if(!u){ closeCab(); return; }
+    renderCabShell();
     var items = menu(), H = [];
     H.push('<div class="side-h">' + (u.role === 'admin' ? 'Панель исполнителя' : 'Мой кабинет') + '</div>');
     items.forEach(function(m){
       var badge = '';
       if(u.role === 'admin' && m.id === 'leads' && newLeadsCount()) badge = '<span class="sb-b">' + newLeadsCount() + '</span>';
       if(u.role === 'admin' && m.id === 'support' && totalNewMsgs()) badge = '<span class="sb-b">' + totalNewMsgs() + '</span>';
-      if(u.role === 'client' && m.id === 'support' && newMsgCount(u.id)) badge = '<span class="sb-b">•</span>';
+      if(u.role === 'client' && m.id === 'support' && newMsgCount(u.id,'admin')) badge = '<span class="sb-b">•</span>';
       H.push('<button class="side-btn' + (cabView === m.id ? ' active' : '') + '" type="button" data-act="view" data-view="' + m.id + '"><span class="sb-i">' + m.icon + '</span>' + m.label + badge + '</button>');
     });
-    H.push('<div class="side-foot">Источник визита:<br><b style="color:var(--acc2)">' + esc(utmLabel()) + '</b></div>');
+    H.push('<div class="side-foot">Общая серверная база<br><b style="color:var(--ok)">● онлайн-синхронизация</b></div>');
     cabSide.innerHTML = H.join('');
     renderMain();
     refreshCabBtn();
@@ -2005,7 +2001,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   function kpi(label, value, sub){
     return '<div class="kpi"><div class="k-l">' + esc(label) + '</div><div class="k-v">' + value + '</div>' + (sub ? '<div class="k-s">' + esc(sub) + '</div>' : '') + '</div>';
   }
-  function stageTag(o){ return '<span class="tag st-' + o.stage + '">' + esc(STAGES[o.stage]||'—') + '</span>'; }
+  function stageTag(o){ var STAGES = ['Заявка','Бриф и ТЗ','Эскиз','Правки','Сдача','Закрыт']; return '<span class="tag st-' + o.stage + '">' + esc(STAGES[o.stage]||'—') + '</span>'; }
   function payTag(o){
     if(o.payStatus === 'paid') return '<span class="tag pay-ok">Оплачено</span>';
     if(o.payStatus === 'checking') return '<span class="tag pay-check">Проверяем оплату</span>';
@@ -2013,7 +2009,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   }
   function pipeHTML(stage){
     var H = ['<div class="pipe">'];
-    for(var i=0;i<STAGES.length;i++) H.push('<i class="' + (i <= stage ? 'on' : '') + '"></i>');
+    for(var i=0;i<6;i++) H.push('<i class="' + (i <= stage ? 'on' : '') + '"></i>');
     H.push('</div>');
     return H.join('');
   }
@@ -2025,9 +2021,10 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     return '<span class="tag ' + cls + '">⏳ ' + txt + '</span>';
   }
   function filesBlock(o, isAdmin){
-    if(!o.files.length && !isAdmin) return '<div class="sub-h">Файлы</div><p style="color:var(--muted);font-size:13px">Файлы появятся здесь после первого эскиза.</p>';
-    var H = ['<div><div class="sub-h">Файлы (' + o.files.length + ')</div>'];
-    o.files.forEach(function(f){
+    var fs = orderFiles(o.id);
+    if(!fs.length && !isAdmin) return '<div><div class="sub-h">Файлы</div><p style="color:var(--muted);font-size:13px">Файлы появятся здесь после первого эскиза.</p></div>';
+    var H = ['<div><div class="sub-h">Файлы (' + fs.length + ')</div>'];
+    fs.forEach(function(f){
       H.push('<div class="file-row"><span class="fi">FILE</span><span><b>' + esc(f.name) + '</b><span>' + esc(f.size||'') + (f.size?' · ':'') + fmtDate(f.date) + '</span></span>'
         + '<span class="fr-a"><button class="btn ghost tiny" type="button" data-act="dl-file" data-o="' + o.id + '" data-f="' + f.id + '">Скачать</button>'
         + (isAdmin ? '<button class="btn danger tiny" type="button" data-act="del-file" data-o="' + o.id + '" data-f="' + f.id + '">✕</button>' : '') + '</span></div>');
@@ -2042,8 +2039,9 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     return H.join('');
   }
   function commentsBlock(o, me){
-    var H = ['<div><div class="sub-h">Переписка по заказу (' + o.comments.length + ')</div>'];
-    o.comments.slice(-6).forEach(function(c){
+    var cs = orderComments(o.id);
+    var H = ['<div><div class="sub-h">Переписка по заказу (' + cs.length + ')</div>'];
+    cs.slice(-6).forEach(function(c){
       var mine = (me === 'admin') ? c.author === 'admin' : c.author === 'client';
       H.push('<div class="cmt' + (mine ? ' me' : '') + '"><span class="c-a">' + esc(initials(c.name)) + '</span><span class="c-b"><em>' + esc(c.name) + ' · ' + ago(c.date) + '</em>' + esc(c.text) + '</span></div>');
     });
@@ -2054,6 +2052,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
 
   function orderCard(o, me, opts){
     opts = opts || {};
+    var STAGES = ['Заявка','Бриф и ТЗ','Эскиз','Правки','Сдача','Закрыт'];
     var acc = getAccount(o.userId);
     var H = ['<div class="ord" data-oid="' + o.id + '">'];
     H.push('<div class="ord-top"><div class="ord-t"><b>' + esc(o.title) + '</b><span>' + (o.tariff ? esc(o.tariff) + ' · ' : '') + 'создан ' + fmtDay(o.created) + (opts.showClient && acc ? ' · клиент: ' + esc(acc.name) + ' (' + esc(acc.contact) + ')' : '') + '</span></div>'
@@ -2079,7 +2078,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
       H.push('<button class="btn danger tiny" type="button" data-act="del-order" data-o="' + o.id + '">Удалить</button>');
     } else {
       if(o.payStatus !== 'paid') H.push('<button class="btn tiny" type="button" data-act="pay" data-o="' + o.id + '">Оплатить ' + (o.price ? money(Math.max(o.price - o.paid, Math.round(o.price/2))) : '') + '</button>');
-      H.push('<a class="btn ghost tiny" href="' + TG_URL + '" target="_blank" rel="noopener" data-goal="tg_click">Написать в Telegram</a>');
+      H.push('<button class="btn ghost tiny" type="button" data-act="view" data-view="support">Написать в чат</button>');
       if(o.stage >= 4) H.push('<button class="btn ghost tiny" type="button" data-act="accept" data-o="' + o.id + '">Принять работу</button>');
     }
     H.push('</div></div>');
@@ -2097,13 +2096,13 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     var orders = userOrders(u.id), H = [];
     var active = orders.filter(function(o){ return o.stage < 5; });
     var done = orders.filter(function(o){ return o.stage === 5; });
-    var allFiles = []; orders.forEach(function(o){ o.files.forEach(function(f){ allFiles.push({f:f,o:o}); }); });
+    var allFiles = []; orders.forEach(function(o){ orderFiles(o.id).forEach(function(f){ allFiles.push({f:f,o:o}); }); });
     var totalPaid = orders.reduce(function(s,o){ return s + (Number(o.paid)||0); }, 0);
     var totalDue = orders.reduce(function(s,o){ return s + Math.max((Number(o.price)||0) - (Number(o.paid)||0), 0); }, 0);
     var nearest = active.filter(function(o){ return o.deadline; }).sort(function(a,b){ return a.deadline-b.deadline; })[0];
 
     if(cabView === 'overview'){
-      H.push('<div class="cab-h"><h2>Здравствуйте, ' + esc(u.name.split(' ')[0]) + '!</h2><p>Здесь виден статус каждого заказа, файлы и оплаты. Данные обновляются сразу, как я меняю этап работы.</p></div>');
+      H.push('<div class="cab-h"><h2>Здравствуйте, ' + esc(u.name.split(' ')[0]) + '!</h2><p>Кабинет работает через общую базу: статусы, файлы и чат одинаковы на любом устройстве, где вы вошли.</p></div>');
       H.push('<div class="kpis">' + kpi('Активных заказов', active.length, 'в работе сейчас')
         + kpi('Завершено', done.length, 'сдано под ключ')
         + kpi('Ближайшая сдача', nearest ? (daysLeft(nearest.deadline) < 0 ? 'просрочено' : daysLeft(nearest.deadline) + ' дн') : '—', nearest ? nearest.title : 'нет активных дедлайнов')
@@ -2124,13 +2123,13 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
       }
       H.push('<div class="blk"><h3>Быстрые действия</h3><div style="display:flex;gap:10px;flex-wrap:wrap">'
         + '<button class="btn small" type="button" data-act="new-order">Новый заказ</button>'
-        + '<a class="btn small ghost" href="' + TG_URL + '" target="_blank" rel="noopener" data-goal="tg_click">Написать в Telegram</a>'
-        + '<button class="btn small ghost" type="button" data-act="view" data-view="support">Чат поддержки</button></div></div>');
+        + '<button class="btn small ghost" type="button" data-act="view" data-view="support">Чат с исполнителем</button>'
+        + '<a class="btn small ghost" href="' + TG_URL + '" target="_blank" rel="noopener" data-goal="tg_click">Telegram</a></div></div>');
     }
 
     if(cabView === 'orders'){
       H.push('<div class="cab-h"><h2>Мои заказы</h2><p>Всего: ' + orders.length + ' · активных: ' + active.length + '</p></div>');
-      if(!orders.length) H.push('<div class="blk"><div class="empty"><b>Заказов пока нет</b>Как только вы оставите заявку на сайте, она появится здесь.<button class="btn" type="button" data-act="new-order">Оставить заявку</button></div></div>');
+      if(!orders.length) H.push('<div class="blk"><div class="empty"><b>Заказов пока нет</b>Как только вы оставите заявку и зарегистрируетесь, заказ появится здесь.<button class="btn" type="button" data-act="new-order">Оставить заявку</button></div></div>');
       else { H.push('<div class="blk">'); orders.forEach(function(o){ H.push(orderCard(o,'client',{})); }); H.push('</div>'); }
     }
 
@@ -2157,10 +2156,10 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
       H.push('</tbody></table></div></div>');
     }
 
-    if(cabView === 'support') H.push(chatView(u, u.id));
+    if(cabView === 'support') H.push(chatView(u, u.id, 'client'));
 
     if(cabView === 'profile'){
-      H.push('<div class="cab-h"><h2>Профиль</h2><p>Контактные данные и доступ к кабинету.</p></div>');
+      H.push('<div class="cab-h"><h2>Профиль</h2><p>Контактные данные и доступ к кабинету хранятся на сервере — вход работает с любого устройства.</p></div>');
       H.push('<div class="two-col"><div class="blk"><h3>Данные</h3><div class="auth-form">'
         + '<div class="field"><label>Имя</label><input type="text" id="pfName" value="' + esc(u.name) + '"></div>'
         + '<div class="field"><label>E-mail или Telegram</label><input type="text" value="' + esc(u.contact) + '" disabled></div>'
@@ -2169,53 +2168,58 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
         + '<div class="field"><label>Новый пароль</label><input type="password" id="pfPass" placeholder="Минимум 6 символов"></div>'
         + '<div class="field"><label>Повторите пароль</label><input type="password" id="pfPass2"></div>'
         + '<button class="btn small ghost" type="button" data-act="change-pass">Изменить пароль</button></div></div></div>');
-      H.push('<div class="blk"><h3>Источник перехода</h3><p style="color:var(--muted);font-size:13.5px">Визит: <b style="color:var(--acc2)">' + esc(utmLabel()) + '</b>'
-        + (utmStore.first && Object.keys(utmStore.first).length ? '<br>Первое касание: <b style="color:var(--acc2)">' + esc(JSON.stringify(utmStore.first)) + '</b>' : '')
-        + '<br>Эти данные видны исполнителю, чтобы понимать, какая реклама работает.</p></div>');
     }
     return H;
   }
 
-  function chatView(u, peerId){
-    var d = loadDB(), msgs = d.messages[peerId] || [];
-    var H = ['<div class="cab-h"><h2>' + (u.role === 'admin' ? 'Переписка с клиентом' : 'Поддержка') + '</h2><p>' + (u.role === 'admin' ? 'Ответы дублируйте в Telegram — так быстрее.' : 'Отвечаю в течение ~5 минут в рабочее время. Срочное — в Telegram.') + '</p></div>'];
-    H.push('<div class="blk"><h3>Чат ' + (u.role === 'admin' ? '· ' + esc((getAccount(peerId)||{}).name||peerId) : '') + '</h3><div class="chat"><div class="chat-log" id="chatLog">');
-    if(!msgs.length) H.push('<div class="empty" style="padding:24px"><b>Сообщений пока нет</b>Напишите первым — я отвечу здесь и в Telegram.</div>');
+  function chatView(u, peerId, myRole){
+    var msgs = userMessages(peerId);
+    var peerName = myRole === 'admin' ? ((getAccount(peerId)||{}).name || 'Клиент') : 'Алексей (исполнитель)';
+    var H = ['<div class="cab-h"><h2>' + (myRole === 'admin' ? 'Переписка с клиентом' : 'Чат с исполнителем') + '</h2><p>Сообщения хранятся на сервере: собеседник увидит их с любого устройства. Обновление каждые ~25 секунд.</p></div>'];
+    H.push('<div class="blk"><h3>Чат · ' + esc(peerName) + '</h3><div class="chat"><div class="chat-log" id="chatLog">');
+    if(!msgs.length) H.push('<div class="empty" style="padding:24px"><b>Сообщений пока нет</b>Напишите первым — ответ придёт сюда и продублируется уведомлением.</div>');
     msgs.forEach(function(m){
-      var mine = (u.role === 'admin') ? m.from === 'admin' : m.from === 'client';
-      H.push('<div class="bub' + (mine ? ' me' : '') + '">' + esc(m.text) + '<em>' + esc(m.from === 'admin' ? 'Алексей' : ((getAccount(peerId)||{}).name||'Клиент')) + ' · ' + fmtDate(m.date) + '</em></div>');
+      var mine = m.from === myRole;
+      H.push('<div class="bub' + (mine ? ' me' : '') + '">' + esc(m.text) + '<em>' + esc(m.from === 'admin' ? 'Алексей' : ((getAccount(peerId)||{}).name || 'Клиент')) + ' · ' + fmtDate(m.date) + '</em></div>');
     });
     H.push('</div><form class="chat-form" id="chatForm"><textarea id="chatText" placeholder="Сообщение…"></textarea><button class="btn small" type="submit">Отправить</button></form></div></div>');
-    if(u.role !== 'admin') H.push('<div class="blk"><h3>Другие каналы</h3><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn small ghost" href="' + TG_URL + '" target="_blank" rel="noopener" data-goal="tg_click">Telegram @' + esc(TG_USER) + '</a><a class="btn small ghost" href="mailto:' + EMAIL + '">Почта</a></div></div>');
+    if(myRole === 'client') H.push('<div class="blk"><h3>Другие каналы</h3><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn small ghost" href="' + TG_URL + '" target="_blank" rel="noopener" data-goal="tg_click">Telegram @' + esc(TG_USER) + '</a><a class="btn small ghost" href="mailto:' + EMAIL + '">Почта</a></div></div>');
+    setTimeout(function(){
+      srv('msgRead', {userId:peerId, from: myRole === 'admin' ? 'client' : 'admin'}, function(){});
+    }, 500);
     return H;
   }
 
   function adminView(u){
-    var d = loadDB(), H = [];
-    var leads = d.leads, newLeads = leads.filter(function(l){ return l.status === 'new'; });
-    var clients = d.accounts.filter(function(a){ return a.role === 'client'; });
-    var orders = d.orders.slice().sort(function(a,b){ return b.updated-a.updated; });
+    var H = [];
+    var leads = db().leads, newLeads = leads.filter(function(l){ return l.status === 'new'; });
+    var clients = db().accounts.filter(function(a){ return a.role === 'client'; });
+    var orders = db().orders.slice();
     var activeOrders = orders.filter(function(o){ return o.stage < 5; });
     var revenue = orders.reduce(function(s,o){ return s + (Number(o.paid)||0); }, 0);
     var pipeline = orders.reduce(function(s,o){ return s + Math.max((Number(o.price)||0)-(Number(o.paid)||0),0); }, 0);
 
     if(cabView === 'overview'){
-      H.push('<div class="cab-h"><h2>Дашборд исполнителя</h2><p>Заявки с сайта (включая Директ), заказы, клиенты и оплаты — в одном окне.</p></div>');
+      H.push('<div class="cab-h"><h2>Дашборд исполнителя</h2><p>Заявки и регистрации со всех устройств и браузеров — в одной серверной базе.</p></div>');
       H.push('<div class="kpis">' + kpi('Новых заявок', newLeads.length, 'всего заявок: ' + leads.length)
         + kpi('Заказов в работе', activeOrders.length, 'всего: ' + orders.length)
         + kpi('Получено', money(revenue), 'к доплате ' + money(pipeline))
-        + kpi('Клиентов', clients.length, 'конверсия ' + (leads.length ? Math.round(orders.length/leads.length*100) : 0) + '%') + '</div>');
+        + kpi('Клиентов', clients.length, 'зарегистрировано в кабинете') + '</div>');
       H.push('<div class="two-col">');
       H.push('<div class="blk"><h3>Новые заявки ' + (newLeads.length ? '<span class="tag st-4">' + newLeads.length + '</span>' : '') + '<span class="h-act"><button class="btn ghost tiny" type="button" data-act="view" data-view="leads">Все заявки →</button></span></h3>');
-      if(!newLeads.length) H.push('<div class="empty" style="padding:24px"><b>Новых заявок нет</b>Как только придёт трафик из Директа — заявка появится здесь.</div>');
+      if(!newLeads.length) H.push('<div class="empty" style="padding:24px"><b>Новых заявок нет</b>Как только придёт трафик — заявки появятся здесь сами.</div>');
       newLeads.slice(0,4).forEach(function(l){ H.push(leadRow(l, true)); });
       H.push('</div>');
       H.push('<div class="blk"><h3>Требует внимания</h3>');
       var warn = orders.filter(function(o){ return o.stage < 5 && ((o.deadline && daysLeft(o.deadline) <= 2) || o.payStatus === 'checking'); });
-      if(!warn.length) H.push('<div class="empty" style="padding:24px"><b>Всё под контролем</b>Просроченных дедлайнов и непроверенных оплат нет.</div>');
-      warn.slice(0,5).forEach(function(o){
+      var unread = clients.filter(function(c){ return newMsgCount(c.id,'client') > 0; });
+      if(!warn.length && !unread.length) H.push('<div class="empty" style="padding:24px"><b>Всё под контролем</b>Просрочек, непроверенных оплат и непрочитанных чатов нет.</div>');
+      warn.slice(0,4).forEach(function(o){
         var acc = getAccount(o.userId) || {};
         H.push('<div class="file-row"><span class="fi">' + (o.payStatus==='checking' ? '₽' : '⏳') + '</span><span><b>' + esc(o.title) + '</b><span>' + esc(acc.name||'—') + ' · ' + (o.deadline ? (daysLeft(o.deadline)<0?'просрочен':'осталось '+daysLeft(o.deadline)+' дн') : 'дедлайн не задан') + (o.payStatus==='checking'?' · ждём подтверждение оплаты':'') + '</span></span><span class="fr-a"><button class="btn ghost tiny" type="button" data-act="view" data-view="orders">Открыть</button></span></div>');
+      });
+      unread.forEach(function(c){
+        H.push('<div class="file-row"><span class="fi">✆</span><span><b>' + esc(c.name) + '</b><span>непрочитанных сообщений в чате: ' + newMsgCount(c.id,'client') + '</span></span><span class="fr-a"><button class="btn ghost tiny" type="button" data-act="open-chat" data-u="' + c.id + '">Открыть чат</button></span></div>');
       });
       H.push('</div></div>');
       H.push('<div class="blk"><h3>Источники трафика (Директ / органика)</h3>' + trafficTable() + '</div>');
@@ -2226,15 +2230,15 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     }
 
     if(cabView === 'leads'){
-      H.push('<div class="cab-h"><h2>Заявки с сайта</h2><p>Каждая заявка сохраняет utm-метки и yclid — видно, какое объявление Директа привело клиента. Дублируются в Google-таблицу Leads и в Telegram.</p></div>');
+      H.push('<div class="cab-h"><h2>Заявки с сайта</h2><p>Все заявки со всех устройств: utm-метки, yclid, бриф. Дублируются в Google-таблицу Leads и в Telegram.</p></div>');
       H.push('<div class="blk"><h3>Всего: ' + leads.length + ' · новых: ' + newLeads.length + '<span class="h-act"><button class="btn ghost tiny" type="button" data-act="export-leads">Экспорт CSV</button></span></h3>');
-      if(!leads.length) H.push('<div class="empty"><b>Заявок пока нет</b>Подключите счётчик Метрики (METRIKA_ID) и запустите кампанию — заявки начнут падать сюда.</div>');
+      if(!leads.length) H.push('<div class="empty"><b>Заявок пока нет</b>Запустите трафик — заявки начнут падать сюда.</div>');
       leads.forEach(function(l){ H.push(leadRow(l, false)); });
       H.push('</div>');
     }
 
     if(cabView === 'orders'){
-      H.push('<div class="cab-h"><h2>Все заказы</h2><p>Меняйте этап, цену, добавляйте файлы и комментарии — клиент увидит это сразу.</p></div>');
+      H.push('<div class="cab-h"><h2>Все заказы</h2><p>Меняйте этап, цену, добавляйте файлы и комментарии — клиент увидит изменения сразу, с любого устройства.</p></div>');
       H.push('<div class="blk"><h3>Заказов: ' + orders.length + '<span class="h-act"><button class="btn tiny" type="button" data-act="new-order">Создать заказ</button></span></h3>');
       if(!orders.length) H.push('<div class="empty"><b>Заказов нет</b>Создайте вручную или конвертируйте заявку.</div>');
       orders.forEach(function(o){ H.push(orderCard(o,'admin',{showClient:true})); });
@@ -2242,12 +2246,12 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     }
 
     if(cabView === 'clients'){
-      H.push('<div class="cab-h"><h2>Клиенты</h2><p>Аккаунты кабинета, их заказы и быстрые действия.</p></div>');
+      H.push('<div class="cab-h"><h2>Клиенты</h2><p>Зарегистрированные аккаунты кабинета: заказы, оплаты, чаты.</p></div>');
       H.push('<div class="blk"><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Клиент</th><th>Контакт</th><th>Заказов</th><th>Оплачено</th><th>Непрочитано</th><th></th></tr></thead><tbody>');
-      if(!clients.length) H.push('<tr><td colspan="6" style="color:var(--muted)">Клиентов пока нет</td></tr>');
+      if(!clients.length) H.push('<tr><td colspan="6" style="color:var(--muted)">Клиентов пока нет — регистрации появятся здесь</td></tr>');
       clients.forEach(function(c){
         var co = userOrders(c.id), cp = co.reduce(function(s,o){ return s+(Number(o.paid)||0); },0);
-        H.push('<tr><td><b>' + esc(c.name) + '</b><br><span style="color:var(--muted);font-size:12px">с ' + fmtDay(c.created) + '</span></td><td>' + esc(c.contact) + '</td><td>' + co.length + '</td><td>' + money(cp) + '</td><td>' + (newMsgCount(c.id)||'—') + '</td>'
+        H.push('<tr><td><b>' + esc(c.name) + '</b><br><span style="color:var(--muted);font-size:12px">с ' + fmtDay(c.created) + '</span></td><td>' + esc(c.contact) + '</td><td>' + co.length + '</td><td>' + money(cp) + '</td><td>' + (newMsgCount(c.id,'client')||'—') + '</td>'
           + '<td><div class="td-a"><button class="btn ghost tiny" type="button" data-act="open-chat" data-u="' + c.id + '">Чат</button>'
           + '<a class="btn ghost tiny" href="https://t.me/' + esc(String(c.contact).replace(/^@/,'')) + '" target="_blank" rel="noopener">TG</a></div></td></tr>');
       });
@@ -2255,48 +2259,47 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     }
 
     if(cabView === 'support'){
-      if(!cabCtx){ var first = clients.filter(function(c){ return (d.messages[c.id]||[]).length; })[0] || clients[0]; cabCtx = first ? first.id : null; }
-      H.push('<div class="cab-h"><h2>Переписка с клиентами</h2><p>Выберите клиента в списке, чтобы открыть диалог.</p></div>');
+      if(!cabCtx){ var first = clients.filter(function(c){ return userMessages(c.id).length; })[0] || clients[0]; cabCtx = first ? first.id : null; }
+      H.push('<div class="cab-h"><h2>Переписка с клиентами</h2><p>Выберите клиента, чтобы открыть диалог. Новые сообщения клиентов подсвечиваются счётчиком.</p></div>');
       H.push('<div class="two-col" style="grid-template-columns:260px 1fr;align-items:start">');
       H.push('<div class="blk"><h3>Диалоги</h3>');
       if(!clients.length) H.push('<p style="color:var(--muted);font-size:13px">Клиентов пока нет</p>');
       clients.forEach(function(c){
-        var mm = d.messages[c.id] || [], last = mm[mm.length-1];
+        var mm = userMessages(c.id), last = mm[mm.length-1];
         H.push('<button class="side-btn' + (cabCtx === c.id ? ' active' : '') + '" type="button" data-act="open-chat" data-u="' + c.id + '" style="margin-bottom:6px">'
           + '<span class="sb-i">' + esc(initials(c.name)) + '</span><span style="min-width:0"><b style="display:block;font-size:13px;overflow:hidden;text-overflow:ellipsis">' + esc(c.name) + '</b>'
           + '<span style="display:block;font-size:11.5px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + esc(last ? last.text : 'нет сообщений') + '</span></span>'
-          + (newMsgCount(c.id) ? '<span class="sb-b">' + newMsgCount(c.id) + '</span>' : '') + '</button>');
+          + (newMsgCount(c.id,'client') ? '<span class="sb-b">' + newMsgCount(c.id,'client') + '</span>' : '') + '</button>');
       });
-      H.push('</div><div>' + (cabCtx ? chatView(u, cabCtx) : '<div class="blk"><div class="empty"><b>Выберите диалог</b></div></div>') + '</div></div>');
+      H.push('</div><div>' + (cabCtx ? chatView(u, cabCtx, 'admin') : '<div class="blk"><div class="empty"><b>Выберите диалог</b></div></div>') + '</div></div>');
     }
 
     if(cabView === 'settings'){
-      H.push('<div class="cab-h"><h2>Настройки и интеграция с Яндекс.Директом</h2><p>Что нужно сделать, чтобы реклама и кабинет работали как единая система.</p></div>');
+      H.push('<div class="cab-h"><h2>Настройки и интеграция с Яндекс.Директом</h2><p>Серверная база кабинета живёт в Google-таблице «ALsoLo Cabinet DB» (вкладки accounts, orders, files, comments, messages, leads).</p></div>');
       H.push('<div class="two-col">');
       H.push('<div class="blk"><h3>Чек-лист запуска Директа</h3><div class="chk-line">'
         + '<label><input type="checkbox" ' + (METRIKA_ID?'checked':'') + ' disabled>Счётчик Метрики установлен (METRIKA_ID = ' + (METRIKA_ID||'не задан') + ')</label>'
         + '<label><input type="checkbox" checked disabled>Цели созданы: lead_card, lead_pres, lead_feedback</label>'
         + '<label><input type="checkbox" checked disabled>Микроцели: tg_click, mail_click, cab_register, pay_intent</label>'
         + '<label><input type="checkbox" checked disabled>UTM-метки и yclid сохраняются в каждой заявке</label>'
-        + '<label><input type="checkbox" ' + (BACKEND.enabled?'checked':'') + ' disabled>Приём заявок: Google Apps Script (Telegram + таблица Leads)</label>'
-        + '<label><input type="checkbox" checked disabled>Политика конфиденциальности и согласие в формах (требование Директа)</label>'
-        + '<label><input type="checkbox" checked disabled>Мобильная версия и быстрая загрузка (проверьте Вебвизором)</label>'
-        + '</div><p style="color:var(--muted);font-size:13px;margin-top:12px">В кампании Директа в поле «Цель» указывайте <b style="color:var(--acc2)">lead_card</b> или <b style="color:var(--acc2)">lead_pres</b> — тогда автостратегии оптимизируются под реальные заявки, а не под клики.</p></div>');
-      H.push('<div class="blk"><h3>Куда вписать параметры</h3><p style="color:var(--muted);font-size:13px">Все настройки — в начале &lt;script&gt; в блоке «1. НАСТРОЙКИ»:</p><pre style="white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px;font-size:12px;color:#d8d2c9;font-family:ui-monospace,monospace">METRIKA_ID = 00000000;   // номер счётчика\nBACKEND.leadsUrl = "https://script.google.com/.../exec";</pre>'
-        + '<p style="color:var(--muted);font-size:13px;margin-top:10px">Заявки уходят в Google-таблицу Leads и ботом в Telegram с любого устройства и браузера. Кабинет пока хранится локально в браузере — для общей базы подключим сервер следующим шагом.</p></div>');
+        + '<label><input type="checkbox" checked disabled>Приём заявок: Apps Script (Telegram + таблица Leads)</label>'
+        + '<label><input type="checkbox" checked disabled>Кабинет: общая серверная база (аккаунты, заказы, чат)</label>'
+        + '<label><input type="checkbox" checked disabled>Политика конфиденциальности и согласие в формах</label>'
+        + '</div><p style="color:var(--muted);font-size:13px;margin-top:12px">В кампании Директа в поле «Цель» указывайте <b style="color:var(--acc2)">lead_card</b> или <b style="color:var(--acc2)">lead_pres</b>.</p></div>');
+      H.push('<div class="blk"><h3>Куда вписать параметры</h3><p style="color:var(--muted);font-size:13px">Все настройки — в начале &lt;script&gt; в блоке «1. НАСТРОЙКИ»:</p><pre style="white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px;font-size:12px;color:#d8d2c9;font-family:ui-monospace,monospace">METRIKA_ID = 00000000;   // номер счётчика\nCAB_KEY = "..."          // должен совпадать с Apps Script\nBACKEND.leadsUrl = "https://script.google.com/.../exec";</pre>'
+        + '<p style="color:var(--muted);font-size:13px;margin-top:10px">Пароли хранятся в виде хешей, база — в вашей Google-таблице. Резервная копия = экспорт CSV/JSON плюс сама таблица.</p></div>');
       H.push('</div>');
       H.push('<div class="blk"><h3>Данные кабинета<span class="h-act">'
         + '<button class="btn ghost tiny" type="button" data-act="export-db">Экспорт JSON</button>'
-        + '<button class="btn ghost tiny" type="button" data-act="import-db">Импорт JSON</button>'
-        + '<button class="btn danger tiny" type="button" data-act="reset-demo">Сбросить демо-данные</button></span></h3>'
-        + '<p style="color:var(--muted);font-size:13px">Аккаунтов: ' + d.accounts.length + ' · заказов: ' + d.orders.length + ' · заявок: ' + d.leads.length + '. Экспорт делайте регулярно — это ваша резервная копия.</p></div>');
+        + '<button class="btn danger tiny" type="button" data-act="reset-demo">Сбросить серверную базу</button></span></h3>'
+        + '<p style="color:var(--muted);font-size:13px">Аккаунтов: ' + db().accounts.length + ' · заказов: ' + db().orders.length + ' · заявок: ' + db().leads.length + '. Сброс очищает сервер и возвращает только аккаунт админа.</p></div>');
       H.push('<div class="blk"><h3>Ваш доступ (логин и пароль)</h3><div class="two-col">'
         + '<div class="auth-form"><div class="field"><label>Логин (e-mail или Telegram)</label><input type="text" id="admLogin" value="' + esc(u.contact) + '"></div>'
         + '<button class="btn small" type="button" data-act="save-admin-login">Сохранить логин</button></div>'
         + '<div class="auth-form"><div class="field"><label>Новый пароль</label><input type="password" id="admPass" placeholder="Минимум 6 символов"></div>'
         + '<div class="field"><label>Повторите пароль</label><input type="password" id="admPass2"></div>'
         + '<button class="btn small ghost" type="button" data-act="save-admin-pass">Изменить пароль</button></div></div>'
-        + '<p style="color:var(--muted);font-size:12.5px;margin-top:12px">Каждая кнопка сохраняет своё поле и показывает всплывашку-подтверждение. Логин и пароль хранятся в этом браузере; для работы с нескольких устройств подключим серверную базу следующим шагом.</p></div>');
+        + '<p style="color:var(--muted);font-size:12.5px;margin-top:12px">Изменения сохраняются на сервере: новый логин/пароль будут работать на любом устройстве.</p></div>');
     }
     return H;
   }
@@ -2321,9 +2324,9 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   }
 
   function trafficTable(){
-    var d = loadDB(), map = {};
+    var map = {};
     function key(u){ return (u && u.utm_source) ? ((u.utm_source||'—') + ' / ' + (u.utm_campaign||'—')) : 'органика / прямой заход'; }
-    d.leads.forEach(function(l){
+    db().leads.forEach(function(l){
       var k = key(l.utm), m = map[k] || (map[k] = {src:k, leads:0, conv:0});
       m.leads++; if(l.status === 'converted') m.conv++;
     });
@@ -2339,12 +2342,11 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   }
 
   /* =====================================================
-     12. КАБИНЕТ: ДЕЙСТВИЯ
+     13. КАБИНЕТ: ДЕЙСТВИЯ
      ===================================================== */
   function downloadFile(order, f){
     if(f.url && /^(https?:|data:)/i.test(f.url)){ window.open(f.url, '_blank', 'noopener'); return; }
-    var txt = 'ALsoLo — файл заказа\n\nЗаказ: ' + order.title + '\nФайл: ' + f.name + '\nДата: ' + fmtDate(f.date) + '\n\n'
-      + 'Это заглушка: подключите хранилище (BACKEND.filesUrl) или впишите прямую ссылку на файл при добавлении.';
+    var txt = 'ALsoLo — файл заказа\n\nЗаказ: ' + order.title + '\nФайл: ' + f.name + '\nДата: ' + fmtDate(f.date) + '\n\nЭто заглушка: впишите прямую ссылку на файл при добавлении или подключите хранилище.';
     var blob = new Blob([txt], {type:'text/plain;charset=utf-8'});
     var a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
@@ -2360,7 +2362,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   }
   function exportCSV(){
     var rows = [['Дата','Имя','Контакт','Тип','Статус','utm_source','utm_medium','utm_campaign','utm_term','yclid']];
-    loadDB().leads.forEach(function(l){
+    db().leads.forEach(function(l){
       var u = l.utm || {};
       rows.push([fmtDate(l.created), l.name, l.contact, l.type, l.status, u.utm_source||'', u.utm_medium||'', u.utm_campaign||'', u.utm_term||'', u.yclid||'']);
     });
@@ -2379,163 +2381,169 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   cabMain.addEventListener('click', function(e){
     var el = e.target, u = currentUser(); if(!u) return;
     var b = el.closest('[data-act]'); if(!b) return;
-    var act = b.dataset.act, d = loadDB();
+    var act = b.dataset.act;
 
+    if(act === 'retry'){ openCab(); return; }
     if(act === 'view'){ cabView = b.dataset.view; cabCtx = null; renderCab(); return; }
-    if(act === 'new-order'){ closeCab(); setTab('card'); scrollToId('order'); toast('Заполните форму — заказ появится в кабинете'); return; }
-    if(act === 'open-chat'){ cabCtx = b.dataset.u; cabView = 'support'; var mm0 = d.messages[cabCtx]; if(mm0) mm0.forEach(function(x){ x.read = true; }); saveDB(); renderCab(); return; }
-    if(act === 'dl-file'){ var o1 = getOrder(b.dataset.o); if(!o1) return; var f1 = o1.files.filter(function(x){ return x.id === b.dataset.f; })[0]; if(f1) downloadFile(o1, f1); return; }
-    if(act === 'del-file'){ var o2 = getOrder(b.dataset.o); if(!o2) return; o2.files = o2.files.filter(function(x){ return x.id !== b.dataset.f; }); o2.updated = nowTs(); saveDB(); renderCab(); toast('Файл удалён'); return; }
-
+    if(act === 'new-order'){ closeCab(); setTab('card'); scrollToId('order'); toast('Заполните форму — заявка придёт ко мне и станет заказом после регистрации'); return; }
+    if(act === 'open-chat'){ cabCtx = b.dataset.u; cabView = 'support'; renderCab(); return; }
+    if(act === 'dl-file'){ var o1 = getOrder(b.dataset.o); if(!o1) return; var f1 = orderFiles(o1.id).filter(function(x){ return x.id === b.dataset.f; })[0]; if(f1) downloadFile(o1, f1); return; }
+    if(act === 'del-file'){
+      var o2 = getOrder(b.dataset.o); if(!o2) return;
+      db().files = db().files.filter(function(x){ return x.id !== b.dataset.f; });
+      push('fileDel', {id:b.dataset.f});
+      o2.updated = nowTs(); push('orderSave', {order:o2});
+      renderCab(); toast('Файл удалён'); return;
+    }
     if(act === 'add-file'){
       var o3 = getOrder(b.dataset.o); if(!o3) return;
       var nm = (q('#fn-' + o3.id)||{}).value || '', ur = (q('#fu-' + o3.id)||{}).value || '';
       nm = nm.trim(); if(!nm){ toast('Укажите имя файла'); return; }
       addFile(o3, nm, ur.trim(), '');
-      addComment(o3, 'admin', 'Алексей', 'Добавил файл: ' + nm);
+      addComment(o3, 'admin', u.name, 'Добавил файл: ' + nm);
       renderCab(); toast('Файл добавлен — клиент его видит');
       return;
     }
-
     if(act === 'add-cmt'){
       var o4 = getOrder(b.dataset.o); if(!o4) return;
       var ta = q('#cm-' + o4.id), txt = (ta && ta.value || '').trim();
       if(!txt){ toast('Введите сообщение'); return; }
-      var isAdmin = u.role === 'admin';
-      addComment(o4, isAdmin ? 'admin' : 'client', u.name, txt);
-      if(!isAdmin){ var arr = d.messages[o4.userId] || (d.messages[o4.userId] = []); arr.push({from:'client', text:txt, date:nowTs()}); saveDB(); }
+      addComment(o4, u.role === 'admin' ? 'admin' : 'client', u.name, txt);
       renderCab(); toast('Сообщение отправлено');
       return;
     }
-
     if(act === 'save-order'){
       var o5 = getOrder(b.dataset.o); if(!o5) return;
       var sel = q('select[data-act-sel="stage"][data-o="' + o5.id + '"]');
       var inp = q('input[data-act-inp="price"][data-o="' + o5.id + '"]');
-      if(sel){ var ns = parseInt(sel.value,10); if(ns !== o5.stage){ o5.stage = ns; addComment(o5,'admin','Алексей','Этап изменён на «' + STAGES[ns] + '»'); } }
+      if(sel){ var ns = parseInt(sel.value,10); if(ns !== o5.stage){ o5.stage = ns; addComment(o5,'admin',u.name,'Этап изменён на «' + ['Заявка','Бриф и ТЗ','Эскиз','Правки','Сдача','Закрыт'][ns] + '»'); } }
       if(inp){ o5.price = Math.max(0, Number(inp.value)||0); }
-      o5.updated = nowTs(); saveDB(); renderCab(); toast('Заказ обновлён');
+      o5.updated = nowTs();
+      push('orderSave', {order:o5});
+      renderCab(); toast('Заказ обновлён — клиент видит изменения');
       return;
     }
-
     if(act === 'mark-paid'){
       var o6 = getOrder(b.dataset.o); if(!o6) return;
       o6.payStatus = 'paid'; o6.paid = o6.price || o6.paid; o6.updated = nowTs();
-      addComment(o6,'admin','Алексей','Оплата получена, чек отправлю в Telegram.');
-      saveDB(); renderCab(); reachGoal('pay_confirmed'); toast('Отмечено как оплачено');
+      addComment(o6,'admin',u.name,'Оплата получена, чек отправлю в Telegram.');
+      push('orderSave', {order:o6});
+      renderCab(); reachGoal('pay_confirmed'); toast('Отмечено как оплачено');
       return;
     }
-    if(act === 'unpay'){ var o7 = getOrder(b.dataset.o); if(!o7) return; o7.payStatus='await'; o7.updated=nowTs(); saveDB(); renderCab(); toast('Отметка снята'); return; }
-
+    if(act === 'unpay'){ var o7 = getOrder(b.dataset.o); if(!o7) return; o7.payStatus='await'; o7.updated=nowTs(); push('orderSave',{order:o7}); renderCab(); toast('Отметка снята'); return; }
     if(act === 'del-order'){
       var o8 = getOrder(b.dataset.o); if(!o8) return;
       if(!confirm('Удалить заказ «' + o8.title + '»?')) return;
-      d.orders = d.orders.filter(function(x){ return x.id !== o8.id; }); saveDB(); renderCab(); toast('Заказ удалён'); return;
+      db().orders = db().orders.filter(function(x){ return x.id !== o8.id; });
+      push('orderDel', {id:o8.id});
+      renderCab(); toast('Заказ удалён'); return;
     }
-
     if(act === 'pay'){
       currentOrderId = b.dataset.o;
       var o9 = getOrder(currentOrderId); if(!o9) return;
       var due = o9.price ? Math.max(o9.price - (o9.paid||0), Math.round(o9.price/2)) : 0;
-      q('#paySum').textContent = due ? money(due) : 'Сумму согласуем в Telegram';
+      q('#paySum').textContent = due ? money(due) : 'Сумму согласуем в чате';
       q('#payModal').classList.add('show');
       reachGoal('pay_intent', {order:o9.title});
       return;
     }
-
     if(act === 'accept'){
       var o10 = getOrder(b.dataset.o); if(!o10) return;
       o10.stage = 5; o10.updated = nowTs();
       addComment(o10,'client',u.name,'Работу принял(а), всё отлично. Спасибо!');
-      saveDB(); renderCab(); reachGoal('order_accepted'); toast('Спасибо! Заказ отмечен как принятый');
+      push('orderSave', {order:o10});
+      renderCab(); reachGoal('order_accepted'); toast('Спасибо! Заказ отмечен как принятый');
       return;
     }
-
     if(act === 'save-profile'){
       var nm2 = (q('#pfName')||{}).value || ''; nm2 = nm2.trim();
       if(!nm2){ toast('Имя не может быть пустым'); return; }
-      u.name = nm2; saveDB(); renderCab(); toast('Профиль сохранён'); return;
+      u.name = nm2; setSession(u);
+      push('accountSave', {account:u});
+      renderCab(); toast('Профиль сохранён на сервере'); return;
     }
     if(act === 'change-pass'){
       var p1 = (q('#pfPass')||{}).value||'', p2 = (q('#pfPass2')||{}).value||'';
       if(p1.length < 6){ toast('Пароль минимум 6 символов'); return; }
       if(p1 !== p2){ toast('Пароли не совпадают'); return; }
-      u.pass = hashPass(p1); saveDB(); renderCab(); toast('Пароль изменён ✔'); return;
+      u.pass = hashPass(p1);
+      push('accountSave', {account:u});
+      renderCab(); toast('Пароль изменён на сервере ✔'); return;
     }
-
     if(act === 'save-admin-login'){
       var nl = (q('#admLogin')||{}).value||''; nl = nl.trim();
       if(!nl){ toast('Логин не может быть пустым'); return; }
-      var busy = findAccount(nl);
-      if(busy && busy.id !== u.id){ toast('Такой логин уже занят другим аккаунтом'); return; }
-      u.contact = nl; saveDB(); renderCab(); toast('Логин изменён: ' + nl); return;
+      var busy = db().accounts.filter(function(a){ return norm(a.contact) === norm(nl) && a.id !== u.id; })[0];
+      if(busy){ toast('Такой логин уже занят другим аккаунтом'); return; }
+      u.contact = nl; setSession(u);
+      push('accountSave', {account:u});
+      renderCab(); toast('Логин изменён: ' + nl); return;
     }
     if(act === 'save-admin-pass'){
       var a1 = (q('#admPass')||{}).value||'', a2 = (q('#admPass2')||{}).value||'';
       if(a1.length < 6){ toast('Пароль минимум 6 символов'); return; }
       if(a1 !== a2){ toast('Пароли не совпадают'); return; }
-      u.pass = hashPass(a1); saveDB(); renderCab(); toast('Пароль изменён ✔'); return;
+      u.pass = hashPass(a1);
+      push('accountSave', {account:u});
+      renderCab(); toast('Пароль изменён ✔'); return;
     }
-
-    if(act === 'lead-copy'){ var l1 = d.leads.filter(function(x){ return x.id === b.dataset.l; })[0]; if(l1) copyText(l1.brief || JSON.stringify(l1.fields,null,2)); return; }
-    if(act === 'lead-done'){ var l2 = d.leads.filter(function(x){ return x.id === b.dataset.l; })[0]; if(l2){ l2.status='done'; saveDB(); renderCab(); toast('Заявка отмечена обработанной'); } return; }
-    if(act === 'lead-del'){ if(!confirm('Удалить заявку?')) return; d.leads = d.leads.filter(function(x){ return x.id !== b.dataset.l; }); saveDB(); renderCab(); toast('Заявка удалена'); return; }
+    if(act === 'lead-copy'){ var l1 = db().leads.filter(function(x){ return x.id === b.dataset.l; })[0]; if(l1) copyText(l1.brief || JSON.stringify(l1.fields,null,2)); return; }
+    if(act === 'lead-done'){
+      var l2 = db().leads.filter(function(x){ return x.id === b.dataset.l; })[0];
+      if(l2){ l2.status='done'; push('leadUpdate',{lead:l2}); renderCab(); toast('Заявка отмечена обработанной'); }
+      return;
+    }
+    if(act === 'lead-del'){
+      if(!confirm('Удалить заявку?')) return;
+      db().leads = db().leads.filter(function(x){ return x.id !== b.dataset.l; });
+      push('leadDel', {id:b.dataset.l});
+      renderCab(); toast('Заявка удалена'); return;
+    }
     if(act === 'lead-order'){
-      var l3 = d.leads.filter(function(x){ return x.id === b.dataset.l; })[0]; if(!l3) return;
-      var accs = d.accounts.filter(function(a){ return a.role === 'client'; });
-      var target = null;
-      for(var i=0;i<accs.length;i++){ if(norm(accs[i].contact) === norm(l3.contact) || norm(accs[i].name) === norm(l3.name)){ target = accs[i]; break; } }
+      var l3 = db().leads.filter(function(x){ return x.id === b.dataset.l; })[0]; if(!l3) return;
+      var target = db().accounts.filter(function(a){ return a.role === 'client' && (norm(a.contact) === norm(l3.contact) || norm(a.name) === norm(l3.name)); })[0];
+      var tempPass = null;
       if(!target){
-        var pass = Math.random().toString(36).slice(2,8);
-        target = {id:uid('u'), name:l3.name||'Клиент', contact:l3.contact||('client'+Date.now()+'@mail.ru'), pass:hashPass(pass), role:'client', created:nowTs(), tempPass:pass};
-        d.accounts.push(target);
+        tempPass = Math.random().toString(36).slice(2,8);
+        target = {id:uid('u'), name:l3.name||'Клиент', contact:l3.contact||('client'+Date.now()+'@mail.ru'), pass:hashPass(tempPass), role:'client', created:nowTs()};
+        db().accounts.push(target);
+        push('accountSave', {account:target});
       }
       var title = (l3.type === 'pres' ? 'Презентация: ' : (l3.type === 'feedback' ? 'Обращение: ' : 'Карточка товара: ')) + (l3.fields.category || l3.fields.goal || l3.fields.topic || 'заявка с сайта');
       createOrder({userId:target.id, title:title, type:l3.type === 'pres' ? 'pres' : 'card', tariff:l3.fields.tariff||'', brief:l3.brief||'', deadline:/Срочно/.test(l3.fields.deadline||'') ? nowTs()+2*86400000 : 0});
-      l3.status = 'converted'; l3.userId = target.id; saveDB();
+      l3.status = 'converted'; l3.userId = target.id;
+      push('leadUpdate', {lead:l3});
       renderCab();
-      toast(target.tempPass ? 'Заказ создан. Временный пароль клиента: ' + target.tempPass : 'Заказ создан и привязан к клиенту');
+      toast(tempPass ? 'Заказ создан. Временный пароль клиента: ' + tempPass : 'Заказ создан и привязан к клиенту');
       return;
     }
-
-    if(act === 'export-db'){ exportJSON('alsolo_cabinet_backup.json', d); toast('Резервная копия скачана'); return; }
+    if(act === 'export-db'){ exportJSON('alsolo_cabinet_backup.json', db()); toast('Резервная копия скачана'); return; }
     if(act === 'export-leads'){ exportCSV(); return; }
-    if(act === 'import-db'){
-      var inp2 = document.createElement('input'); inp2.type = 'file'; inp2.accept = '.json,application/json';
-      inp2.onchange = function(){
-        var file = inp2.files && inp2.files[0]; if(!file) return;
-        var fr = new FileReader();
-        fr.onload = function(){
-          try{
-            var obj = JSON.parse(fr.result);
-            if(!obj.accounts || !obj.orders) throw new Error('bad');
-            db = obj; db.leads = db.leads||[]; db.messages = db.messages||{}; db.session = u.id; saveDB(); renderCab(); toast('Данные импортированы');
-          }catch(err){ toast('Не удалось прочитать файл'); }
-        };
-        fr.readAsText(file);
-      };
-      inp2.click(); return;
-    }
     if(act === 'reset-demo'){
-      if(!confirm('Удалить все данные кабинета и вернуть стартовый набор?')) return;
-      db = seedDB(); db.session = u.role === 'admin' ? 'u_admin' : null; saveDB();
-      if(db.session) { renderCab(); } else { closeCab(); }
-      toast('Данные сброшены к стартовым'); return;
+      if(!confirm('Удалить ВСЕ данные кабинета на сервере (аккаунты, заказы, чаты, заявки)? Останется только админ.')) return;
+      srv('reset', {}, function(j, err){
+        if(!j){ toast('Ошибка сброса: ' + (err||'')); return; }
+        clearSession();
+        closeCab();
+        toast('Серверная база сброшена. Вход: admin@alsolo.ru / admin1234');
+      });
+      return;
     }
   });
 
   cabMain.addEventListener('submit', function(e){
     if(e.target.id !== 'chatForm') return;
     e.preventDefault();
-    var u = currentUser(), d = loadDB(); if(!u) return;
+    var u = currentUser(); if(!u) return;
     var ta = q('#chatText'), txt = (ta && ta.value || '').trim();
     var peer = cabCtx || u.id;
     if(!txt) return;
-    var arr = d.messages[peer] || (d.messages[peer] = []);
-    arr.push({from: u.role === 'admin' ? 'admin' : 'client', text: txt, date: nowTs(), read: u.role === 'admin'});
-    saveDB(); renderCab();
+    var msg = {id:uid('m'), userId:peer, from: u.role === 'admin' ? 'admin' : 'client', text:txt, date:nowTs(), read:false};
+    db().messages.push(msg);
+    push('msgAdd', {msg:msg});
+    renderCab();
     setTimeout(function(){ var log = q('#chatLog'); if(log) log.scrollTop = log.scrollHeight; }, 30);
-    if(u.role === 'client'){ var act = userOrders(u.id).filter(function(o){ return o.stage < 5; })[0]; if(act) addComment(act,'client',u.name,txt); }
   });
 
   q('#payConfirm').addEventListener('click', function(){
@@ -2543,36 +2551,37 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     var u = currentUser();
     o.payStatus = 'checking'; o.updated = nowTs();
     addComment(o, u && u.role === 'admin' ? 'admin' : 'client', (u||{}).name||'Клиент', 'Сообщил(а) об оплате — ожидаю подтверждения.');
-    saveDB();
+    push('orderSave', {order:o});
     q('#payModal').classList.remove('show');
     renderCab();
     reachGoal('pay_confirmed_client');
-    toast('Спасибо! Проверю поступление и отмечу оплату в кабинете.');
-    if(botEnabled()) sendToTelegram('💳 Клиент сообщил об оплате по заказу: ' + o.title + ((u&&u.contact)?' ('+u.contact+')':''));
+    toast('Спасибо! Проверю поступление и отмечу оплату.');
   });
 
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape' && cabEl.classList.contains('show')) closeCab();
   });
-
   document.addEventListener('click', function(e){
     var b = e.target.closest && e.target.closest('[data-act="logout"]'); if(!b) return;
-    var d = loadDB(); d.session = null; saveDB();
+    clearSession();
+    DB_CACHE = null; cabSnap = '';
     closeCab(); refreshCabBtn(); toast('Вы вышли из кабинета');
   });
 
   (function initCab(){
-    loadDB();
-    var u = currentUser();
+    var s = sessionObj();
     refreshCabBtn();
-    if(u){
-      setMetrikaUser(u.id, u.name);
-      var pend = null; try{ pend = JSON.parse(localStorage.getItem('alsolo_pending_brief')||'null'); }catch(e){}
-      if(pend){ takePendingBrief(u); }
-      attachLeadsByContact(u);
-      refreshCabBtn();
+    if(s){
+      setMetrikaUser(s.id, s.name);
+      hydrate(function(ok){
+        if(ok){
+          refreshCabBtn();
+          var pend = null; try{ pend = JSON.parse(localStorage.getItem('alsolo_pending_brief')||'null'); }catch(e){}
+          if(pend){ takePendingBrief(currentUser()); localStorage.removeItem('alsolo_pending_brief'); }
+        }
+      }, true);
     }
-    if(location.hash === '#cabinet'){ setTimeout(function(){ if(currentUser()) openCab(); else openAuth('login'); }, 200); }
+    if(location.hash === '#cabinet'){ setTimeout(function(){ openCab(); }, 200); }
   })();
 
 })();
