@@ -18,11 +18,13 @@ Pages: Settings → Pages → main / (root); домен .ru: 4 A-записи @ 
 185.199.108.153/109/110/111 + CNAME www → alsolo007.github.io, затем
 Settings → Pages → Custom domain + Enforce HTTPS.
 КАБИНЕТ: общая серверная база в Google-таблице "ALsoLo Cabinet DB".
-ОПЛАТЫ: в заказе админа поля "Цена" (полная) и "Внесено" (накопительно):
-0 → "Ожидает оплаты", часть → "Предоплата внесена", = цена → "Оплачено полностью".
-ПАРОЛИ: временный пароль клиента показывается в модальном окне и в админке
-("Клиенты" → 🔑 Пароль); восстановление — ссылка "Забыли пароль?" в окне входа
-(новый пароль приходит исполнителю в Telegram).
+ОПЛАТЫ: "Цена" (полная) и "Внесено" (накопительно); статусы сами:
+0 → ожидает, часть → предоплата, = цена → оплачено.
+СРОК: поле "Дата" в заказе админа = дедлайн, клиент видит "Ближайшая сдача".
+УДАЛЕНИЕ: клиенты → "Удалить" (каскадом), чат → "Очистить диалог",
+дашборд чистится удалением тестовых заказов/клиентов или "Сбросить серверную базу".
+Пароли: временный пароль клиента — модалка при конвертации и "Клиенты" → 🔑;
+восстановление — "Забыли пароль?" (новый пароль приходит исполнителю в Telegram).
 Первый вход админа (если база пуста): admin@alsolo.ru / admin1234. Служебная подсказка: ?demo=1
 -->
 <script type="application/ld+json">
@@ -1932,9 +1934,11 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
         reachGoal('cab_register', {source:utmLabel()});
         setMetrikaUser(j.account.id, j.account.name);
         authModal.classList.remove('show'); f.reset();
-        openCab();
-        var made = takePendingBrief(j.account);
-        toast(made ? 'Кабинет создан, заявка преобразована в заказ ✔' : 'Кабинет создан ✔');
+        hydrate(function(){
+          var made = takePendingBrief(j.account);
+          openCab();
+          toast(made ? 'Кабинет создан, заявка преобразована в заказ ✔' : 'Кабинет создан ✔');
+        });
       });
     } else {
       srv('login', {contact:login, passHash:hashPass(pass)}, function(j, err){
@@ -1944,9 +1948,11 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
         reachGoal('cab_login', {role:j.account.role, source:utmLabel()});
         setMetrikaUser(j.account.id, j.account.name);
         authModal.classList.remove('show'); f.reset();
-        openCab();
-        var made = takePendingBrief(j.account);
-        toast('С возвращением, ' + j.account.name.split(' ')[0] + '!' + (made ? ' Заявка стала заказом ✔' : ''));
+        hydrate(function(){
+          var made = takePendingBrief(j.account);
+          openCab();
+          toast('С возвращением, ' + j.account.name.split(' ')[0] + '!' + (made ? ' Заявка стала заказом ✔' : ''));
+        });
       });
     }
   });
@@ -2116,8 +2122,9 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
       H.push('<select data-act-sel="stage" data-o="' + o.id + '" style="width:auto;padding:9px 34px 9px 12px;font-size:13px">');
       STAGES.forEach(function(s,i){ H.push('<option value="' + i + '"' + (i===o.stage?' selected':'') + '>' + (i+1) + '. ' + esc(s) + '</option>'); });
       H.push('</select>');
-      H.push('<input type="number" data-act-inp="price" data-o="' + o.id + '" value="' + (o.price||0) + '" min="0" step="100" style="width:120px;padding:9px 12px;font-size:13px" placeholder="Цена">');
-      H.push('<input type="number" data-act-inp="paid" data-o="' + o.id + '" value="' + (o.paid||0) + '" min="0" step="100" style="width:120px;padding:9px 12px;font-size:13px" placeholder="Внесено">');
+      H.push('<input type="number" data-act-inp="price" data-o="' + o.id + '" value="' + (o.price||0) + '" min="0" step="100" style="width:110px;padding:9px 12px;font-size:13px" placeholder="Цена">');
+      H.push('<input type="number" data-act-inp="paid" data-o="' + o.id + '" value="' + (o.paid||0) + '" min="0" step="100" style="width:110px;padding:9px 12px;font-size:13px" placeholder="Внесено">');
+      H.push('<input type="date" data-act-inp="deadline" data-o="' + o.id + '" value="' + (o.deadline ? new Date(o.deadline).toISOString().slice(0,10) : '') + '" style="width:150px;padding:9px 12px;font-size:13px" title="Дата сдачи (дедлайн)">');
       H.push('<button class="btn ghost tiny" type="button" data-act="save-order" data-o="' + o.id + '">Сохранить</button>');
       H.push(o.payStatus === 'paid'
         ? '<button class="btn ghost tiny" type="button" data-act="unpay" data-o="' + o.id + '">Снять оплату</button>'
@@ -2125,7 +2132,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
       if(acc) H.push('<button class="btn ghost tiny" type="button" data-act="client-pass" data-u="' + acc.id + '">🔑 Пароль клиента</button>');
       if(acc) H.push('<a class="btn ghost tiny" href="https://t.me/' + esc(String(acc.contact).replace(/^@/,'')) + '" target="_blank" rel="noopener">Telegram клиента</a>');
       H.push('<button class="btn danger tiny" type="button" data-act="del-order" data-o="' + o.id + '">Удалить</button>');
-      H.push('<div class="pay-hint">Цена — полная стоимость заказа. Внесено — сколько получено суммарно: 0 → «ожидает оплаты», часть → «предоплата внесена», равно цене → «оплачено полностью». Кнопка «Оплачено полностью» сама ставит Внесено = Цена.</div>');
+      H.push('<div class="pay-hint">Цена — полная стоимость заказа. Внесено — сколько получено суммарно: 0 → «ожидает оплаты», часть → «предоплата внесена», равно цене → «оплачено полностью». Кнопка «Оплачено полностью» сама ставит Внесено = Цена. Поле с датой — дедлайн сдачи: клиент видит его в «Ближайшая сдача» и на карточке заказа.</div>');
     } else {
       if(o.payStatus !== 'paid') H.push('<button class="btn tiny" type="button" data-act="pay" data-o="' + o.id + '">Оплатить ' + (o.price ? money(payDue(o)) : '') + '</button>');
       H.push('<button class="btn ghost tiny" type="button" data-act="view" data-view="support">Написать в чат</button>');
@@ -2155,7 +2162,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
       H.push('<div class="cab-h"><h2>Здравствуйте, ' + esc(u.name.split(' ')[0]) + '!</h2><p>Кабинет работает через общую базу: статусы, файлы и чат одинаковы на любом устройстве, где вы вошли.</p></div>');
       H.push('<div class="kpis">' + kpi('Активных заказов', active.length, 'в работе сейчас')
         + kpi('Завершено', done.length, 'сдано под ключ')
-        + kpi('Ближайшая сдача', nearest ? (daysLeft(nearest.deadline) < 0 ? 'просрочено' : daysLeft(nearest.deadline) + ' дн') : '—', nearest ? nearest.title : 'нет активных дедлайнов')
+        + kpi('Ближайшая сдача', nearest ? (daysLeft(nearest.deadline) < 0 ? 'просрочено' : daysLeft(nearest.deadline) + ' дн') : '—', nearest ? nearest.title : 'дедлайн назначит исполнитель')
         + kpi('Оплачено', money(totalPaid), totalDue ? 'к доплате ' + money(totalDue) : 'долгов нет') + '</div>');
       if(active.length){
         H.push('<div class="blk"><h3>Текущий статус <span class="h-act"><button class="btn ghost tiny" type="button" data-act="view" data-view="orders">Все заказы →</button></span></h3>');
@@ -2226,7 +2233,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     var msgs = userMessages(peerId);
     var peerName = myRole === 'admin' ? ((getAccount(peerId)||{}).name || 'Клиент') : 'Алексей (исполнитель)';
     var H = ['<div class="cab-h"><h2>' + (myRole === 'admin' ? 'Переписка с клиентом' : 'Чат с исполнителем') + '</h2><p>Сообщения хранятся на сервере: собеседник увидит их с любого устройства. Обновление каждые ~25 секунд.</p></div>'];
-    H.push('<div class="blk"><h3>Чат · ' + esc(peerName) + '</h3><div class="chat"><div class="chat-log" id="chatLog">');
+    H.push('<div class="blk"><h3>Чат · ' + esc(peerName) + (myRole === 'admin' ? ' <span class="h-act"><button class="btn danger tiny" type="button" data-act="chat-clear" data-u="' + peerId + '">Очистить диалог</button></span>' : '') + '</h3><div class="chat"><div class="chat-log" id="chatLog">');
     if(!msgs.length) H.push('<div class="empty" style="padding:24px"><b>Сообщений пока нет</b>Напишите первым — ответ придёт сюда и продублируется уведомлением.</div>');
     msgs.forEach(function(m){
       var mine = m.from === myRole;
@@ -2248,7 +2255,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     var pipeline = orders.reduce(function(s,o){ return s + Math.max((Number(o.price)||0)-(Number(o.paid)||0),0); }, 0);
 
     if(cabView === 'overview'){
-      H.push('<div class="cab-h"><h2>Дашборд исполнителя</h2><p>Заявки и регистрации со всех устройств и браузеров — в одной серверной базе.</p></div>');
+      H.push('<div class="cab-h"><h2>Дашборд исполнителя</h2><p>Заявки и регистрации со всех устройств и браузеров — в одной серверной базе. Суммы считаются по заказам: удалите тестовые заказы — суммы обнулятся.</p></div>');
       H.push('<div class="kpis">' + kpi('Новых заявок', newLeads.length, 'всего заявок: ' + leads.length)
         + kpi('Заказов в работе', activeOrders.length, 'всего: ' + orders.length)
         + kpi('Получено', money(revenue), 'к доплате ' + money(pipeline))
@@ -2278,7 +2285,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     }
 
     if(cabView === 'leads'){
-      H.push('<div class="cab-h"><h2>Заявки с сайта</h2><p>Все заявки со всех устройств: utm-метки, yclid, бриф. Дублируются в Google-таблицу Leads и в Telegram.</p></div>');
+      H.push('<div class="cab-h"><h2>Заявки с сайта</h2><p>Все заявки со всех устройств: utm-метки, yclid, бриф. Дублируются в Google-таблицу Leads и в Telegram. Кнопка «В работу» есть только у новых заявок — повторов больше не будет.</p></div>');
       H.push('<div class="blk"><h3>Всего: ' + leads.length + ' · новых: ' + newLeads.length + '<span class="h-act"><button class="btn ghost tiny" type="button" data-act="export-leads">Экспорт CSV</button></span></h3>');
       if(!leads.length) H.push('<div class="empty"><b>Заявок пока нет</b>Запустите трафик — заявки начнут падать сюда.</div>');
       leads.forEach(function(l){ H.push(leadRow(l, false)); });
@@ -2286,15 +2293,25 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     }
 
     if(cabView === 'orders'){
-      H.push('<div class="cab-h"><h2>Все заказы</h2><p>Меняйте этап, цену и «Внесено», добавляйте файлы и комментарии — клиент увидит изменения сразу, с любого устройства.</p></div>');
-      H.push('<div class="blk"><h3>Заказов: ' + orders.length + '<span class="h-act"><button class="btn tiny" type="button" data-act="new-order">Создать заказ</button></span></h3>');
-      if(!orders.length) H.push('<div class="empty"><b>Заказов нет</b>Создайте вручную или конвертируйте заявку.</div>');
+      H.push('<div class="cab-h"><h2>Все заказы</h2><p>Меняйте этап, цену, «Внесено» и дату сдачи, добавляйте файлы и комментарии — клиент увидит изменения сразу, с любого устройства.</p></div>');
+      H.push('<div class="blk"><h3>Заказов: ' + orders.length + '<span class="h-act"><button class="btn tiny" type="button" data-act="toggle-neworder">Создать заказ</button></span></h3>');
+      var clientsOpts = clients.length
+        ? clients.map(function(c){ return '<option value="' + c.id + '">' + esc(c.name) + ' (' + esc(c.contact) + ')</option>'; }).join('')
+        : '<option value="">Клиентов пока нет</option>';
+      H.push('<div id="newOrderBox" style="display:none;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px"><div class="fgrid">'
+        + '<div class="field"><label>Клиент</label><select id="noClient">' + clientsOpts + '</select></div>'
+        + '<div class="field"><label>Тип</label><select id="noType"><option value="card">Карточка товара</option><option value="pres">Презентация / постер</option></select></div>'
+        + '<div class="field full"><label>Название заказа</label><input type="text" id="noTitle" placeholder="Например: Карточка WB: полотенца хлопковые"></div>'
+        + '<div class="field"><label>Цена, ₽</label><input type="number" id="noPrice" min="0" step="100" value="0"></div>'
+        + '<div class="field"><label>Дата сдачи</label><input type="date" id="noDeadline"></div>'
+        + '<div class="full"><button class="btn small" type="button" data-act="create-order">Создать заказ</button></div></div></div>');
+      if(!orders.length) H.push('<div class="empty"><b>Заказов нет</b>Создайте вручную или конвертируйте заявку в разделе «Заявки с сайта».</div>');
       orders.forEach(function(o){ H.push(orderCard(o,'admin',{showClient:true})); });
       H.push('</div>');
     }
 
     if(cabView === 'clients'){
-      H.push('<div class="cab-h"><h2>Клиенты</h2><p>Зарегистрированные аккаунты кабинета: заказы, оплаты, чаты и доступы.</p></div>');
+      H.push('<div class="cab-h"><h2>Клиенты</h2><p>Зарегистрированные аккаунты кабинета: заказы, оплаты, чаты и доступы. «Удалить» убирает клиента вместе с его заказами, файлами и перепиской.</p></div>');
       H.push('<div class="blk"><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Клиент</th><th>Контакт</th><th>Заказов</th><th>Оплачено</th><th>Непрочитано</th><th></th></tr></thead><tbody>');
       if(!clients.length) H.push('<tr><td colspan="6" style="color:var(--muted)">Клиентов пока нет — регистрации появятся здесь</td></tr>');
       clients.forEach(function(c){
@@ -2302,14 +2319,14 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
         H.push('<tr><td><b>' + esc(c.name) + '</b><br><span style="color:var(--muted);font-size:12px">с ' + fmtDay(c.created) + '</span></td><td>' + esc(c.contact) + '</td><td>' + co.length + '</td><td>' + money(cp) + '</td><td>' + (newMsgCount(c.id,'client')||'—') + '</td>'
           + '<td><div class="td-a"><button class="btn ghost tiny" type="button" data-act="client-pass" data-u="' + c.id + '">🔑 Пароль</button>'
           + '<button class="btn ghost tiny" type="button" data-act="open-chat" data-u="' + c.id + '">Чат</button>'
-          + '<a class="btn ghost tiny" href="https://t.me/' + esc(String(c.contact).replace(/^@/,'')) + '" target="_blank" rel="noopener">TG</a></div></td></tr>');
+          + '<button class="btn danger tiny" type="button" data-act="client-del" data-u="' + c.id + '">Удалить</button></div></td></tr>');
       });
       H.push('</tbody></table></div></div>');
     }
 
     if(cabView === 'support'){
       if(!cabCtx){ var first = clients.filter(function(c){ return userMessages(c.id).length; })[0] || clients[0]; cabCtx = first ? first.id : null; }
-      H.push('<div class="cab-h"><h2>Переписка с клиентами</h2><p>Выберите клиента, чтобы открыть диалог. Новые сообщения клиентов подсвечиваются счётчиком.</p></div>');
+      H.push('<div class="cab-h"><h2>Переписка с клиентами</h2><p>Выберите клиента, чтобы открыть диалог. «Очистить диалог» удаляет историю переписки с сервера.</p></div>');
       H.push('<div class="two-col" style="grid-template-columns:260px 1fr;align-items:start">');
       H.push('<div class="blk"><h3>Диалоги</h3>');
       if(!clients.length) H.push('<p style="color:var(--muted);font-size:13px">Клиентов пока нет</p>');
@@ -2341,7 +2358,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
       H.push('<div class="blk"><h3>Данные кабинета<span class="h-act">'
         + '<button class="btn ghost tiny" type="button" data-act="export-db">Экспорт JSON</button>'
         + '<button class="btn danger tiny" type="button" data-act="reset-demo">Сбросить серверную базу</button></span></h3>'
-        + '<p style="color:var(--muted);font-size:13px">Аккаунтов: ' + db().accounts.length + ' · заказов: ' + db().orders.length + ' · заявок: ' + db().leads.length + '. Сброс очищает сервер и возвращает только аккаунт админа.</p></div>');
+        + '<p style="color:var(--muted);font-size:13px">Аккаунтов: ' + db().accounts.length + ' · заказов: ' + db().orders.length + ' · заявок: ' + db().leads.length + '. Суммы на дашборде считаются по заказам: чтобы обнулить — удалите тестовые заказы здесь или клиентов в разделе «Клиенты». Полный сброс очищает всё и возвращает только админа.</p></div>');
       H.push('<div class="blk"><h3>Ваш доступ (логин и пароль)</h3><div class="two-col">'
         + '<div class="auth-form"><div class="field"><label>Логин (e-mail или Telegram)</label><input type="text" id="admLogin" value="' + esc(u.contact) + '"></div>'
         + '<button class="btn small" type="button" data-act="save-admin-login">Сохранить логин</button></div>'
@@ -2364,7 +2381,9 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
       + (u.utm_term ? ' · запрос: <b>' + esc(u.utm_term) + '</b>' : '') + (u.yclid ? ' · yclid: ' + esc(u.yclid) : '') + '</div>'
       + (compact ? '' : '<details style="margin-top:10px"><summary style="cursor:pointer;color:var(--muted);font-size:12.5px;font-weight:700">Показать бриф</summary><pre style="white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px;font-size:12.5px;color:#d8d2c9;margin-top:10px;font-family:ui-monospace,monospace">' + esc(l.brief||'') + '</pre></details>')
       + '<div class="ord-acts">'
-      + '<button class="btn tiny" type="button" data-act="lead-order" data-l="' + l.id + '">В работу → заказ</button>'
+      + (l.status === 'new'
+          ? '<button class="btn tiny" type="button" data-act="lead-order" data-l="' + l.id + '">В работу → заказ</button>'
+          : '<span class="tag st-5">заказ уже создан</span>')
       + '<button class="btn ghost tiny" type="button" data-act="lead-copy" data-l="' + l.id + '">Скопировать бриф</button>'
       + '<a class="btn ghost tiny" href="' + TG_URL + '" target="_blank" rel="noopener">Ответить в TG</a>'
       + (l.status === 'new' ? '<button class="btn ghost tiny" type="button" data-act="lead-done" data-l="' + l.id + '">Обработана</button>' : '')
@@ -2470,6 +2489,33 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     if(act === 'new-order'){ closeCab(); setTab('card'); scrollToId('order'); toast('Заполните форму — заявка придёт ко мне и станет заказом после регистрации'); return; }
     if(act === 'open-chat'){ cabCtx = b.dataset.u; cabView = 'support'; renderCab(); return; }
     if(act === 'client-pass'){ var accP = getAccount(b.dataset.u); if(accP) openPassModal(accP); return; }
+    if(act === 'client-del'){
+      var cd = getAccount(b.dataset.u); if(!cd) return;
+      if(!confirm('Удалить клиента ' + cd.name + ' вместе с его заказами, файлами и чатами? Действие необратимо.')) return;
+      db().accounts = db().accounts.filter(function(a){ return a.id !== cd.id; });
+      db().orders = db().orders.filter(function(o){ return o.userId !== cd.id; });
+      db().messages = db().messages.filter(function(m){ return m.userId !== cd.id; });
+      var oids = {}; db().orders.forEach(function(o){ oids[o.id] = 1; });
+      db().files = db().files.filter(function(f){ return oids[f.orderId]; });
+      db().comments = db().comments.filter(function(c){ return oids[c.orderId]; });
+      push('clientDel', {id: cd.id});
+      if(cabCtx === cd.id) cabCtx = null;
+      renderCab(); toast('Клиент и все его данные удалены'); return;
+    }
+    if(act === 'chat-clear'){
+      if(!confirm('Удалить все сообщения этого диалога с сервера?')) return;
+      db().messages = db().messages.filter(function(m){ return m.userId !== b.dataset.u; });
+      push('chatClear', {userId: b.dataset.u});
+      renderCab(); toast('Диалог очищен'); return;
+    }
+    if(act === 'toggle-neworder'){ var box = q('#newOrderBox'); if(box) box.style.display = (box.style.display === 'none') ? '' : 'none'; return; }
+    if(act === 'create-order'){
+      var cu = q('#noClient'), ti = q('#noTitle'), ty = q('#noType'), pr = q('#noPrice'), dlx = q('#noDeadline');
+      if(!cu || !cu.value){ toast('Нет клиентов: конвертируйте заявку или попросите клиента зарегистрироваться'); return; }
+      var title = (ti && ti.value || '').trim() || 'Новый заказ';
+      createOrder({ userId: cu.value, title: title, type: ty ? ty.value : 'card', price: pr ? Number(pr.value)||0 : 0, deadline: (dlx && dlx.value) ? new Date(dlx.value + 'T18:00:00').getTime() : 0, brief: '' });
+      renderCab(); toast('Заказ создан — клиент уже видит его'); return;
+    }
     if(act === 'dl-file'){ var o1 = getOrder(b.dataset.o); if(!o1) return; var f1 = orderFiles(o1.id).filter(function(x){ return x.id === b.dataset.f; })[0]; if(f1) downloadFile(o1, f1); return; }
     if(act === 'del-file'){
       var o2 = getOrder(b.dataset.o); if(!o2) return;
@@ -2500,9 +2546,11 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
       var sel = q('select[data-act-sel="stage"][data-o="' + o5.id + '"]');
       var inp = q('input[data-act-inp="price"][data-o="' + o5.id + '"]');
       var inpPaid = q('input[data-act-inp="paid"][data-o="' + o5.id + '"]');
+      var inpDl = q('input[data-act-inp="deadline"][data-o="' + o5.id + '"]');
       if(sel){ var ns = parseInt(sel.value,10); if(ns !== o5.stage){ o5.stage = ns; addComment(o5,'admin',u.name,'Этап изменён на «' + STAGES[ns] + '»'); } }
       if(inp){ o5.price = Math.max(0, Number(inp.value)||0); }
       if(inpPaid){ o5.paid = Math.max(0, Number(inpPaid.value)||0); }
+      if(inpDl){ o5.deadline = inpDl.value ? new Date(inpDl.value + 'T18:00:00').getTime() : 0; }
       o5.payStatus = (o5.price > 0 && o5.paid >= o5.price) ? 'paid' : (o5.paid > 0 ? 'part' : 'await');
       o5.updated = nowTs();
       push('orderSave', {order:o5});
@@ -2594,6 +2642,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     }
     if(act === 'lead-order'){
       var l3 = db().leads.filter(function(x){ return x.id === b.dataset.l; })[0]; if(!l3) return;
+      if(l3.status !== 'new'){ toast('Эта заявка уже в работе — заказ создан ранее'); return; }
       var target = db().accounts.filter(function(a){ return a.role === 'client' && (norm(a.contact) === norm(l3.contact) || norm(a.name) === norm(l3.name)); })[0];
       var createdNew = false;
       if(!target){
