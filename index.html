@@ -1383,7 +1383,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   })();
 
   function postBackend(url, data){
-    if(!BACKEND.enabled || !url || url.indexOf('https://script.google.com/macros/s/AKfycbzgiem8aPPaeqHfp21WpzNzuoqyJKY236P3hugC5DsS7HenDkcAa3spnspktYrBxq0U/exec') > -1 || !window.fetch) return;
+    if(!BACKEND.enabled || !url || !window.fetch) return;
     try{
       fetch(url, {method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(data), keepalive:true}).catch(function(){});
     }catch(e){}
