@@ -18,6 +18,8 @@ Pages: Settings → Pages → main / (root); домен .ru: 4 A-записи @ 
 185.199.108.153/109/110/111 + CNAME www → alsolo007.github.io, затем
 Settings → Pages → Custom domain + Enforce HTTPS.
 КАБИНЕТ: общая серверная база в Google-таблице "ALsoLo Cabinet DB".
+ОПЛАТЫ: в заказе админа поля "Цена" (полная) и "Внесено" (накопительно):
+0 → "Ожидает оплаты", часть → "Предоплата внесена", = цена → "Оплачено полностью".
 Первый вход админа (если база пуста): admin@alsolo.ru / admin1234. Служебная подсказка: ?demo=1
 -->
 <script type="application/ld+json">
@@ -387,6 +389,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
 .pipe i.on{background:linear-gradient(90deg,var(--acc),var(--acc2))}
 .ord-acts{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
 .ord-body{margin-top:14px;display:grid;gap:14px}
+.pay-hint{width:100%;font-size:11.5px;color:var(--muted);margin-top:6px}
 .sub-h{color:var(--muted);font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
 .file-row{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 14px;margin-bottom:8px;font-size:13.5px}
 .file-row .fi{width:34px;height:34px;border-radius:9px;background:var(--accSoft);color:var(--acc);display:grid;place-items:center;flex:0 0 34px;font-weight:900;font-size:11px}
@@ -859,12 +862,12 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     <div class="s-head" data-anim="maskL">
       <p class="s-tag">Личный кабинет</p>
       <h2 class="s-title">Весь проект — в одном окне, а не в переписке</h2>
-      <p class="s-sub">Кабинет работает через общий сервер: статусы, файлы и чат видны с любого устройства — и вам, и мне.</p>
+      <p class="s-sub">Кабинет работает через общую серверную базу: статусы, файлы и чат видны с любого устройства — и вам, и мне.</p>
     </div>
     <div class="gar-grid" data-stagger="110">
       <div class="gar" data-anim="drop"><span class="gi"><svg width="22" height="22"><use href="#deckIcon"/></svg></span><h3>Статус в реальном времени</h3><p>6 этапов: заявка → бриф → эскиз → правки → сдача → закрыт.</p></div>
       <div class="gar" data-anim="drop"><span class="gi"><svg width="22" height="22"><use href="#fileIcon"/></svg></span><h3>Все файлы в одном месте</h3><p>Исходники, превью, PDF и чеки — с датами и версией.</p></div>
-      <div class="gar" data-anim="drop"><span class="gi"><svg width="22" height="22"><use href="#cartIcon"/></svg></span><h3>Оплаты 50/50</h3><p>Видно, что оплачено и что осталось. Реквизиты — в один клик.</p></div>
+      <div class="gar" data-anim="drop"><span class="gi"><svg width="22" height="22"><use href="#cartIcon"/></svg></span><h3>Оплаты 50/50</h3><p>Предоплата и остаток видны отдельно, статусы обновляются сами.</p></div>
       <div class="gar" data-anim="drop"><span class="gi"><svg width="22" height="22"><use href="#tgIcon"/></svg></span><h3>Чат с исполнителем</h3><p>Переписка по проекту прямо на сайте — без Telegram и почты.</p></div>
     </div>
     <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:30px" data-anim="up">
@@ -960,7 +963,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
       <div class="faq-item" data-anim="unfold"><button class="q" type="button">Поможете с текстами и SEO-описанием слайдов?<i>+</i></button><div class="a">Да: в тарифе «Карточка · Продающая» УТП и SEO-тексты на слайдах входят в стоимость. Для презентаций помогаю со структурой и формулировками в тарифе «Дек · Премиум».</div></div>
       <div class="faq-item" data-anim="unfold"><button class="q" type="button">В каком формате отдаёте презентацию?<i>+</i></button><div class="a">PPTX, Figma или PDF — как вам удобно. Исходники передаю вместе с файлами, шрифты и стили остаются редактируемыми.</div></div>
       <div class="faq-item" data-anim="unfold"><button class="q" type="button">Насколько срочно можете взять заказ?<i>+</i></button><div class="a">Первый эскиз — за 1–2 дня. Срочная сдача карточки за 1–2 дня возможна при свободном слоте: напишите в чат кабинета или Telegram, проверю загрузку сразу.</div></div>
-      <div class="faq-item" data-anim="unfold"><button class="q" type="button">Как устроена оплата?<i>+</i></button><div class="a">50% аванс после согласования ТЗ, 50% — после приёмки работы. Реквизиты и сумма есть в личном кабинете во вкладке «Платежи». Если первый эскиз не понравился и мы не нашли общий язык — возвращаю аванс полностью.</div></div>
+      <div class="faq-item" data-anim="unfold"><button class="q" type="button">Как устроена оплата?<i>+</i></button><div class="a">50% аванс после согласования ТЗ, 50% — после приёмки работы. В кабинете видно: полная цена, сколько внесено и сколько осталось. Реквизиты — в окне оплаты. Если первый эскиз не понравился и мы не нашли общий язык — возвращаю аванс полностью.</div></div>
     </div>
   </div>
 </section>
@@ -1231,7 +1234,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   <div class="mbox">
     <button class="mclose" type="button" data-close>✕</button>
     <h3>Оплата по заказу</h3>
-    <div class="pay-sum"><span>К оплате сейчас</span><b id="paySum">0 ₽</b></div>
+    <div class="pay-sum"><span id="paySumLbl">К оплате сейчас</span><b id="paySum">0 ₽</b></div>
     <div class="pay-opts">
       <div class="pay-opt"><span class="po-i">СБП</span><span><b>Перевод по номеру телефона</b><span id="payPhone">+7 ·· ··· ·· ·· — получатель Алексей П. (самозанятый)</span></span></div>
       <div class="pay-opt"><span class="po-i">💳</span><span><b>Карта по ссылке</b><span>Пришлю индивидуальную ссылку на оплату в Telegram — чек придёт автоматически.</span></span></div>
@@ -1264,7 +1267,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   var EMAIL = 'al.poponin2013@yandex.ru';
   var PAY_PHONE = '+7 ·· ··· ·· ·· — получатель Алексей П. (самозанятый)';
   var METRIKA_ID = 0;
-  /* Секретный ключ кабинета. ДОЛЖЕН совпадать с CAB_KEY в Apps Script */
+  /* Секрет кабинета. ДОЛЖЕН совпадать с CAB_KEY в Apps Script */
   var CAB_KEY = 'ALSOLO-2026-CAB-7f3a9c';
   var BACKEND = { enabled:true, leadsUrl:'https://script.google.com/macros/s/AKfycbxf6imL3q0DanfvMKRs05TjfDFEGWl5-EiO6ry8gBNltoS02_MSTf2ORXgq9wDgCO8Z/exec' };
 
@@ -1667,6 +1670,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   var DB_CACHE = null;
   var cabSnap = '';
   var cabPoll = null;
+  var STAGES = ['Заявка','Бриф и ТЗ','Эскиз','Правки','Сдача','Закрыт'];
 
   function emptyCache(){ return {accounts:[],orders:[],files:[],comments:[],messages:[],leads:[]}; }
   function db(){ return DB_CACHE || (DB_CACHE = emptyCache()); }
@@ -1688,7 +1692,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
       var snap = JSON.stringify(DB_CACHE);
       var changed = snap !== cabSnap;
       cabSnap = snap;
-      if(cb) cb(true, null, changed && !silent ? true : changed);
+      if(cb) cb(true, null, changed);
     });
   }
   function push(kind, payload, okMsg){
@@ -2001,15 +2005,17 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
   function kpi(label, value, sub){
     return '<div class="kpi"><div class="k-l">' + esc(label) + '</div><div class="k-v">' + value + '</div>' + (sub ? '<div class="k-s">' + esc(sub) + '</div>' : '') + '</div>';
   }
-  function stageTag(o){ var STAGES = ['Заявка','Бриф и ТЗ','Эскиз','Правки','Сдача','Закрыт']; return '<span class="tag st-' + o.stage + '">' + esc(STAGES[o.stage]||'—') + '</span>'; }
+  function stageTag(o){ return '<span class="tag st-' + o.stage + '">' + esc(STAGES[o.stage]||'—') + '</span>'; }
   function payTag(o){
-    if(o.payStatus === 'paid') return '<span class="tag pay-ok">Оплачено</span>';
+    if(o.payStatus === 'paid') return '<span class="tag pay-ok">Оплачено полностью</span>';
+    if(o.payStatus === 'part') return '<span class="tag pay-ok">Предоплата внесена</span>';
     if(o.payStatus === 'checking') return '<span class="tag pay-check">Проверяем оплату</span>';
     return '<span class="tag pay-await">Ожидает оплаты</span>';
   }
+  function payDue(o){ return o.price ? ((o.paid||0) > 0 ? o.price - o.paid : Math.round(o.price/2)) : 0; }
   function pipeHTML(stage){
     var H = ['<div class="pipe">'];
-    for(var i=0;i<6;i++) H.push('<i class="' + (i <= stage ? 'on' : '') + '"></i>');
+    for(var i=0;i<STAGES.length;i++) H.push('<i class="' + (i <= stage ? 'on' : '') + '"></i>');
     H.push('</div>');
     return H.join('');
   }
@@ -2052,7 +2058,6 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
 
   function orderCard(o, me, opts){
     opts = opts || {};
-    var STAGES = ['Заявка','Бриф и ТЗ','Эскиз','Правки','Сдача','Закрыт'];
     var acc = getAccount(o.userId);
     var H = ['<div class="ord" data-oid="' + o.id + '">'];
     H.push('<div class="ord-top"><div class="ord-t"><b>' + esc(o.title) + '</b><span>' + (o.tariff ? esc(o.tariff) + ' · ' : '') + 'создан ' + fmtDay(o.created) + (opts.showClient && acc ? ' · клиент: ' + esc(acc.name) + ' (' + esc(acc.contact) + ')' : '') + '</span></div>'
@@ -2069,15 +2074,17 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
       H.push('<select data-act-sel="stage" data-o="' + o.id + '" style="width:auto;padding:9px 34px 9px 12px;font-size:13px">');
       STAGES.forEach(function(s,i){ H.push('<option value="' + i + '"' + (i===o.stage?' selected':'') + '>' + (i+1) + '. ' + esc(s) + '</option>'); });
       H.push('</select>');
-      H.push('<input type="number" data-act-inp="price" data-o="' + o.id + '" value="' + (o.price||0) + '" min="0" step="100" style="width:130px;padding:9px 12px;font-size:13px" placeholder="Цена">');
+      H.push('<input type="number" data-act-inp="price" data-o="' + o.id + '" value="' + (o.price||0) + '" min="0" step="100" style="width:120px;padding:9px 12px;font-size:13px" placeholder="Цена">');
+      H.push('<input type="number" data-act-inp="paid" data-o="' + o.id + '" value="' + (o.paid||0) + '" min="0" step="100" style="width:120px;padding:9px 12px;font-size:13px" placeholder="Внесено">');
       H.push('<button class="btn ghost tiny" type="button" data-act="save-order" data-o="' + o.id + '">Сохранить</button>');
       H.push(o.payStatus === 'paid'
-        ? '<button class="btn ghost tiny" type="button" data-act="unpay" data-o="' + o.id + '">Снять отметку оплаты</button>'
-        : '<button class="btn tiny" type="button" data-act="mark-paid" data-o="' + o.id + '">Отметить оплаченным</button>');
+        ? '<button class="btn ghost tiny" type="button" data-act="unpay" data-o="' + o.id + '">Снять оплату</button>'
+        : '<button class="btn tiny" type="button" data-act="mark-paid" data-o="' + o.id + '">Оплачено полностью</button>');
       if(acc) H.push('<a class="btn ghost tiny" href="https://t.me/' + esc(String(acc.contact).replace(/^@/,'')) + '" target="_blank" rel="noopener">Telegram клиента</a>');
       H.push('<button class="btn danger tiny" type="button" data-act="del-order" data-o="' + o.id + '">Удалить</button>');
+      H.push('<div class="pay-hint">Цена — полная стоимость заказа. Внесено — сколько получено суммарно: 0 → «ожидает оплаты», половина → «предоплата внесена», равно цене → «оплачено полностью». Кнопка «Оплачено полностью» сама ставит Внесено = Цена.</div>');
     } else {
-      if(o.payStatus !== 'paid') H.push('<button class="btn tiny" type="button" data-act="pay" data-o="' + o.id + '">Оплатить ' + (o.price ? money(Math.max(o.price - o.paid, Math.round(o.price/2))) : '') + '</button>');
+      if(o.payStatus !== 'paid') H.push('<button class="btn tiny" type="button" data-act="pay" data-o="' + o.id + '">Оплатить ' + (o.price ? money(payDue(o)) : '') + '</button>');
       H.push('<button class="btn ghost tiny" type="button" data-act="view" data-view="support">Написать в чат</button>');
       if(o.stage >= 4) H.push('<button class="btn ghost tiny" type="button" data-act="accept" data-o="' + o.id + '">Принять работу</button>');
     }
@@ -2184,9 +2191,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     });
     H.push('</div><form class="chat-form" id="chatForm"><textarea id="chatText" placeholder="Сообщение…"></textarea><button class="btn small" type="submit">Отправить</button></form></div></div>');
     if(myRole === 'client') H.push('<div class="blk"><h3>Другие каналы</h3><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn small ghost" href="' + TG_URL + '" target="_blank" rel="noopener" data-goal="tg_click">Telegram @' + esc(TG_USER) + '</a><a class="btn small ghost" href="mailto:' + EMAIL + '">Почта</a></div></div>');
-    setTimeout(function(){
-      srv('msgRead', {userId:peerId, from: myRole === 'admin' ? 'client' : 'admin'}, function(){});
-    }, 500);
+    setTimeout(function(){ srv('msgRead', {userId:peerId, from: myRole === 'admin' ? 'client' : 'admin'}, function(){}); }, 500);
     return H;
   }
 
@@ -2238,7 +2243,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     }
 
     if(cabView === 'orders'){
-      H.push('<div class="cab-h"><h2>Все заказы</h2><p>Меняйте этап, цену, добавляйте файлы и комментарии — клиент увидит изменения сразу, с любого устройства.</p></div>');
+      H.push('<div class="cab-h"><h2>Все заказы</h2><p>Меняйте этап, цену и «Внесено», добавляйте файлы и комментарии — клиент увидит изменения сразу, с любого устройства.</p></div>');
       H.push('<div class="blk"><h3>Заказов: ' + orders.length + '<span class="h-act"><button class="btn tiny" type="button" data-act="new-order">Создать заказ</button></span></h3>');
       if(!orders.length) H.push('<div class="empty"><b>Заказов нет</b>Создайте вручную или конвертируйте заявку.</div>');
       orders.forEach(function(o){ H.push(orderCard(o,'admin',{showClient:true})); });
@@ -2283,11 +2288,11 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
         + '<label><input type="checkbox" checked disabled>Микроцели: tg_click, mail_click, cab_register, pay_intent</label>'
         + '<label><input type="checkbox" checked disabled>UTM-метки и yclid сохраняются в каждой заявке</label>'
         + '<label><input type="checkbox" checked disabled>Приём заявок: Apps Script (Telegram + таблица Leads)</label>'
-        + '<label><input type="checkbox" checked disabled>Кабинет: общая серверная база (аккаунты, заказы, чат)</label>'
+        + '<label><input type="checkbox" checked disabled>Кабинет: общая серверная база (аккаунты, заказы, чат, оплаты)</label>'
         + '<label><input type="checkbox" checked disabled>Политика конфиденциальности и согласие в формах</label>'
         + '</div><p style="color:var(--muted);font-size:13px;margin-top:12px">В кампании Директа в поле «Цель» указывайте <b style="color:var(--acc2)">lead_card</b> или <b style="color:var(--acc2)">lead_pres</b>.</p></div>');
       H.push('<div class="blk"><h3>Куда вписать параметры</h3><p style="color:var(--muted);font-size:13px">Все настройки — в начале &lt;script&gt; в блоке «1. НАСТРОЙКИ»:</p><pre style="white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px;font-size:12px;color:#d8d2c9;font-family:ui-monospace,monospace">METRIKA_ID = 00000000;   // номер счётчика\nCAB_KEY = "..."          // должен совпадать с Apps Script\nBACKEND.leadsUrl = "https://script.google.com/.../exec";</pre>'
-        + '<p style="color:var(--muted);font-size:13px;margin-top:10px">Пароли хранятся в виде хешей, база — в вашей Google-таблице. Резервная копия = экспорт CSV/JSON плюс сама таблица.</p></div>');
+        + '<p style="color:var(--muted);font-size:13px;margin-top:10px">Пароли хранятся в виде хешей, база — в вашей Google-таблице. Резервная копия = экспорт JSON плюс сама таблица.</p></div>');
       H.push('</div>');
       H.push('<div class="blk"><h3>Данные кабинета<span class="h-act">'
         + '<button class="btn ghost tiny" type="button" data-act="export-db">Экспорт JSON</button>'
@@ -2416,8 +2421,11 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
       var o5 = getOrder(b.dataset.o); if(!o5) return;
       var sel = q('select[data-act-sel="stage"][data-o="' + o5.id + '"]');
       var inp = q('input[data-act-inp="price"][data-o="' + o5.id + '"]');
-      if(sel){ var ns = parseInt(sel.value,10); if(ns !== o5.stage){ o5.stage = ns; addComment(o5,'admin',u.name,'Этап изменён на «' + ['Заявка','Бриф и ТЗ','Эскиз','Правки','Сдача','Закрыт'][ns] + '»'); } }
+      var inpPaid = q('input[data-act-inp="paid"][data-o="' + o5.id + '"]');
+      if(sel){ var ns = parseInt(sel.value,10); if(ns !== o5.stage){ o5.stage = ns; addComment(o5,'admin',u.name,'Этап изменён на «' + STAGES[ns] + '»'); } }
       if(inp){ o5.price = Math.max(0, Number(inp.value)||0); }
+      if(inpPaid){ o5.paid = Math.max(0, Number(inpPaid.value)||0); }
+      o5.payStatus = (o5.price > 0 && o5.paid >= o5.price) ? 'paid' : (o5.paid > 0 ? 'part' : 'await');
       o5.updated = nowTs();
       push('orderSave', {order:o5});
       renderCab(); toast('Заказ обновлён — клиент видит изменения');
@@ -2426,12 +2434,17 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     if(act === 'mark-paid'){
       var o6 = getOrder(b.dataset.o); if(!o6) return;
       o6.payStatus = 'paid'; o6.paid = o6.price || o6.paid; o6.updated = nowTs();
-      addComment(o6,'admin',u.name,'Оплата получена, чек отправлю в Telegram.');
+      addComment(o6,'admin',u.name,'Оплата получена полностью, чек отправлю в Telegram.');
       push('orderSave', {order:o6});
-      renderCab(); reachGoal('pay_confirmed'); toast('Отмечено как оплачено');
+      renderCab(); reachGoal('pay_confirmed'); toast('Отмечено как оплачено полностью');
       return;
     }
-    if(act === 'unpay'){ var o7 = getOrder(b.dataset.o); if(!o7) return; o7.payStatus='await'; o7.updated=nowTs(); push('orderSave',{order:o7}); renderCab(); toast('Отметка снята'); return; }
+    if(act === 'unpay'){
+      var o7 = getOrder(b.dataset.o); if(!o7) return;
+      o7.payStatus='await'; o7.paid=0; o7.updated=nowTs();
+      push('orderSave', {order:o7});
+      renderCab(); toast('Отметка оплаты снята'); return;
+    }
     if(act === 'del-order'){
       var o8 = getOrder(b.dataset.o); if(!o8) return;
       if(!confirm('Удалить заказ «' + o8.title + '»?')) return;
@@ -2442,8 +2455,9 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
     if(act === 'pay'){
       currentOrderId = b.dataset.o;
       var o9 = getOrder(currentOrderId); if(!o9) return;
-      var due = o9.price ? Math.max(o9.price - (o9.paid||0), Math.round(o9.price/2)) : 0;
+      var due = payDue(o9);
       q('#paySum').textContent = due ? money(due) : 'Сумму согласуем в чате';
+      var lbl = q('#paySumLbl'); if(lbl) lbl.textContent = (o9.paid||0) > 0 ? 'Остаток по заказу' : 'Предоплата 50%';
       q('#payModal').classList.add('show');
       reachGoal('pay_intent', {order:o9.title});
       return;
@@ -2525,6 +2539,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
       srv('reset', {}, function(j, err){
         if(!j){ toast('Ошибка сброса: ' + (err||'')); return; }
         clearSession();
+        DB_CACHE = null; cabSnap = '';
         closeCab();
         toast('Серверная база сброшена. Вход: admin@alsolo.ru / admin1234');
       });
@@ -2577,7 +2592,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg);posi
         if(ok){
           refreshCabBtn();
           var pend = null; try{ pend = JSON.parse(localStorage.getItem('alsolo_pending_brief')||'null'); }catch(e){}
-          if(pend){ takePendingBrief(currentUser()); localStorage.removeItem('alsolo_pending_brief'); }
+          if(pend){ takePendingBrief(currentUser()); try{ localStorage.removeItem('alsolo_pending_brief'); }catch(e){} }
         }
       }, true);
     }
